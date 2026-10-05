@@ -9,7 +9,6 @@ const nextConfig = {
     ],
     qualities: [75, 100],
   },
-  distDir: 'dist',
 };
 
 export default nextConfig;
