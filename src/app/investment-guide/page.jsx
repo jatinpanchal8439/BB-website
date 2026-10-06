@@ -16,7 +16,7 @@ export default function InvestmentGuidePage() {
       <InvestmentRoadmap />
       <InvestmentEstimate />
       <CategoryCTA />
-      <Footer />
+      <Footer hidePreFooterCTA={true} />
     </main>
   );
 }

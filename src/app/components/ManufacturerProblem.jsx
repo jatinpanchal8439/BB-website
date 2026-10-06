@@ -207,19 +207,20 @@ export default function ManufacturerProblem() {
           <div className="w-full xl:w-[56%] flex flex-col">
             
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-black leading-[1.08] tracking-tight mb-5 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-black leading-[1.15] tracking-tight mb-5 sm:mb-6">
               <span className="block text-[#0B1B36]">
-                Finding the Right Manufacturer
+                Finding the Right<br />Manufacturer
               </span>
-              <span className="block text-[#FF4D00]">
+              <span className="block text-[#FF4D00] mt-1">
                 Shouldn't Be Your Problem
               </span>
             </h2>
 
             {/* Lead Copy */}
-            <div className="text-[#5A687D] text-sm sm:text-base leading-relaxed font-medium mb-6 sm:mb-8 max-w-[580px]">
-              <p className="mb-2">
-                Finding a manufacturer is easy. Finding the right one for your product, quantity, category and budget is where things get complicated.
+            <div className="text-[#5A687D] text-sm sm:text-base leading-[1.6] font-medium mb-6 sm:mb-8 max-w-[540px]">
+              <p className="mb-3">
+                Finding a manufacturer is easy. Finding the right one for your product,<br className="hidden lg:block" />
+                quantity, category and budget is where things get complicated.
               </p>
               <p className="text-[#0B1B36] font-bold">
                 We help you:
@@ -227,16 +228,16 @@ export default function ManufacturerProblem() {
             </div>
 
             {/* Feature Cards Grid (2 Columns x 3 Rows) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mb-8 sm:mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-[600px]">
               {features.map((item, idx) => (
                 <div 
                   key={idx}
-                  className="problem-feature-card bg-white rounded-2xl p-4 sm:p-5 border border-[#F2EFE8] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-200 flex items-center gap-4 hover:-translate-y-0.5 min-h-[84px]"
+                  className="problem-feature-card bg-white rounded-2xl p-3.5 sm:p-4 border border-[#F2EFE8] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-200 flex items-center gap-3.5 hover:-translate-y-0.5 min-h-[76px]"
                 >
-                  <div className="w-[42px] h-[42px] rounded-full border border-[#FF4D00]/20 bg-[#FFF5E6]/60 flex items-center justify-center shrink-0">
+                  <div className="w-[38px] h-[38px] rounded-full border border-[#FF4D00]/30 bg-white shadow-sm flex items-center justify-center shrink-0">
                     {item.icon}
                   </div>
-                  <span className="text-[#0B1B36] font-semibold text-[12px] sm:text-[13px] leading-snug pr-2">
+                  <span className="text-[#0B1B36] font-semibold text-[12px] sm:text-[13px] leading-snug pr-1">
                     {item.text}
                   </span>
                 </div>

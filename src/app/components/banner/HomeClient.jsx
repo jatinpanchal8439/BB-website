@@ -138,7 +138,7 @@ export default function HomeClient() {
   }, { scope: container });
 
   return (
-    <main ref={container} className="relative min-h-[100vh] flex flex-col bg-[#FCFBF8] font-sans overflow-x-clip selection:bg-[#FF4D00] selection:text-white pt-10 md:pt-14 lg:pt-16 pb-12 md:pb-16">
+    <main ref={container} className="relative min-h-[100vh] flex flex-col bg-[#FCFBF8] font-sans overflow-x-clip selection:bg-[#FF4D00] selection:text-white pb-12 md:pb-16">
       {/* Full Section Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-15%] md:top-[-25%] left-0 right-0 bottom-0">

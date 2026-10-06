@@ -16,7 +16,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({ hidePreFooterCTA = false }) {
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -49,35 +49,37 @@ export default function Footer() {
   return (
     <>
       {/* Pre-Footer CTA Section */}
-      <section className="relative bg-[#FFFBF5] py-14 sm:py-20 border-t border-[#F0EBE1] flex flex-col items-center justify-center text-center px-5 sm:px-6">
-        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-          <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
-          <span className="text-[#FF4D00] text-xs font-bold tracking-[0.2em] uppercase">Let's Talk</span>
-          <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
-        </div>
+      {!hidePreFooterCTA && (
+        <section className="relative bg-[#FFFBF5] py-14 sm:py-20 border-t border-[#F0EBE1] flex flex-col items-center justify-center text-center px-5 sm:px-6">
+          <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
+            <span className="text-[#FF4D00] text-xs font-bold tracking-[0.2em] uppercase">Let's Talk</span>
+            <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
+          </div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0B1B3D] leading-tight mb-4 sm:mb-5 flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
-          Ready to Build
-          <span className="text-[#FF4D00] flex items-center gap-1.5 sm:gap-2">
-            Your Brand?
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-0.5 sm:mt-1 w-5 h-5 sm:w-6 sm:h-6">
-              <path d="M4 12L9 9L12 4L15 9L20 12L15 15L12 20L9 15L4 12Z" fill="#FF4D00" />
-            </svg>
-          </span>
-        </h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0B1B3D] leading-tight mb-4 sm:mb-5 flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
+            Ready to Build
+            <span className="text-[#FF4D00] flex items-center gap-1.5 sm:gap-2">
+              Your Brand?
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-0.5 sm:mt-1 w-5 h-5 sm:w-6 sm:h-6">
+                <path d="M4 12L9 9L12 4L15 9L20 12L15 15L12 20L9 15L4 12Z" fill="#FF4D00" />
+              </svg>
+            </span>
+          </h2>
 
-        <p className="text-gray-500 text-sm sm:text-base md:text-lg font-medium max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-          Book a short call with our team and tell us what you're thinking of building. Let's turn your idea into a real brand.
-        </p>
+          <p className="text-gray-500 text-sm sm:text-base md:text-lg font-medium max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+            Book a short call with our team and tell us what you're thinking of building. Let's turn your idea into a real brand.
+          </p>
 
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 bg-[#17439E] hover:bg-[#102F70] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(23,67,158,0.4)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
-        >
-          Book a 1-on-1 Call
-          <ArrowRight size={18} />
-        </Link>
-      </section>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#17439E] hover:bg-[#102F70] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(23,67,158,0.4)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+          >
+            Book a 1-on-1 Call
+            <ArrowRight size={18} />
+          </Link>
+        </section>
+      )}
 
       {/* Main Footer Section with Exact Wavy Background */}
       <footer className="relative bg-[#FFFBF5] pt-14 sm:pt-16 pb-8 border-t border-[#F0EBE1] overflow-hidden">

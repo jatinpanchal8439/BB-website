@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Cards() {
   return (
     <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 pb-8 pt-8 sm:pt-12">
-      
+
       {/* Text Above Cards */}
       <div className="hidden lg:flex justify-between w-full mb-3 md:mb-4 pointer-events-none">
         {/* Left Text */}
@@ -27,17 +27,17 @@ export default function Cards() {
       </div>
 
       <div className="flex flex-col lg:flex-row justify-between w-full gap-6 lg:gap-0 items-end">
-        
+
         {/* Left Cards Group */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-4 w-full lg:w-[32%] xl:w-[29%]">
           {/* Card 1 */}
           <div className="gsap-card bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-shadow duration-300 hover:shadow-xl border border-white/80">
             <div className="aspect-[4/3] bg-gray-200 relative w-full overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80" 
-                alt="Product Development" 
-                fill 
-                className="object-cover" 
+              <Image
+                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80"
+                alt="Product Development"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">
@@ -54,11 +54,11 @@ export default function Cards() {
           {/* Card 2 */}
           <div className="gsap-card bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-shadow duration-300 hover:shadow-xl border border-white/80">
             <div className="aspect-[4/3] bg-gray-200 relative w-full overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80" 
-                alt="Brand Building" 
-                fill 
-                className="object-cover" 
+              <Image
+                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80"
+                alt="Brand Building"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">
@@ -78,11 +78,11 @@ export default function Cards() {
           {/* Card 3 */}
           <div className="gsap-card bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-shadow duration-300 hover:shadow-xl border border-white/80">
             <div className="aspect-[4/3] bg-gray-200 relative w-full overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" 
-                alt="Compliance & Manufacturing" 
-                fill 
-                className="object-cover" 
+              <Image
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
+                alt="Compliance & Manufacturing"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">
@@ -99,11 +99,11 @@ export default function Cards() {
           {/* Card 4 */}
           <div className="gsap-card bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-shadow duration-300 hover:shadow-xl border border-white/80">
             <div className="aspect-[4/3] bg-gray-200 relative w-full overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80" 
-                alt="Launch & Grow" 
-                fill 
-                className="object-cover" 
+              <Image
+                src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80"
+                alt="Launch & Grow"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">
