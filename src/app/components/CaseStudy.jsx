@@ -7,9 +7,9 @@ export default function CaseStudy() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Card */}
-        <div className="relative w-full overflow-hidden rounded-[32px] md:rounded-[48px]">
+        <div className="relative w-full rounded-[32px] md:rounded-[48px]">
           {/* Split background */}
-          <div className="absolute inset-0 flex flex-col md:flex-row pointer-events-none">
+          <div className="absolute inset-0 flex flex-col md:flex-row pointer-events-none overflow-hidden rounded-[32px] md:rounded-[48px]">
             <div className="w-full md:w-[48%] bg-[#fff8f2] h-full"></div>
             <div className="w-full md:w-[52%] bg-gradient-to-br from-[#fbd6b9] via-[#fbcfa9] to-[#fbbe91] h-full"></div>
           </div>
@@ -41,13 +41,13 @@ export default function CaseStudy() {
             </div>
 
             {/* Right Content / Image */}
-            <div className="w-full md:w-1/2 relative flex justify-center md:justify-end">
+            <div className="w-full md:w-1/2 relative flex justify-center md:justify-end z-30">
               <Image 
                 src="/launch-duration.png" 
                 alt="Launch Duration 60 Days" 
                 width={800} 
                 height={800} 
-                className="object-contain w-full max-w-[600px] lg:max-w-[700px] -mr-4 md:-mr-8"
+                className="object-contain w-full max-w-[600px] lg:max-w-[700px] -mr-4 md:-mr-8 translate-y-10 md:translate-y-20 lg:translate-y-28 scale-110"
                 priority
               />
             </div>

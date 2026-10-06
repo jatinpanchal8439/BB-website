@@ -1,17 +1,16 @@
 "use client";
-
-import React, { useState } from "react";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { User, Phone, ChevronDown, FileText, LayoutGrid } from 'lucide-react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+    name: '',
+    phone: '',
+    category: '',
+    idea: ''
   });
-
-  const [status, setStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,156 +18,161 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
-
+    setStatus('loading');
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          industry: formData.category,
+          description: formData.idea,
+        }),
       });
-
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        setTimeout(() => setStatus("idle"), 5000);
+      const result = await res.json();
+      if (res.ok && result.success) {
+        setStatus('success');
+        setFormData({ name: '', phone: '', category: '', idea: '' });
       } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
+        setStatus('error');
       }
-    } catch (error) {
-      console.error(error);
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus('error');
     }
   };
 
   return (
-    <section id="book-call" className="w-full bg-[#0B1B3D] py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF4D00] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
-      
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        {/* Left Side: Content */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
-            <span className="text-[#FF4D00] text-sm font-bold tracking-[0.2em] uppercase">Let's Connect</span>
+    <section
+      id="contact"
+      className="relative w-full font-sans overflow-hidden bg-[#FCFAF5] bg-cover bg-center bg-no-repeat py-12 sm:py-16 lg:py-20 xl:py-24"
+      style={{ backgroundImage: "url('/contact-exact-bg.png')" }}
+    >
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12 relative z-10">
+
+        {/* Left — Sketch Illustration matching design */}
+        <div className="w-full lg:w-[50%] xl:w-[49%] flex items-center justify-center lg:justify-start relative">
+          <div className="relative w-full max-w-[580px] lg:max-w-none transform lg:scale-105 xl:scale-110 lg:-translate-x-2">
+            <Image
+              src="/contact-sketch-illustration.png"
+              alt="Brand Idea Concept Sketch"
+              width={1740}
+              height={904}
+              priority
+              className="w-full h-auto object-contain drop-shadow-sm select-none pointer-events-none"
+            />
           </div>
+        </div>
+
+        {/* Right — Text + Form matching screenshot */}
+        <div className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start pt-2 lg:pt-0">
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Ready to Build <br/>
-            <span className="text-[#FF4D00]">Your Brand?</span>
+          {/* Orange horizontal dash */}
+          <div className="w-12 h-[3.5px] bg-[#FF5000] rounded-full mb-6" />
+
+          {/* Heading */}
+          <h2 className="text-[36px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-[800] text-[#0F1C36] leading-[1.12] tracking-tight mb-4">
+            Let&apos;s Talk About<br />
+            <span className="text-[#FF5000]">Your Idea</span>
           </h2>
-          
-          <p className="text-gray-300 text-lg md:text-xl font-medium mb-10 max-w-md leading-relaxed">
-            Fill out the form to book a call with our brand experts. We’ll help you navigate the entire journey from formulation to launch.
+
+          {/* Subtitle */}
+          <p className="text-[#64748B] text-[15px] sm:text-[16px] leading-[1.65] mb-7 max-w-[490px]">
+            No formula or manufacturer needed. Tell us what you&apos;re thinking of building, and we&apos;ll help you figure out the next step.
           </p>
 
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#FF4D00]">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">Call Us</span>
-                <span className="text-white font-bold text-lg">+91 98765 43210</span>
-              </div>
+          {/* Form */}
+          {status === 'success' ? (
+            <div className="w-full bg-white rounded-2xl p-8 text-center shadow-md border border-[#E2E8F0]">
+              <div className="text-4xl mb-4">🎉</div>
+              <h3 className="text-[#0F1C36] font-black text-xl mb-2">We got your idea!</h3>
+              <p className="text-[#64748B] text-sm">Our team will reach out to you shortly. Thank you!</p>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#FF4D00]">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          ) : (
+            <form onSubmit={handleSubmit} className="w-full max-w-[520px] flex flex-col gap-4">
+              {/* Row 1: Name & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="relative">
+                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-4 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs"
+                  />
+                </div>
+                <div className="relative">
+                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8]" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone / WhatsApp"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-4 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs"
+                  />
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">Email Us</span>
-                <span className="text-white font-bold text-lg">hello@banegabrand.com</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Right Side: Form */}
-        <div className="bg-white rounded-3xl p-8 shadow-2xl relative">
-          <h3 className="text-2xl font-bold text-[#0B1B3D] mb-6">Send us a message</h3>
-          
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-gray-700">Full Name</label>
-              <input 
-                type="text" 
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Mayank Tiwari" 
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent transition-all"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold text-gray-700">Email Address</label>
-                <input 
-                  type="email" 
-                  name="email"
-                  required
-                  value={formData.email}
+              {/* Row 2: Category Dropdown */}
+              <div className="relative">
+                <LayoutGrid size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+                <select
+                  name="category"
+                  value={formData.category}
                   onChange={handleChange}
-                  placeholder="hello@example.com" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent transition-all"
+                  required
+                  className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-10 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Select Category</option>
+                  <option value="Perfume & Fragrance">Perfume & Fragrance</option>
+                  <option value="Skincare & Beauty">Skincare & Beauty</option>
+                  <option value="Ayurveda & Wellness">Ayurveda & Wellness</option>
+                  <option value="Nutraceuticals">Nutraceuticals</option>
+                  <option value="Other">Other</option>
+                </select>
+                <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+              </div>
+
+              {/* Row 3: Idea Textarea */}
+              <div className="relative">
+                <FileText size={18} className="absolute left-4 top-4 text-[#94A3B8]" />
+                <textarea
+                  name="idea"
+                  placeholder="Tell us about your idea..."
+                  value={formData.idea}
+                  onChange={handleChange}
+                  rows={3}
+                  className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-4 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs resize-none"
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold text-gray-700">Phone Number</label>
-                <input 
-                  type="tel" 
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+91 98765 43210" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent transition-all"
-                />
-              </div>
-            </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-gray-700">How can we help?</label>
-              <textarea 
-                name="message"
-                required
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell us about your brand idea..." 
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent transition-all resize-none"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              disabled={status === "loading"}
-              className="mt-2 w-full bg-[#FF4D00] hover:bg-[#E64500] disabled:bg-gray-400 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-            >
-              {status === "loading" ? "Sending..." : "Book a Call"}
-              {status !== "loading" && <Send size={18} />}
-            </button>
-
-            {/* Status Messages */}
-            {status === "success" && (
-              <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg text-sm font-medium animate-in fade-in">
-                <CheckCircle size={18} />
-                Message sent! We'll get back to you shortly.
+              {/* Row 4: Submit Button */}
+              <div className="pt-1">
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="inline-flex items-center justify-between gap-6 bg-[#0E1E38] hover:bg-[#162B4E] text-white pl-8 pr-2.5 py-2.5 rounded-full font-bold text-[15px] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group disabled:opacity-60 cursor-pointer"
+                >
+                  <span>{status === 'loading' ? 'Sending...' : 'Book a Free Call'}</span>
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FF5000] flex items-center justify-center shrink-0 shadow-inner">
+                    <Phone size={17} className="text-white fill-white rotate-[15deg]" />
+                  </div>
+                </button>
               </div>
-            )}
-            {status === "error" && (
-              <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg text-sm font-medium animate-in fade-in">
-                <AlertCircle size={18} />
-                Failed to send message. Please try again.
-              </div>
-            )}
-          </form>
+
+              {status === 'error' && (
+                <p className="text-red-500 text-sm mt-1">Something went wrong. Please try again.</p>
+              )}
+            </form>
+          )}
+
         </div>
+
       </div>
     </section>
   );

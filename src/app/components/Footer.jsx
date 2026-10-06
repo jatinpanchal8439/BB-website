@@ -1,262 +1,355 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  ChevronRight, 
-  MessageCircle,
+import {
+  ArrowRight,
+  ChevronRight,
   Gem,
-  Settings,
+  Hexagon,
   Package,
   Users,
-  Leaf,
-  Box,
-  BarChart3
+  TrendingUp,
+  Atom,
+  BarChart3,
+  CheckCircle2
 } from "lucide-react";
 
 export default function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (newsletterEmail) {
+      setSubscribed(true);
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Subscriber',
+            phone: 'N/A', // Using N/A as it's required by the API
+            email: newsletterEmail,
+            industry: 'Newsletter',
+            description: 'Newsletter Subscription request'
+          }),
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      setTimeout(() => {
+        setNewsletterEmail("");
+        setSubscribed(false);
+      }, 4000);
+    }
+  };
+
   return (
     <>
       {/* Pre-Footer CTA Section */}
-      <section className="relative bg-[#FCFBF8] py-24 border-t border-gray-100 flex flex-col items-center justify-center text-center px-6">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
+      <section className="relative bg-[#FFFBF5] py-14 sm:py-20 border-t border-[#F0EBE1] flex flex-col items-center justify-center text-center px-5 sm:px-6">
+        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+          <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
           <span className="text-[#FF4D00] text-xs font-bold tracking-[0.2em] uppercase">Let's Talk</span>
-          <div className="w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
+          <div className="w-6 sm:w-8 h-[1px] bg-[#FF4D00] opacity-50"></div>
         </div>
-        
-        <h2 className="text-5xl md:text-6xl font-black text-[#0B1B3D] leading-tight mb-5 flex flex-wrap items-center justify-center gap-x-3">
+
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0B1B3D] leading-tight mb-4 sm:mb-5 flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
           Ready to Build
-          <span className="text-[#FF4D00] flex items-center gap-2">
+          <span className="text-[#FF4D00] flex items-center gap-1.5 sm:gap-2">
             Your Brand?
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-1">
-              <path d="M4 12L9 9L12 4L15 9L20 12L15 15L12 20L9 15L4 12Z" fill="#FF4D00"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-0.5 sm:mt-1 w-5 h-5 sm:w-6 sm:h-6">
+              <path d="M4 12L9 9L12 4L15 9L20 12L15 15L12 20L9 15L4 12Z" fill="#FF4D00" />
             </svg>
           </span>
         </h2>
-        
-        <p className="text-gray-500 text-lg font-medium max-w-2xl mb-8 leading-relaxed">
+
+        <p className="text-gray-500 text-sm sm:text-base md:text-lg font-medium max-w-2xl mb-6 sm:mb-8 leading-relaxed">
           Book a short call with our team and tell us what you're thinking of building. Let's turn your idea into a real brand.
         </p>
 
-        <Link 
-          href="#book-call"
-          className="inline-flex items-center gap-2 bg-[#17439E] hover:bg-[#102F70] text-white px-8 py-4 rounded-full text-sm font-bold transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(23,67,158,0.4)] hover:shadow-lg hover:-translate-y-0.5"
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2 bg-[#17439E] hover:bg-[#102F70] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(23,67,158,0.4)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
         >
           Book a 1-on-1 Call
           <ArrowRight size={18} />
         </Link>
       </section>
 
-      {/* Main Footer Section */}
-      <footer className="relative bg-[#FCFBF8] pt-20 border-t border-gray-200 overflow-hidden">
-        
-        {/* Wavy Background Image Placeholder (using CSS radial gradients to mimic the wave) */}
-        <div className="absolute bottom-0 left-0 w-full h-[400px] overflow-hidden pointer-events-none opacity-40">
-           <svg viewBox="0 0 1440 400" className="absolute bottom-0 w-full h-full preserve-3d" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M0 200 C300 300 600 0 1000 150 C1200 220 1440 50 1440 50 L1440 400 L0 400 Z" fill="url(#grad)" />
-             <defs>
-               <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                 <stop offset="0%" stopColor="#FFF2E8" />
-                 <stop offset="100%" stopColor="#FFD7BA" />
-               </linearGradient>
-             </defs>
-           </svg>
+      {/* Main Footer Section with Exact Wavy Background */}
+      <footer className="relative bg-[#FFFBF5] pt-14 sm:pt-16 pb-8 border-t border-[#F0EBE1] overflow-hidden">
+
+        {/* Exact Wavy Graphic Background from User Upload */}
+        <div className="absolute bottom-0 left-0 right-0 w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] pointer-events-none select-none z-0">
+          <Image
+            src="/footer-exact-bg-hd.png"
+            alt="Footer Background Waves"
+            fill
+            priority
+            className="object-cover object-bottom"
+          />
         </div>
 
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-          
-          {/* Top Grid Area */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 mb-16">
-            
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 relative z-10">
+
+          {/* Top 4-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 sm:pb-12">
+
             {/* Column 1: Brand Info */}
-            <div className="lg:col-span-3 flex flex-col items-start pr-4">
-              <div className="mb-6 relative w-[340px] h-[100px] -ml-2">
-                <Image src="/logo-removebg-preview.png" alt="BanegaBrand Logo" fill className="object-contain object-left transform scale-110 origin-left" />
+            <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-10 lg:border-r lg:border-[#F0EBE1]">
+              <Link href="/" className="mb-4 sm:mb-5 block">
+                <Image
+                  src="/logo-removebg-preview.png"
+                  alt="BanegaBrand.com"
+                  width={220}
+                  height={65}
+                  className="object-contain h-12 md:h-14 w-auto transform origin-left -ml-1"
+                />
+              </Link>
+
+              <div className="flex flex-col mb-6">
+                <h3 className="text-[#0B1B3D] text-[15px] font-bold leading-snug">
+                  From Idea to Market —<br />Your Brand, Our Expertise.
+                </h3>
+                <div className="w-8 h-[2px] bg-[#FF4D00] mt-2 mb-4"></div>
+                <p className="text-gray-500 text-xs sm:text-[13px] leading-relaxed font-medium max-w-sm">
+                  We help entrepreneurs and businesses launch successful Perfume, Cosmetic, Skincare, Ayurveda, Beauty, Wellness and D2C brands in India — from product idea to market launch.
+                </p>
               </div>
-              
-              <h3 className="text-gray-500 text-[15px] font-medium leading-relaxed mb-4">
-                From Idea to Market —<br />Your Brand, Our Expertise.
-              </h3>
-              
+
+              {/* Social Icons matching screenshot */}
+              <div className="flex items-center gap-2.5">
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+
+                {/* Link/Website */}
+                <a
+                  href="/"
+                  aria-label="Website"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                </a>
+
+                {/* Twitter / Community */}
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Column 2: Navigation */}
+            <div className="lg:col-span-2 lg:px-6 lg:border-r lg:border-[#F0EBE1]">
+              <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Navigation</h4>
               <div className="w-8 h-[2px] bg-[#FF4D00] mb-5"></div>
-              
-              <p className="text-gray-400 text-sm font-medium leading-relaxed mb-8">
-                We help entrepreneurs and businesses launch successful Perfume, Cosmetic, Skincare, Ayurveda, Beauty, Wellness and D2C brands in India — from product idea to market launch.
-              </p>
-
-              {/* Social Icons */}
-              <div className="flex gap-3">
+              <ul className="flex flex-col gap-3">
                 {[
-                  { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> },
-                  { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> },
-                  { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> },
-                  { icon: <MessageCircle size={18} /> }
-                ].map((social, i) => (
-                  <a key={i} href="#" className="w-10 h-10 rounded-full bg-[#FFF2E8] flex items-center justify-center text-[#1E1E1E] hover:bg-[#FF4D00] hover:text-white transition-colors">
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 2: Our Services */}
-            <div className="lg:col-span-2">
-              <h4 className="text-[#0B1B3D] font-bold mb-6">Our Services</h4>
-              <ul className="flex flex-col gap-3.5">
-                {[
-                  "Perfume Brand Development",
-                  "Cosmetic Manufacturing",
-                  "Skincare Product Development",
-                  "Ayurveda & Wellness Brands",
-                  "Custom Formulation",
-                  "Packaging & Branding",
-                  "Regulatory & Compliance",
-                  "Go-to-Market Support"
-                ].map((link, i) => (
+                  { name: "Our Work", href: "/work" },
+                  { name: "About Us", href: "/about" },
+                  { name: "Industries", href: "/industries" },
+                  { name: "Manufacturer Network", href: "/manufacturer" },
+                  { name: "Investment Guide", href: "/investment-guide" },
+                  { name: "Marketplace Launch", href: "/launch" },
+                  { name: "Blogs", href: "/blog" },
+                  { name: "FAQ", href: "/faq" },
+                  { name: "Contact Us", href: "/contact" }
+                ].map((item, i) => (
                   <li key={i}>
-                    <Link href="#" className="flex items-center justify-between text-gray-500 hover:text-[#FF4D00] text-sm font-medium transition-colors group">
-                      {link}
-                      <ChevronRight size={14} className="text-[#FF4D00] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
+                      <span className="truncate pr-1">{item.name}</span>
+                      <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 3: Quick Links */}
-            <div className="lg:col-span-2">
-              <h4 className="text-[#0B1B3D] font-bold mb-6">Quick Links</h4>
-              <ul className="flex flex-col gap-3.5">
+            {/* Column 3: Industries */}
+            <div className="lg:col-span-2 lg:px-6 lg:border-r lg:border-[#F0EBE1]">
+              <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Industries</h4>
+              <div className="w-8 h-[2px] bg-[#FF4D00] mb-5"></div>
+              <ul className="flex flex-col gap-3">
                 {[
-                  "About Us",
-                  "Our Process",
-                  "Success Stories",
-                  "Blogs & Resources",
-                  "FAQs",
-                  "Contact Us"
-                ].map((link, i) => (
+                  { name: "Perfume", href: "/industries" },
+                  { name: "Skincare", href: "/industries" },
+                  { name: "Ayurveda", href: "/industries" },
+                  { name: "Nutraceuticals", href: "/industries" }
+                ].map((item, i) => (
                   <li key={i}>
-                    <Link href="#" className="flex items-center justify-between text-gray-500 hover:text-[#FF4D00] text-sm font-medium transition-colors group">
-                      {link}
-                      <ChevronRight size={14} className="text-[#FF4D00] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
+                      <span>{item.name}</span>
+                      <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Column 4: Popular Categories */}
-            <div className="lg:col-span-2">
-              <h4 className="text-[#0B1B3D] font-bold mb-6">Popular Categories</h4>
-              <ul className="flex flex-col gap-3.5">
-                {[
-                  "Perfume Brands",
-                  "Cosmetic Brands",
-                  "Skincare Brands",
-                  "Ayurveda Brands",
-                  "Beauty & Personal Care",
-                  "Wellness Brands",
-                  "D2C Brand Launch"
-                ].map((link, i) => (
-                  <li key={i}>
-                    <Link href="#" className="flex items-center justify-between text-gray-500 hover:text-[#FF4D00] text-sm font-medium transition-colors group">
-                      {link}
-                      <ChevronRight size={14} className="text-[#FF4D00] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 5: Newsletter & Updates */}
-            <div className="lg:col-span-3 flex flex-col">
-              <h4 className="text-[#0B1B3D] font-bold mb-4">Stay Updated</h4>
-              <p className="text-gray-500 text-sm font-medium mb-6">
+            {/* Column 4: Stay Updated */}
+            <div className="lg:col-span-4 flex flex-col lg:pl-10">
+              <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-2">Stay Updated</h4>
+              <p className="text-gray-500 text-xs sm:text-[13px] font-medium mb-4 leading-relaxed">
                 Get insights, trends and expert tips on building successful brands.
               </p>
-              
-              <div className="relative mb-8">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email address" 
-                  className="w-full bg-white border border-gray-200 rounded-full px-5 py-3 text-sm focus:outline-none focus:border-[#FF4D00] transition-colors shadow-sm"
+
+              {/* Newsletter Form */}
+              <form onSubmit={handleSubscribe} className="relative mb-5">
+                <input
+                  type="email"
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="w-full bg-white border border-[#E8DFD3] rounded-full pl-4 pr-12 py-2.5 text-xs sm:text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#FF4D00] transition-colors shadow-2xs"
                 />
-                <button className="absolute right-1 top-1 w-[38px] h-[38px] rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#e64500] transition-colors">
-                  <ArrowRight size={18} />
+                <button
+                  type="submit"
+                  aria-label="Subscribe"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FF4D00] hover:bg-[#E64500] flex items-center justify-center text-white transition-colors shadow-sm cursor-pointer"
+                >
+                  <ArrowRight size={15} />
                 </button>
+              </form>
+
+              {subscribed && (
+                <div className="flex items-center gap-2 text-emerald-700 text-xs font-semibold mb-4 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">
+                  <CheckCircle2 size={14} className="text-emerald-600 shrink-0" />
+                  <span>Subscribed! Welcome to Banega Brand insider.</span>
+                </div>
+              )}
+
+              {/* 3 Benefit Items matching screenshot */}
+              <div className="flex flex-col gap-3.5">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#FFF0E6] flex items-center justify-center shrink-0 text-[#FF4D00]">
+                    <TrendingUp size={15} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0B1B3D] text-xs font-bold leading-tight">Brand Building Insights</span>
+                    <span className="text-gray-500 text-[11px]">Trends, tips and strategies</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#FFF0E6] flex items-center justify-center shrink-0 text-[#FF4D00]">
+                    <Atom size={15} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0B1B3D] text-xs font-bold leading-tight">Product Innovation</span>
+                    <span className="text-gray-500 text-[11px]">Formulations and market trends</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#FFF0E6] flex items-center justify-center shrink-0 text-[#FF4D00]">
+                    <BarChart3 size={15} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[#0B1B3D] text-xs font-bold leading-tight">D2C Growth Tips</span>
+                    <span className="text-gray-500 text-[11px]">Scale your brand successfully</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#FFF2E8] flex items-center justify-center flex-shrink-0 text-[#FF4D00]">
-                    <Leaf size={18} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[#0B1B3D] text-xs font-bold">Brand Building Insights</span>
-                    <span className="text-gray-400 text-[11px] font-medium">Trends, tips and strategies</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#FFF2E8] flex items-center justify-center flex-shrink-0 text-[#FF4D00]">
-                    <Box size={18} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[#0B1B3D] text-xs font-bold">Product Innovation</span>
-                    <span className="text-gray-400 text-[11px] font-medium">Formulations and market trends</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#FFF2E8] flex items-center justify-center flex-shrink-0 text-[#FF4D00]">
-                    <BarChart3 size={18} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[#0B1B3D] text-xs font-bold">D2C Growth Tips</span>
-                    <span className="text-gray-400 text-[11px] font-medium">Scale your brand successfully</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
 
-          <div className="w-full h-[1px] bg-gray-200 mb-8"></div>
+          {/* Thin Horizontal Divider */}
+          <div className="w-full h-[1px] bg-[#F0EBE1] my-4"></div>
 
-          {/* Features Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-white">
+          {/* 4 Feature Badges Row matching screenshot */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-[#F0EBE1] py-4">
             {[
-              { icon: <Gem size={20} />, title: "End-to-End Brand Support", sub: "From idea to launch" },
-              { icon: <Settings size={20} />, title: "Expert Formulation Guidance", sub: "Unique & market-ready products" },
-              { icon: <Package size={20} />, title: "Premium Packaging Solutions", sub: "Stand out on every shelf" },
-              { icon: <Users size={20} />, title: "D2C Growth Expertise", sub: "Build, Launch & Scale" }
+              {
+                icon: <Gem size={17} strokeWidth={2} />,
+                title: "End-to-End Brand Support",
+                sub: "From idea to scale"
+              },
+              {
+                icon: <Hexagon size={17} strokeWidth={2} />,
+                title: "Expert Formulation Guidance",
+                sub: "Unique & market-ready products"
+              },
+              {
+                icon: <Package size={17} strokeWidth={2} />,
+                title: "Premium Packaging Solutions",
+                sub: "Stand out on every shelf"
+              },
+              {
+                icon: <Users size={17} strokeWidth={2} />,
+                title: "D2C Growth Expertise",
+                sub: "Build, Launch & Scale"
+              }
             ].map((feat, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-[#FF4D00] shadow-sm border border-gray-100">
+              <div
+                key={i}
+                className={`flex items-center gap-3.5 py-2.5 ${i !== 0 ? 'lg:pl-6' : ''} ${i !== 3 ? 'lg:pr-6' : ''}`}
+              >
+                <div className="w-9 h-9 rounded-full border border-[#FF4D00]/30 bg-white/70 flex items-center justify-center shrink-0 text-[#FF4D00] shadow-2xs">
                   {feat.icon}
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[#0B1B3D] text-[13px] font-bold">{feat.title}</span>
-                  <span className="text-gray-500 text-[11px] font-medium">{feat.sub}</span>
+                  <span className="text-[#0B1B3D] text-xs font-bold leading-tight">{feat.title}</span>
+                  <span className="text-gray-500 text-[11px] mt-0.5">{feat.sub}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="w-full h-[1px] bg-gray-200/60 mb-6"></div>
+          {/* Bottom Divider */}
+          <div className="w-full h-[1px] bg-[#F0EBE1] my-4"></div>
 
-          {/* Bottom Copyright & Links */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pb-8">
-            <p className="text-gray-500 text-xs font-medium">
-              © 2026 BanegaBrand. All rights reserved.
-            </p>
-            <div className="flex items-center gap-4 text-xs font-medium text-gray-500">
-              <Link href="#" className="hover:text-[#FF4D00] transition-colors">Privacy Policy</Link>
-              <span className="text-gray-300">|</span>
-              <Link href="#" className="hover:text-[#FF4D00] transition-colors">Terms of Service</Link>
-              <span className="text-gray-300">|</span>
-              <Link href="#" className="hover:text-[#FF4D00] transition-colors">Disclaimer</Link>
+          {/* Bottom Copyright & Policy Links */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2 text-xs text-gray-500 font-medium">
+            <p>© 2025 BanegaBrand. All rights reserved.</p>
+            <div className="flex items-center gap-3 sm:gap-4">
+              <Link href="/privacy" className="hover:text-[#FF4D00] transition-colors">Privacy Policy</Link>
+              <span className="text-[#E0D6C8]">|</span>
+              <Link href="/terms" className="hover:text-[#FF4D00] transition-colors">Terms of Service</Link>
+              <span className="text-[#E0D6C8]">|</span>
+              <Link href="/disclaimer" className="hover:text-[#FF4D00] transition-colors">Disclaimer</Link>
             </div>
           </div>
 

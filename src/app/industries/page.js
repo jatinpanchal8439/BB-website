@@ -1,7 +1,7 @@
 import React from "react";
 import IndustriesHero from "../components/IndustriesHero";
 import IndustryCategories from "../components/IndustryCategories";
-import IndustryCTA from "../components/IndustryCTA";
+import IndustryBanners from "../components/IndustryBanners";
 import Footer from "../components/Footer";
 
 export default function IndustriesPage() {
@@ -9,7 +9,7 @@ export default function IndustriesPage() {
     <main className="min-h-screen flex flex-col bg-[#FCFBF8] font-sans pt-24">
       <IndustriesHero />
       <IndustryCategories />
-      <IndustryCTA />
+      <IndustryBanners />
       <Footer />
     </main>
   );

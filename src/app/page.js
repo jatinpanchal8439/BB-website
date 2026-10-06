@@ -7,22 +7,20 @@ import FeaturedLaunches from "./components/FeaturedLaunches";
 import Industries from "./components/Industries";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
-import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
       <HomeClient />
-      <ClientLogos />
       <WhatWeDo />
       <Stats />
       <HowItWorks />
       <FeaturedLaunches />
       <Industries />
       <Testimonials />
+      <ClientLogos />
       <FAQ />
-      <ContactSection />
       <Footer />
     </>
   );

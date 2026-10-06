@@ -1,0 +1,60 @@
+<svg width='435' height='152' viewBox='0 0 435 152' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <rect width='435' height='152' fill='#FFFBF5'/>
+  
+  <defs>
+    <!-- Left Wave Gradients -->
+    <linearGradient id='lwBack' x1='0' y1='80' x2='100' y2='152' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFE5CF' stop-opacity='0.95'/>
+      <stop offset='100%' stop-color='#FFD0A8' stop-opacity='0.8'/>
+    </linearGradient>
+    
+    <linearGradient id='lwFront' x1='0' y1='100' x2='90' y2='152' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFAA6B'/>
+      <stop offset='50%' stop-color='#FF853B'/>
+      <stop offset='100%' stop-color='#FF6611'/>
+    </linearGradient>
+
+    <!-- Right Wave Gradients -->
+    <linearGradient id='rwBack' x1='300' y1='152' x2='435' y2='80' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFE2CC' stop-opacity='0.95'/>
+      <stop offset='60%' stop-color='#FFD2B0'/>
+      <stop offset='100%' stop-color='#FFC294'/>
+    </linearGradient>
+
+    <linearGradient id='rwMid' x1='330' y1='152' x2='435' y2='95' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFB27B'/>
+      <stop offset='55%' stop-color='#FF8D40'/>
+      <stop offset='100%' stop-color='#FF6E17'/>
+    </linearGradient>
+
+    <linearGradient id='rwFront' x1='370' y1='152' x2='435' y2='115' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFBD8E'/>
+      <stop offset='100%' stop-color='#FF8233'/>
+    </linearGradient>
+
+    <!-- Sheen Gradients -->
+    <linearGradient id='sheen' x1='0%' y1='0%' x2='100%' y2='0%'>
+      <stop offset='0%' stop-color='#FFFFFF' stop-opacity='0.85'/>
+      <stop offset='100%' stop-color='#FFFFFF' stop-opacity='0.2'/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Wave Back -->
+  <path d='M 0,77 C 20,74 50,88 75,115 C 88,129 96,142 102,152 L 0,152 Z' fill='url(#lwBack)'/>
+  <path d='M 0,77 C 20,74 50,88 75,115 C 88,129 96,142 102,152' stroke='url(#sheen)' stroke-width='1.2' fill='none'/>
+
+  <!-- Left Wave Front -->
+  <path d='M 0,102 C 25,102 52,118 72,137 C 80,144 85,149 88,152 L 0,152 Z' fill='url(#lwFront)'/>
+  <path d='M 0,102 C 25,102 52,118 72,137 C 80,144 85,149 88,152' stroke='rgba(255,255,255,0.65)' stroke-width='1' fill='none'/>
+
+  <!-- Right Wave Back -->
+  <path d='M 295,152 C 335,150 375,133 405,108 C 420,95 430,86 435,80 L 435,152 Z' fill='url(#rwBack)'/>
+  <path d='M 295,152 C 335,150 375,133 405,108 C 420,95 430,86 435,80' stroke='url(#sheen)' stroke-width='1.2' fill='none'/>
+
+  <!-- Right Wave Mid -->
+  <path d='M 328,152 C 362,151 394,138 418,118 C 426,111 432,105 435,100 L 435,152 Z' fill='url(#rwMid)'/>
+  <path d='M 328,152 C 362,151 394,138 418,118 C 426,111 432,105 435,100' stroke='rgba(255,255,255,0.65)' stroke-width='1' fill='none'/>
+
+  <!-- Right Wave Front -->
+  <path d='M 368,152 C 392,152 414,142 428,128 C 432,124 434,121 435,119 L 435,152 Z' fill='url(#rwFront)'/>
+</svg>

@@ -1,8 +1,40 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function HowItWorks() {
+  const container = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(".how-title", {
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 80%",
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    gsap.from(".how-step", {
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 60%",
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: "power2.out"
+    });
+  }, { scope: container });
   const steps = [
     {
       number: "01",
@@ -91,11 +123,11 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="relative bg-[#FCFBF8] py-24 overflow-hidden border-t border-gray-100">
+    <section id="how-it-works" ref={container} className="relative bg-[#FCFBF8] py-24 overflow-hidden border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-16 md:mb-24 how-title">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-[#FF4D00] text-sm font-bold tracking-widest uppercase">How It Works</span>
             <div className="h-[1px] w-12 bg-gray-300"></div>
@@ -142,7 +174,7 @@ export default function HowItWorks() {
               const textClass = isOrange ? 'text-[#FF4D00]' : 'text-[#4A72FF]';
 
               return (
-                <div key={index} className="flex flex-col items-center lg:items-start group relative">
+                <div key={index} className="flex flex-col items-center lg:items-start group relative how-step">
                   {/* Icon & Number */}
                   <div className="relative mb-6">
                     <div className={`w-20 h-20 rounded-full ${bgClass} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-[0_0_0_6px_#FCFBF8]`}>

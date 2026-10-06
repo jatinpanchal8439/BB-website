@@ -1,0 +1,66 @@
+<svg width='1440' height='380' viewBox='0 0 1440 380' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'>
+  <defs>
+    <!-- Left Wave Gradients -->
+    <linearGradient id='lwBack' x1='0' y1='180' x2='340' y2='380' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFE5CF' stop-opacity='0.95'/>
+      <stop offset='60%' stop-color='#FFD6B3' stop-opacity='0.85'/>
+      <stop offset='100%' stop-color='#FFC89E' stop-opacity='0.6'/>
+    </linearGradient>
+    
+    <linearGradient id='lwFront' x1='0' y1='240' x2='290' y2='380' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFA868'/>
+      <stop offset='45%' stop-color='#FF8436'/>
+      <stop offset='100%' stop-color='#FF640D'/>
+    </linearGradient>
+
+    <!-- Right Wave Gradients -->
+    <linearGradient id='rwBack' x1='940' y1='380' x2='1440' y2='190' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFE5D1' stop-opacity='0.95'/>
+      <stop offset='50%' stop-color='#FFD5B5'/>
+      <stop offset='100%' stop-color='#FFC294'/>
+    </linearGradient>
+
+    <linearGradient id='rwMid' x1='1060' y1='380' x2='1440' y2='230' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFB27B'/>
+      <stop offset='50%' stop-color='#FF8D3E'/>
+      <stop offset='100%' stop-color='#FF6D14'/>
+    </linearGradient>
+
+    <linearGradient id='rwFront' x1='1190' y1='380' x2='1440' y2='290' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFBF90'/>
+      <stop offset='100%' stop-color='#FF802E'/>
+    </linearGradient>
+
+    <!-- Highlight Sheen Gradients -->
+    <linearGradient id='sheenLeft' x1='0' y1='190' x2='320' y2='380' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFFFFF' stop-opacity='0.9'/>
+      <stop offset='60%' stop-color='#FFFFFF' stop-opacity='0.4'/>
+      <stop offset='100%' stop-color='#FFFFFF' stop-opacity='0.05'/>
+    </linearGradient>
+
+    <linearGradient id='sheenRight' x1='960' y1='380' x2='1440' y2='190' gradientUnits='userSpaceOnUse'>
+      <stop offset='0%' stop-color='#FFFFFF' stop-opacity='0.1'/>
+      <stop offset='40%' stop-color='#FFFFFF' stop-opacity='0.6'/>
+      <stop offset='100%' stop-color='#FFFFFF' stop-opacity='0.95'/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Wave Back (Peach Upper Layer) -->
+  <path d='M 0,185 C 65,180 160,215 240,285 C 285,324 315,358 335,380 L 0,380 Z' fill='url(#lwBack)'/>
+  <path d='M 0,185 C 65,180 160,215 240,285 C 285,324 315,358 335,380' stroke='url(#sheenLeft)' stroke-width='2' fill='none'/>
+
+  <!-- Left Wave Front (Vibrant Orange Layer) -->
+  <path d='M 0,248 C 80,248 165,285 230,335 C 260,358 276,372 285,380 L 0,380 Z' fill='url(#lwFront)'/>
+  <path d='M 0,248 C 80,248 165,285 230,335 C 260,358 276,372 285,380' stroke='rgba(255,255,255,0.7)' stroke-width='1.5' fill='none'/>
+
+  <!-- Right Wave Back (Peach Sweeping Layer) -->
+  <path d='M 960,380 C 1090,375 1220,330 1335,265 C 1385,235 1420,210 1440,195 L 1440,380 Z' fill='url(#rwBack)'/>
+  <path d='M 960,380 C 1090,375 1220,330 1335,265 C 1385,235 1420,210 1440,195' stroke='url(#sheenRight)' stroke-width='2' fill='none'/>
+
+  <!-- Right Wave Mid (Main Orange Sweeping Ribbon) -->
+  <path d='M 1075,380 C 1185,378 1290,342 1375,290 C 1410,268 1430,250 1440,240 L 1440,380 Z' fill='url(#rwMid)'/>
+  <path d='M 1075,380 C 1185,378 1290,342 1375,290 C 1410,268 1430,250 1440,240' stroke='rgba(255,255,255,0.65)' stroke-width='1.5' fill='none'/>
+
+  <!-- Right Wave Front (Foreground Accent Ribbon) -->
+  <path d='M 1210,380 C 1285,380 1355,355 1405,320 C 1424,307 1435,296 1440,290 L 1440,380 Z' fill='url(#rwFront)'/>
+</svg>

@@ -2,24 +2,17 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <>
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0 pointer-events-none gsap-bg origin-center">
-        <Image
-          src="/Hero-bg.png"
-          alt="Hero Background"
-          fill
-          className="object-cover object-center"
-          priority
-          quality={100}
-        />
-      </div>
+    <div className="relative w-full flex flex-col items-center pt-2 md:pt-4 px-6 max-w-[1400px] mx-auto flex-grow mb-0 pb-4">
+      
 
-      {/* Main Content Area */}
-      <div className="relative z-10 flex flex-col items-center pt-2 md:pt-4 px-6 w-full max-w-[1400px] mx-auto flex-grow mb-8 md:mb-12">
+
+      {/* =========================================================
+          Content Area (Single Unified Div)
+         ========================================================= */}
+      <div className="relative z-10 flex flex-col items-center w-full">
 
         {/* Top Tagline */}
-        <p className="gsap-tagline text-[#FF4D00] font-bold text-xs tracking-[0.15em] uppercase mb-4 md:mb-6 mt-4">
+        <p className="gsap-tagline text-[#FF4D00] font-bold text-xs tracking-[0.15em] uppercase mb-4 md:mb-6 mt-0">
           Ideas into Brands People Love
         </p>
 
@@ -58,7 +51,7 @@ export default function Banner() {
               </svg>
             </div>
 
-            <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7.5rem] font-black text-[#111] leading-[0.85] tracking-tight text-center flex flex-col items-center">
+            <h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-black text-[#111] leading-[0.85] tracking-tight text-center flex flex-col items-center">
               <div className="overflow-hidden pb-1"><span className="gsap-title-word block">IDEAS INTO</span></div>
               <div className="overflow-hidden pb-1">
                 <div className="gsap-title-word relative">
@@ -105,23 +98,30 @@ export default function Banner() {
 
         {/* Action Buttons */}
         <div className="gsap-buttons flex flex-col sm:flex-row justify-center items-center gap-5 mt-4 md:mt-6">
-          <button className="bg-[#FF4D00] hover:bg-[#E64500] text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 shadow-[0_8px_20px_rgba(255,77,0,0.25)] hover:shadow-[0_10px_25px_rgba(255,77,0,0.35)] hover:-translate-y-0.5">
+          <a
+            href="/contact"
+            className="bg-[#FF4D00] hover:bg-[#E64500] text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 shadow-[0_8px_20px_rgba(255,77,0,0.25)] hover:shadow-[0_10px_25px_rgba(255,77,0,0.35)] hover:-translate-y-0.5 cursor-pointer"
+          >
             Talk to Us About Your Idea
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-90">
               <path d="M7 17l9.2-9.2M17 17V7H7" />
             </svg>
-          </button>
-          <button className="bg-white/50 backdrop-blur-sm border-2 border-orange-200 hover:border-orange-300 text-gray-800 px-8 py-4 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 hover:bg-white/80">
+          </a>
+          <a
+            href="#brands"
+            className="bg-white/50 backdrop-blur-sm border-2 border-orange-200 hover:border-orange-300 text-gray-800 px-8 py-4 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 hover:bg-white/80 cursor-pointer"
+          >
             See Our Work
             <div className="w-6 h-6 bg-[#FF4D00] rounded-full flex items-center justify-center text-white shadow-sm pl-0.5">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M5 3l14 9-14 9V3z" />
               </svg>
             </div>
-          </button>
+          </a>
         </div>
 
       </div>
-    </>
+
+    </div>
   );
 }
