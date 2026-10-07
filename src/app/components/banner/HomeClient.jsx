@@ -4,7 +4,7 @@ function TopSection() {
   return (
     <section className="relative w-full bg-transparent flex flex-col items-center pt-2 z-10 overflow-hidden">
       {/* Small orange top text */}
-      <div className="text-[#F35D18] text-[11px] font-bold tracking-[0.15em] uppercase mb-6 z-10 mt-2 md:mt-16">
+      <div className="text-[#F35D18] text-[11px] font-bold tracking-[0.15em] uppercase mb-6 z-10 mt-2 md:mt-2">
         Ideas into brands people love
       </div>
 
@@ -121,7 +121,7 @@ function BottomSection() {
       <div className="absolute inset-0 max-w-[1300px] mx-auto w-full pointer-events-none hidden md:block">
         
         {/* Floating Text Left */}
-        <div className="absolute top-[25%] left-[25%] z-10">
+        <div className="absolute top-[34%] left-[36%] z-10">
           <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
             Your<br/>Idea<br/>Here
           </p>
@@ -129,7 +129,7 @@ function BottomSection() {
         </div>
 
         {/* Floating Text Right */}
-        <div className="absolute top-[25%] right-[25%] z-10">
+        <div className="absolute top-[34%] right-[31%] z-10">
           <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
             A Real<br/>Brand<br/>Tomorrow
           </p>
@@ -137,7 +137,7 @@ function BottomSection() {
         </div>
 
         {/* Cards Row */}
-        <div className="absolute bottom-12 w-full px-6 flex justify-between items-end pointer-events-auto">
+        <div className="absolute bottom-18 w-full px-6 flex justify-between items-end pointer-events-auto">
           
           {/* Left Cards */}
           <div className="flex gap-6 w-[38%]">
