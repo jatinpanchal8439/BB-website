@@ -58,9 +58,9 @@ export default function Footer({ hidePreFooterCTA = false }) {
       <footer className="relative bg-[#FFFBF5] pt-14 sm:pt-16 pb-8 border-t border-[#F0EBE1] overflow-hidden">
 
         {/* Exact Wavy Graphic Background from User Upload */}
-        <div className="absolute bottom-0 left-0 right-0 w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] pointer-events-none select-none z-0">
+        <div className="absolute bottom-0 left-0 right-0 w-full h-full pointer-events-none select-none z-0">
           <Image
-            src="/footer-exact-bg-hd.png"
+            src="/footer-bg.png"
             alt="Footer Background Waves"
             fill
             priority
@@ -79,9 +79,9 @@ export default function Footer({ hidePreFooterCTA = false }) {
                 <Image
                   src="/logo-removebg-preview.png"
                   alt="BanegaBrand.com"
-                  width={220}
-                  height={65}
-                  className="object-contain h-12 md:h-14 w-auto transform origin-left -ml-1"
+                  width={400}
+                  height={120}
+                  className="object-contain h-20 md:h-32 w-auto transform origin-left -ml-1"
                 />
               </Link>
 

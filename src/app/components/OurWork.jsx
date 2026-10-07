@@ -131,7 +131,7 @@ export default function OurWork() {
              alt="Idea to Build to Launch Process" 
              width={900}
              height={1100}
-             className="w-full max-w-[650px] lg:max-w-[100%] h-auto object-contain drop-shadow-sm"
+             className="w-full max-w-[650px] lg:max-w-[100%] h-auto object-contain drop-shadow-sm transform lg:scale-[1.15] lg:origin-center"
              priority
            />
         </div>

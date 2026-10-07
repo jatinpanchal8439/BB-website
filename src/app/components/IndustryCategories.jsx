@@ -55,28 +55,28 @@ export default function IndustryCategories() {
       desc: "From fragrance selection to bottle, packaging and launch.",
       image: "/cat1.png",
       dot: false,
-      link: "/industries/perfume"
+      link: "#perfume"
     },
     {
       title: "Beauty &\nSkincare",
       desc: "Formulation, packaging and brand development for beauty-focused products.",
       image: "/cat2.png",
       dot: true,
-      link: "/industries/beauty"
+      link: "#skincare"
     },
     {
       title: "Ayurveda &\nWellness",
       desc: "Traditional wellness categories with modern product and brand positioning.",
       image: "/cat3.png",
       dot: false,
-      link: "/industries/ayurveda"
+      link: "#ayurveda-wellness"
     },
     {
       title: "Nutraceuticals",
       desc: "From product development and compliance to packaging and launch.",
       image: "/cat4.png",
       dot: true,
-      link: "/industries/nutraceuticals"
+      link: "#nutraceutical"
     }
   ];
 

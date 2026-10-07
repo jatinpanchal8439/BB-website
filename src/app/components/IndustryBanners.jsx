@@ -76,8 +76,9 @@ export default function IndustryBanners() {
       <div className="flex flex-col gap-6 md:gap-10 w-full py-10 md:py-14">
         {banners.map((banner, index) => (
           <div
+            id={banner.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
             key={index}
-            className="relative w-full"
+            className="relative w-full scroll-mt-20"
             style={{
               backgroundImage: `url(${banner.src})`,
               backgroundSize: 'cover',

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Zap, ArrowRight, TrendingUp, Trophy, BarChart3, Droplet, Sparkles, Leaf, Pill } from "lucide-react";
 
 export default function RealFounders() {
@@ -102,7 +103,11 @@ export default function RealFounders() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {filteredBrands.map((brand, index) => (
-            <div key={index} className="bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <Link 
+              href="/case-study"
+              key={index} 
+              className="bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            >
               
               {/* Image Container */}
               <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
@@ -149,14 +154,14 @@ export default function RealFounders() {
                     <span className="text-xs font-bold text-gray-400 group-hover:text-gray-600 transition-colors">
                       Read case study
                     </span>
-                    <button className="w-8 h-8 rounded-full bg-[#19194d] flex items-center justify-center group-hover:bg-[#FF4D00] transition-colors duration-300">
+                    <div className="w-8 h-8 rounded-full bg-[#19194d] flex items-center justify-center group-hover:bg-[#FF4D00] transition-colors duration-300">
                       <ArrowRight className="w-4 h-4 text-white" strokeWidth={2.5} />
-                    </button>
+                    </div>
                   </div>
                 </div>
 
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

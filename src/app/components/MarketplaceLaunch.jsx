@@ -3,7 +3,7 @@ import React from 'react';
 export default function MarketplaceLaunch() {
   return (
     <section 
-      className="w-full pt-10 pb-16 lg:pt-14 lg:pb-24 font-sans bg-cover bg-right lg:bg-center bg-no-repeat relative overflow-hidden" 
+      className="w-full pt-10 pb-16 lg:pt-16 lg:pb-24 font-sans bg-cover bg-right lg:bg-top bg-no-repeat relative overflow-hidden" 
       style={{ backgroundImage: "url('/assets/marketplace-full-bg-clean.png')" }}
     >
       {/* Background mask to ensure text on left is always sharp and readable */}
@@ -36,7 +36,7 @@ export default function MarketplaceLaunch() {
         </div>
 
         {/* Right side spacer for background image artwork (phone mockup, icons, etc.) */}
-        <div className="hidden lg:block w-[50%] h-[360px] lg:h-[460px]"></div>
+        <div className="hidden lg:block w-[50%] h-[360px] lg:h-[520px]"></div>
 
       </div>
     </section>
