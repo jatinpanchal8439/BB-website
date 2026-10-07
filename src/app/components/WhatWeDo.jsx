@@ -63,7 +63,7 @@ export default function WhatWeDo() {
   return (
     <section
       id="what-we-do"
-      className="relative w-full overflow-hidden bg-[#FBF8F2] bg-no-repeat bg-cover bg-center py-16 lg:py-24"
+      className="relative w-full overflow-hidden bg-[#FBF8F2] bg-no-repeat bg-cover bg-center h-[100vh] lg:py-24"
       style={{ backgroundImage: "url('/services-overview-bg.png')" }}
     >
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 flex flex-col lg:flex-row gap-12 lg:gap-14 items-start">
