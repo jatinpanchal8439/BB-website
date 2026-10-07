@@ -129,7 +129,7 @@ export default function HowItWorks() {
         {/* Header Section */}
         <div className="mb-16 md:mb-24 how-title">
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-[#FF4D00] text-sm font-bold tracking-widest uppercase">How It Works</span>
+            <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">How It Works</span>
             <div className="h-[1px] w-12 bg-gray-300"></div>
           </div>
           

@@ -39,7 +39,7 @@ export default function IndustryCTA() {
         {/* Header */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <div className="h-[1px] w-8 md:w-16 bg-[#ffdbcc]"></div>
-          <span className="text-[#FF4D00] text-[11px] font-bold tracking-widest uppercase">Not sure which category is right for your idea?</span>
+          <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Not sure which category is right for your idea?</span>
           <div className="h-[1px] w-8 md:w-16 bg-[#ffdbcc]"></div>
         </div>
 
@@ -62,7 +62,7 @@ export default function IndustryCTA() {
 
         {/* Button */}
         <Link 
-          href="#contact" 
+          href="/contact" 
           className="inline-flex items-center gap-3 bg-[#111928] hover:bg-[#202c42] transition-colors duration-300 text-white rounded-full py-4 px-8 font-semibold text-lg shadow-lg hover:-translate-y-1 hover:shadow-xl"
         >
           Let's Talk About Your Category

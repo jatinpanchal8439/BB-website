@@ -59,7 +59,7 @@ export default function ClientLogos() {
       <div className="flex flex-col items-center justify-center text-center mb-12 sm:mb-16">
         <div className="flex items-center gap-3 mb-4">
           <span className="w-8 sm:w-10 h-[1.5px] bg-[#FF4D00]"></span>
-          <span className="text-[#64748B] font-bold text-xs sm:text-[13px] tracking-[0.2em] uppercase">
+          <span className="font-bold sm: tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Trusted Partners
           </span>
           <span className="w-8 sm:w-10 h-[1.5px] bg-[#FF4D00]"></span>

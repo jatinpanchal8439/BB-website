@@ -66,7 +66,7 @@ export default function Industries() {
         {/* Left Content Area */}
         <div className="w-full xl:w-[28%] flex flex-col items-start pt-4">
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-[#FF5A19] text-xs font-bold tracking-[0.2em] uppercase">Industries</span>
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Industries</span>
             <div className="h-[1.5px] w-10 bg-[#FF5A19]/35"></div>
           </div>
           

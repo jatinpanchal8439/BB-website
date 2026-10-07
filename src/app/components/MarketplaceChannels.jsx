@@ -53,7 +53,7 @@ export default function MarketplaceChannels() {
         {/* Eyebrow */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-[#5A6B80] uppercase">
+          <span className="sm: font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Where can your brand sell?
           </span>
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
@@ -112,7 +112,7 @@ export default function MarketplaceChannels() {
         {/* Eyebrow */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-[#FF5000] uppercase">
+          <span className="sm: font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Let&apos;s plan your launch
           </span>
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>

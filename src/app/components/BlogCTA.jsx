@@ -19,7 +19,7 @@ export default function BlogCTA() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-[2px] bg-[#FF5000]"></div>
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#FF5000] uppercase">
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               Blog
             </span>
           </div>

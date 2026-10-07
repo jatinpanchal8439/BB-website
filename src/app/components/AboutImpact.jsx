@@ -9,7 +9,7 @@ export default function AboutImpact() {
         {/* Header */}
         <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
           <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
-          <span className="text-[#6b7280] font-bold tracking-[0.2em] text-xs sm:text-[12px] uppercase">Our Impact</span>
+          <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Our Impact</span>
         </div>
         
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-[#0B1B36] leading-[1.1] tracking-tight mb-4 sm:mb-6">

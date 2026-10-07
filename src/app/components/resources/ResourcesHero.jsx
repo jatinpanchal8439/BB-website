@@ -18,11 +18,11 @@ export default function ResourcesHero() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-3">
             <div className="w-8 h-[1.5px] bg-[#FF5425]"></div>
-            <span className="text-[10px] font-bold tracking-[0.15em] text-[#061B35] uppercase">
+            <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               BANEGA BRAND | RESOURCES
             </span>
           </div>
-          <span className="text-[10px] font-bold tracking-[0.15em] text-gray-400 uppercase">
+          <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             THE FOUNDER'S READING LIST
           </span>
         </div>
@@ -52,7 +52,7 @@ export default function ResourcesHero() {
         <div className="w-full bg-[#F5EFE9] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row gap-10 lg:gap-16">
           
           <div className="w-full lg:w-[35%] flex flex-col">
-            <span className="text-[11px] font-bold tracking-[0.1em] text-[#FF5425] uppercase mb-4">
+            <span className="font-bold tracking-[0.1em] uppercase mb-4 text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               IN THIS COLLECTION
             </span>
             <h2 className="text-[28px] lg:text-[32px] font-bold text-[#061B35] leading-[1.1] mb-4">

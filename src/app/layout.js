@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans, Caveat } from "next/font/google";
+import { Plus_Jakarta_Sans, Caveat, Poppins } from "next/font/google";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -12,6 +12,12 @@ const caveat = Caveat({
   weight: ["600", "700"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata = {
   title: "Banega Brand | From Idea to Market",
   description: "Helping entrepreneurs launch successful Perfume, Cosmetic, Skincare, and Ayurveda brands in India.",
@@ -23,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${plusJakarta.className} ${caveat.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${plusJakarta.className} ${caveat.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />

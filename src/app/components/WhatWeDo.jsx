@@ -70,7 +70,7 @@ export default function WhatWeDo() {
         {/* Left Content Area */}
         <div className="w-full lg:w-[34%] flex flex-col pt-2 lg:pt-4 what-we-do-title">
           <div className="flex items-center gap-3 mb-5">
-            <span className="text-[#FF5000] text-xs sm:text-sm font-bold tracking-widest uppercase">
+            <span className="sm: font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               WHAT WE DO
             </span>
             <div className="h-[1.5px] w-10 bg-[#FF5000]/25"></div>

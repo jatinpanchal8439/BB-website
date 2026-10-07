@@ -140,7 +140,7 @@ export default function Testimonials() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-4 mb-4 gsap-testimonial-header">
             <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
-            <span className="text-[#FF4D00] text-xs font-bold tracking-[0.2em] uppercase">Client Voices</span>
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Client Voices</span>
             <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
           </div>
           

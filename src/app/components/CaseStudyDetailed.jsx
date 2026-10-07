@@ -26,7 +26,7 @@ export default function CaseStudyDetailed() {
   ];
 
   return (
-    <section className="w-full bg-[#fdfdfd] py-16 md:py-24 font-sans relative overflow-hidden">
+    <section id="details" className="w-full bg-[#fdfdfd] py-16 md:py-24 font-sans relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute -top-64 -right-64 w-[600px] h-[600px] border-[1px] border-[#ffebd6] rounded-full opacity-60 pointer-events-none"></div>
       <div className="absolute -bottom-64 -left-64 w-[800px] h-[800px] border-[1px] border-[#ffebd6] rounded-full opacity-60 pointer-events-none"></div>
@@ -38,7 +38,7 @@ export default function CaseStudyDetailed() {
           <div className="w-full lg:w-[45%] flex flex-col">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-12 h-[2px] bg-[#ff6b2b]"></span>
-              <span className="text-[#ff6b2b] font-bold tracking-widest text-sm uppercase">Case Study</span>
+              <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Case Study</span>
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a2e] mb-6 leading-tight">

@@ -68,15 +68,15 @@ export default function OurWork() {
   }, { scope: container });
 
   return (
-    <section ref={container} id="our-work" className="w-full bg-[#FCFBF8] py-20 overflow-hidden relative">
+    <section ref={container} id="our-work" className="w-full bg-[#FCFBF8] pt-10 pb-20 overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
         
         {/* Left Column - Content */}
-        <div className="flex flex-col z-10 relative pt-10">
+        <div className="flex flex-col z-10 relative pt-2">
           
           {/* Eyebrow */}
           <div className="ow-text flex items-center gap-4 mb-6">
-            <span className="text-[11px] font-bold tracking-[0.15em] text-[#333] uppercase">Our Work</span>
+            <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Our Work</span>
             <div className="w-12 h-[1px] bg-gray-400"></div>
           </div>
 

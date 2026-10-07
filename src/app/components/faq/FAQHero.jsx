@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function FAQHero() {
   return (
-    <section className="w-full bg-[#FCF8F5] pt-24 pb-16 lg:pt-36 lg:pb-20 overflow-hidden font-sans">
+    <section className="w-full bg-[#FCF8F5] pt-10 pb-16 lg:pt-14 lg:pb-20 overflow-hidden font-sans">
       <div className="max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
         
         {/* Left Content */}
@@ -12,7 +12,7 @@ export default function FAQHero() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-[1.5px] bg-[#FF5425]"></div>
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#FF5425] uppercase">
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               FAQ
             </span>
           </div>

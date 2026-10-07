@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 export default function IndustriesPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-[#FCFBF8] font-sans pt-24">
+    <main className="min-h-screen flex flex-col bg-[#FCFBF8] font-sans">
       <IndustriesHero />
       <IndustryCategories />
       <IndustryBanners />

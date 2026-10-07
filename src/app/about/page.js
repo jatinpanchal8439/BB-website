@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-[#FCFBF8] font-sans pt-20 sm:pt-24 overflow-x-hidden w-full">
+    <main className="min-h-screen flex flex-col bg-[#FCFBF8] font-sans overflow-x-hidden w-full">
       <AboutHero />
       <OurStory />
       <MeetFounder />

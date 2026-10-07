@@ -1,162 +1,175 @@
-"use client";
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import Banner from "./Banner";
-import Cards from "./Cards";
 import Image from "next/image";
 
-
-gsap.registerPlugin(useGSAP);
-
-export default function HomeClient() {
-  const container = useRef(null);
-
-  useGSAP(() => {
-    const tl = gsap.timeline();
-
-    // 1. Cinematic Background Zoom
-    gsap.from(".gsap-bg", {
-      scale: 1.15,
-      duration: 3,
-      ease: "power2.out",
-    });
-
-    // 2. Tagline elegant drop
-    tl.from(".gsap-tagline", {
-      y: -30,
-      opacity: 0,
-      duration: 1,
-      ease: "power4.out",
-    }, 0.2)
-    
-    // 3. Premium Text Reveal for Title (slides up from hidden overflow wrapper)
-    .from(".gsap-title-word", {
-      y: "120%",
-      duration: 1.2,
-      stagger: 0.15,
-      ease: "expo.out",
-    }, "-=0.8")
-
-    // 4. Draw SVG Orbit Path smoothly
-    .fromTo(".gsap-orbit-path", 
-      { strokeDasharray: 2400, strokeDashoffset: 2400 },
-      { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" },
-      "-=1.2"
-    )
-    .from(".gsap-orbit-circle", {
-      scale: 0,
-      opacity: 0,
-      duration: 0.6,
-      ease: "back.out(2)"
-    }, "-=0.6")
-
-    // 5. Build Stats dynamically piece by piece
-    .from(".gsap-stat-num", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power4.out"
-    }, "-=1.2")
-    .from(".gsap-dot", {
-      scale: 0,
-      duration: 0.4,
-      stagger: 0.1,
-      ease: "back.out(2)"
-    }, "-=0.8")
-    .from(".gsap-hline", {
-      scaleX: 0,
-      transformOrigin: "left center",
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out"
-    }, "-=0.8")
-    .from(".gsap-vline", {
-      scaleY: 0,
-      transformOrigin: "top center",
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out"
-    }, "-=0.8")
-    .from(".gsap-stat-text", {
-      opacity: 0,
-      x: -15,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power2.out"
-    }, "-=0.8")
-
-    // 6. Subtitle and Buttons smooth fade up
-    .from(".gsap-subtitle", {
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }, "-=0.6")
-    .from(".gsap-buttons", {
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }, "-=0.6")
-
-    // 7. Text overlays above cards
-    .from(".gsap-card-text", {
-      opacity: 0,
-      y: 10,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-    }, "-=0.6")
-
-    // 8. Cards Staggered Entry from bottom
-    .from(".gsap-card", {
-      y: 80,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.15,
-      ease: "power4.out"
-    }, "-=0.8");
-
-    // 9. Marketing words slot machine ticker
-    const tickerTl = gsap.timeline({ repeat: -1, delay: 3 });
-    const totalWords = 6;
-    const step = 100 / totalWords;
-    
-    for (let i = 1; i < totalWords; i++) {
-      tickerTl.to(".gsap-rotating-words", {
-        yPercent: -step * i,
-        duration: 0.6,
-        ease: "expo.inOut",
-        delay: 1.8
-      });
-    }
-    // Instantly loop back to the first word
-    tickerTl.set(".gsap-rotating-words", { yPercent: 0 });
-
-  }, { scope: container });
-
+function TopSection() {
   return (
-    <main ref={container} className="relative min-h-[100vh] flex flex-col bg-[#FCFBF8] font-sans overflow-x-clip selection:bg-[#FF4D00] selection:text-white pb-12 md:pb-16">
-      {/* Full Section Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-15%] md:top-[-25%] left-0 right-0 bottom-0">
-          <Image
-            src="/Hero-bg.png"
-            alt="Hero Background"
-            fill
-            className="object-cover object-bottom opacity-95 gsap-bg origin-bottom"
-            priority
-            quality={100}
-          />
+    <section className="relative w-full bg-transparent flex flex-col items-center pt-2 z-10 overflow-hidden">
+      {/* Small orange top text */}
+      <div className="text-[#F35D18] text-[11px] font-bold tracking-[0.15em] uppercase mb-6 z-10 mt-2 md:mt-16">
+        Ideas into brands people love
+      </div>
+
+      {/* Title & Stats Wrapper */}
+      <div className="relative w-full flex justify-center items-center ">
+        
+        {/* Left Side stat */}
+        <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-4 xl:left-[4%] items-center z-10">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[32px] xl:text-[40px] font-black text-[#0f0f0f] leading-none">200+</span>
+              <span className="w-2 h-2 rounded-full bg-[#F35D18] shrink-0"></span>
+              <span className="w-6 xl:w-8 h-[1px] bg-[#d1d1d1] shrink-0"></span>
+            </div>
+            <div className="text-[9px] xl:text-[10px] text-[#555] font-bold leading-snug mt-1 w-20 uppercase tracking-wider">
+              BRANDS<br/>LAUNCHED
+            </div>
+          </div>
+          <div className="w-[1px] h-[45px] xl:h-[52px] bg-[#d1d1d1] ml-4 xl:ml-8"></div>
+        </div>
+
+        {/* Main Title Area */}
+        <div className="relative flex flex-col items-center w-full max-w-[650px] xl:max-w-[850px]">
+          {/* SVG for Orbit */}
+          <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[130%] pointer-events-none z-0">
+            <svg viewBox="0 0 1000 300" className="w-full h-full text-[#F35D18] overflow-visible">
+              <ellipse cx="500" cy="150" rx="440" ry="105" fill="none" stroke="currentColor" strokeWidth="1.5" transform="rotate(-3 500 150)" />
+              {/* Right Dot */}
+              <circle cx="940" cy="128" r="12" fill="currentColor" />
+              {/* Left Dot */}
+              <circle cx="60" cy="172" r="4" fill="currentColor" />
+            </svg>
+          </div>
+
+          <h1 className="font-black text-[#0f0f0f] tracking-tighter z-10 text-center uppercase flex flex-col items-center gap-1 leading-none">
+            <span className="text-[65px] lg:text-[75px] xl:text-[110px]">IDEAS INTO</span>
+            <span className="text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px]">BRANDS</span>
+          </h1>
+        </div>
+
+        {/* Right Side stat */}
+        <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 right-4 xl:right-[4%] items-center flex-row-reverse z-10">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[32px] xl:text-[40px] font-black text-[#0f0f0f] leading-none">45–90</span>
+              <span className="w-2 h-2 rounded-full bg-[#F35D18] shrink-0"></span>
+              <span className="w-6 xl:w-8 h-[1px] bg-[#d1d1d1] shrink-0"></span>
+            </div>
+            <div className="text-[9px] xl:text-[10px] text-[#555] font-bold leading-snug mt-1 w-28 uppercase tracking-wider">
+              DAYS TYPICAL<br/>LAUNCH TIMELINE
+            </div>
+          </div>
+          <div className="w-[1px] h-[45px] xl:h-[52px] bg-[#d1d1d1] mr-4 xl:mr-8"></div>
+        </div>
+
+      </div>
+
+      {/* Subtitle */}
+      <p className="text-[17px] md:text-[18px] text-[#444] font-medium text-center max-w-[600px] mb-8 mt-6 z-10 leading-snug px-6">
+        We help first-time founders with the product, manufacturing, branding, compliance and the launch.
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row items-center gap-4 z-10 pb-4">
+        <button className="bg-[#F35D18] hover:bg-[#d94f12] text-white px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
+          Talk to Us About Your Idea
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19L19 5M19 5v10M19 5H9"/></svg>
+        </button>
+        <button className="bg-transparent border border-[#F35D18] text-[#F35D18] hover:bg-[#F35D18]/5 px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
+          See Our Work
+          <div className="w-5 h-5 rounded-full bg-[#F35D18] text-white flex items-center justify-center ml-1">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
+          </div>
+        </button>
+      </div>
+    </section>
+  )
+}
+
+function BottomCard({ image, number, title }) {
+  return (
+    <div className="bg-[#F8F6F2] rounded-xl flex flex-col aspect-square shadow-sm overflow-hidden">
+      <div className="relative w-full flex-1 bg-[#e8e8e8]">
+        <Image src={image} alt={title} fill className="object-cover" />
+      </div>
+      <div className="p-4 flex justify-between items-end shrink-0">
+        <div>
+          <div className="text-[10px] font-extrabold text-[#333] mb-1 leading-none">{number}</div>
+          <div className="font-extrabold text-[12px] xl:text-[13px] leading-[1.2] text-[#111] whitespace-pre-line tracking-tight">
+            {title}
+          </div>
+        </div>
+        <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center shrink-0 text-[#111]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </div>
+    </div>
+  )
+}
+
+function BottomSection() {
+  return (
+    <section className="relative w-full h-[600px] overflow-hidden bg-transparent z-0 -mt-16 lg:-mt-24 pointer-events-none">
+      {/* Background Image */}
+      <Image 
+        src="/bg.png" 
+        alt="Background" 
+        fill 
+        className="object-cover object-bottom" 
+        priority 
+      />
       
-      <div className="relative z-10 flex flex-col w-full">
-        <Banner />
-        <Cards />
+      {/* Overlay Content Container */}
+      <div className="absolute inset-0 max-w-[1300px] mx-auto w-full pointer-events-none hidden md:block">
+        
+        {/* Floating Text Left */}
+        <div className="absolute top-[25%] left-[25%] z-10">
+          <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
+            Your<br/>Idea<br/>Here
+          </p>
+          <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
+        </div>
+
+        {/* Floating Text Right */}
+        <div className="absolute top-[25%] right-[25%] z-10">
+          <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
+            A Real<br/>Brand<br/>Tomorrow
+          </p>
+          <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
+        </div>
+
+        {/* Cards Row */}
+        <div className="absolute bottom-12 w-full px-6 flex justify-between items-end pointer-events-auto">
+          
+          {/* Left Cards */}
+          <div className="flex gap-6 w-[38%]">
+            <div className="flex-1">
+              <BottomCard image="/card-1.png" number="01" title={"PRODUCT\nDEVELOPMENT"} />
+            </div>
+            <div className="flex-1">
+              <BottomCard image="/card-2.png" number="02" title={"BRAND\nBUILDING"} />
+            </div>
+          </div>
+          
+          {/* Right Cards */}
+          <div className="flex gap-6 w-[38%]">
+            <div className="flex-1">
+              <BottomCard image="/card-3.png" number="03" title={"COMPLIANCE\n& MANUFACTURING"} />
+            </div>
+            <div className="flex-1">
+              <BottomCard image="/card-4.png" number="04" title={"LAUNCH\n& GROW"} />
+            </div>
+          </div>
+
+        </div>
       </div>
-    </main>
+    </section>
+  )
+}
+
+export default function HomeClient() {
+  return (
+    <div className="bg-[#FCFAF6] font-sans selection:bg-[#F35D18] selection:text-white  ">
+      <TopSection />
+      <BottomSection />
+    </div>
   );
 }

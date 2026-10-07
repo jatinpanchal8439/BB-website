@@ -11,7 +11,7 @@ export default function MeetFounder() {
         <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
             <span className="w-8 sm:w-10 h-[2px] bg-[#FF4D00]"></span>
-            <span className="text-[#6b7280] font-bold tracking-[0.2em] text-xs sm:text-[12px] uppercase">Meet The Founder</span>
+            <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Meet The Founder</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#0B1B36] leading-[1.1] sm:leading-[1.05] tracking-tight mb-4 sm:mb-6">

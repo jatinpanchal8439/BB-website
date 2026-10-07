@@ -40,14 +40,14 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation Links - Desktop */}
-          <ul className="hidden lg:flex items-center gap-4 xl:gap-6">
+          <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.replace('/#', '')));
               return (
                 <li key={link.name} className="relative flex flex-col items-center group">
                   <Link 
                     href={link.href}
-                    className={`text-[13px] xl:text-[14px] whitespace-nowrap transition-colors duration-200 outline-none ${
+                    className={`text-[12px] xl:text-[13px] whitespace-nowrap transition-colors duration-200 outline-none ${
                       isActive ? "text-gray-900 font-bold" : "text-gray-700 hover:text-gray-900 font-normal"
                     }`}
                   >

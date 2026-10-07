@@ -68,7 +68,7 @@ export default function RealFounders() {
         {/* Header */}
         <div className="flex items-center gap-4 mb-4">
           <div className="w-16 h-[1px] bg-gray-400"></div>
-          <span className="text-[10px] font-bold tracking-[0.2em] text-[#333] uppercase">Brands We&apos;ve Helped</span>
+          <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Brands We&apos;ve Helped</span>
           <div className="w-16 h-[1px] bg-gray-400"></div>
         </div>
 

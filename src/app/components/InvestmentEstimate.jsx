@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function InvestmentEstimate() {
   const cards = [
@@ -35,7 +36,7 @@ export default function InvestmentEstimate() {
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
             <div className="w-8 h-[1.5px] bg-[#FF5425]"></div>
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#5A6B80] uppercase">
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               Investment Guide
             </span>
           </div>
@@ -71,7 +72,7 @@ export default function InvestmentEstimate() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Estimated Investment Range</span>
+                <span className="font-semibold uppercase tracking-wide text-[#FF4D00] font-[family-name:var(--font-poppins)]">Estimated Investment Range</span>
                 <span className="text-[20px] font-extrabold text-[#061B35] leading-tight">₹2.5 lakh - ₹15 lakh</span>
               </div>
             </div>
@@ -84,12 +85,12 @@ export default function InvestmentEstimate() {
           </div>
 
           {/* CTA Button */}
-          <button className="mt-10 group flex items-center justify-between gap-6 bg-[#FF5425] text-white pl-8 pr-2 py-2 rounded-full font-bold text-[15px] hover:bg-[#E84515] hover:-translate-y-1 transition-all shadow-xl shadow-orange-500/20 w-max max-w-full">
+          <Link href="/contact" className="mt-10 group flex items-center justify-between gap-6 bg-[#FF5425] text-white pl-8 pr-2 py-2 rounded-full font-bold text-[15px] hover:bg-[#E84515] hover:-translate-y-1 transition-all shadow-xl shadow-orange-500/20 w-max max-w-full">
             <span>Get a Rough Estimate for Your Idea</span>
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF5425] shrink-0 group-hover:scale-105 transition-transform">
               <svg className="w-4 h-4 translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </div>
-          </button>
+          </Link>
 
         </div>
 

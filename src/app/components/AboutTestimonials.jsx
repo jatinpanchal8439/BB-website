@@ -58,7 +58,7 @@ export default function AboutTestimonials() {
         <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
           <div className="flex items-center gap-3 sm:gap-4 mb-4">
             <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
-            <span className="text-[#FF4D00] font-bold tracking-[0.2em] text-xs sm:text-[11px] uppercase">Client Voices</span>
+            <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Client Voices</span>
             <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
           </div>
           
@@ -103,7 +103,7 @@ export default function AboutTestimonials() {
                 {/* Content */}
                 <div className="flex flex-col flex-1 justify-between py-1 sm:py-2">
                   <div>
-                    <span className="text-[#FF4D00] text-[10px] font-bold tracking-wider uppercase mb-1.5 sm:mb-2 block">
+                    <span className="font-bold tracking-wider uppercase mb-1.5 sm:mb-2 block text-[#FF4D00] font-[family-name:var(--font-poppins)]">
                       {t.brand}
                     </span>
                     <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF4D00]/40 fill-[#FF4D00]/40 rotate-180 mb-2 sm:mb-3" />

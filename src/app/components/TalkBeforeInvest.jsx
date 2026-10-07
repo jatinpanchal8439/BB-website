@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
+import Link from 'next/link';
+
 export default function TalkBeforeInvest() {
   return (
     <section className="w-full bg-[#FAF8F5] py-16 md:py-24 font-sans border-t border-gray-200/50">
@@ -9,7 +11,7 @@ export default function TalkBeforeInvest() {
         {/* Top Label */}
         <div className="flex items-center gap-3 sm:gap-4 mb-6">
           <div className="h-[1px] w-8 sm:w-16 bg-[#FF4D00]/30"></div>
-          <span className="text-[#FF4D00] text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em]">
+          <span className="sm: font-bold uppercase tracking-[0.15em] text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Not sure which category is right for your idea?
           </span>
           <div className="h-[1px] w-8 sm:w-16 bg-[#FF4D00]/30"></div>
@@ -35,10 +37,13 @@ export default function TalkBeforeInvest() {
         </p>
 
         {/* Button */}
-        <button className="bg-[#123E84] hover:bg-[#0B2554] transition-colors duration-300 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 text-[15px] shadow-lg shadow-[#123E84]/20 hover:-translate-y-0.5">
+        <Link 
+          href="/contact" 
+          className="bg-[#123E84] hover:bg-[#0B2554] transition-colors duration-300 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 text-[15px] shadow-lg shadow-[#123E84]/20 hover:-translate-y-0.5"
+        >
           Let's Talk About Your Category
           <ArrowRight size={18} />
-        </button>
+        </Link>
 
       </div>
     </section>

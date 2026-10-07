@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function CategoryCTA() {
   return (
@@ -8,7 +9,7 @@ export default function CategoryCTA() {
         {/* Eyebrow with lines */}
         <div className="flex items-center gap-4 mb-8">
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] text-[#FF5425] uppercase">
+          <span className="sm: font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Not sure which category is right for your idea?
           </span>
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
@@ -40,12 +41,12 @@ export default function CategoryCTA() {
           <div className="absolute -inset-1 bg-[#FF5425]/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[80%] h-full bg-[#FF5425]/40 blur-xl rounded-full"></div>
           
-          <button className="relative flex items-center justify-center gap-2 bg-[#123A7D] hover:bg-[#0C2A5C] text-white px-8 py-4 rounded-full font-semibold text-[14.5px] transition-all transform hover:-translate-y-0.5">
+          <Link href="/contact" className="relative flex items-center justify-center gap-2 bg-[#123A7D] hover:bg-[#0C2A5C] text-white px-8 py-4 rounded-full font-semibold text-[14.5px] transition-all transform hover:-translate-y-0.5">
             Let's Talk About Your Category
             <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </button>
+          </Link>
         </div>
 
       </div>

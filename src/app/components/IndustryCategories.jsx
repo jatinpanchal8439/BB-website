@@ -84,7 +84,7 @@ export default function IndustryCategories() {
         <div className="header-anim flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[1px] w-8 md:w-16 bg-[#ffdbcc]"></div>
-            <span className="text-[#FF4D00] text-xs font-bold tracking-widest uppercase">What can we help you build?</span>
+            <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">What can we help you build?</span>
             <div className="h-[1px] w-8 md:w-16 bg-[#ffdbcc]"></div>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111928] leading-[1.15] tracking-tight">

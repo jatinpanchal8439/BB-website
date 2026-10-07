@@ -53,7 +53,7 @@ export default function IndustriesHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#fffaf5] pt-4 pb-10 lg:pt-4 lg:pb-12 overflow-hidden font-sans">
+    <section ref={sectionRef} className="relative bg-[#fffaf5] pt-10 pb-10 lg:pt-14 lg:pb-12 overflow-hidden font-sans">
       
       {/* Background Decorative Blobs */}
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-[#fbede1] rounded-full opacity-60 pointer-events-none"></div>
@@ -66,7 +66,7 @@ export default function IndustriesHero() {
         <div ref={textRef} className="w-full lg:w-[45%] flex flex-col justify-center">
           <div className="flex items-center gap-4 mb-4 lg:mb-6">
             <span className="w-12 h-[2px] bg-[#f55926]"></span>
-            <span className="text-[#f55926] font-bold tracking-widest text-sm uppercase">Industries</span>
+            <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Industries</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#111928] leading-[1.1] mb-6 lg:mb-8 tracking-tight">

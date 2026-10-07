@@ -48,7 +48,7 @@ export default function ManufacturerCapabilities() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-[2px] bg-[#FF4D00]"></span>
-              <span className="text-[#FF4D00] font-bold text-xs sm:text-[13px] tracking-[0.2em] uppercase">
+              <span className="font-bold sm: tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
                 Manufacturing Capabilities
               </span>
             </div>

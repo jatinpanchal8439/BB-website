@@ -96,7 +96,7 @@ export default function ResourcesList() {
                 <div className="flex items-center gap-4 mb-5">
                   <span className="text-[#FF5425] font-bold text-[18px]">{res.num}</span>
                   <div className="w-px h-4 bg-gray-300"></div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] text-[#061B35] uppercase">
+                  <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
                     {res.category}
                   </span>
                 </div>

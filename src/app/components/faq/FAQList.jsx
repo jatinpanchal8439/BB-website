@@ -73,7 +73,7 @@ export default function FAQList() {
         {/* Eyebrow */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] text-[#FF5425] uppercase">
+          <span className="sm: font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             FAQ
           </span>
           <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>

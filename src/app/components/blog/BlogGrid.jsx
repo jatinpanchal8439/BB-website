@@ -11,11 +11,11 @@ export default function BlogGrid({ blogs }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-4">
           <div className="flex items-center gap-3">
             <div className="w-8 h-[1.5px] bg-[#FF5425]"></div>
-            <span className="text-[10px] font-bold tracking-[0.15em] text-[#061B35] uppercase">
+            <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               BANEGA BRAND | RESOURCES
             </span>
           </div>
-          <span className="text-[10px] font-bold tracking-[0.15em] text-gray-400 uppercase">
+          <span className="font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             THE FOUNDER'S READING LIST
           </span>
         </div>
@@ -64,7 +64,7 @@ export default function BlogGrid({ blogs }) {
 
               {/* Content */}
               <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <span className="text-[10px] font-bold tracking-[0.1em] text-gray-400 uppercase mb-3 block">
+                <span className="font-bold tracking-[0.1em] uppercase mb-3 block text-[#FF4D00] font-[family-name:var(--font-poppins)]">
                   {blog.category}
                 </span>
                 
