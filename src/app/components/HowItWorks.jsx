@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -195,13 +194,17 @@ export default function HowItWorks() {
                     
                     {index === 0 && (
                       <div className="mt-auto pt-4">
-                        <Link 
-                          href="#how-it-works" 
-                          className="inline-flex items-center gap-3 bg-white border border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-6 py-2.5 rounded-full text-xs font-semibold transition-colors duration-300 shadow-sm"
+                        <button
+                          onClick={() =>
+                            document
+                              .getElementById("how-it-works")
+                              ?.scrollIntoView({ behavior: "smooth" })
+                          }
+                          className="inline-flex items-center gap-3 bg-white border border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-6 py-2.5 rounded-full text-xs font-semibold transition-colors duration-300 shadow-sm cursor-pointer"
                         >
                           See How It Works
                           <ArrowRight size={14} />
-                        </Link>
+                        </button>
                       </div>
                     )}
                   </div>

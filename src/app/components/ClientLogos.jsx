@@ -13,13 +13,11 @@ const row1 = [
 ];
 
 const row2 = [
-  "108.png",
   "GenZ Obsession logo.png",
   "Tuesday london logo clean.png",
   "DREFOR LOGO.png",
   "ESSAENCE logo 2.png",
   "MAIN GREVETY LOGO.png",
-  "COSMICO logo 1.png",
 ];
 
 const renderRow = (row, idPrefix) => (
@@ -41,7 +39,7 @@ const renderRow = (row, idPrefix) => (
           alt={file.split('.')[0]}
           width={140}
           height={55}
-          className="max-h-full max-w-full object-contain"
+          className={`max-h-full max-w-full object-contain ${['108_nobg.png', 'COSMICO_nobg.png'].includes(file) ? 'grayscale' : ''}`}
         />
       </div>
     ))}

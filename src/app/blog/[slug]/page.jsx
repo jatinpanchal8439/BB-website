@@ -6,12 +6,17 @@ import Image from 'next/image';
 import Footer from "../../components/Footer";
 
 export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug || '';
   return {
-    title: `${params.slug.replace(/-/g, ' ')} | Banega Brand`,
+    title: `${slug.replace(/-/g, ' ')} | Banega Brand`,
   }
 }
 
 export default async function BlogPostPage({ params }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug;
+
   // Find the blog
   const dataPath = path.join(process.cwd(), 'data', 'blogs.json');
   let blog = null;
@@ -19,7 +24,7 @@ export default async function BlogPostPage({ params }) {
   try {
     const fileContents = await fs.readFile(dataPath, 'utf8');
     const blogs = JSON.parse(fileContents);
-    blog = blogs.find(b => b.slug === params.slug);
+    blog = blogs.find(b => b.slug === slug);
   } catch (error) {
     console.error("Failed to read blogs.json:", error);
   }

@@ -1,6 +1,20 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+import Link from "next/link";
+
 function TopSection() {
+  const words = ["BRANDS", "PRODUCTS", "REVENUE", "EMPIRES", "EXPERIENCES"];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative w-full bg-transparent flex flex-col items-center pt-2 z-10 overflow-hidden">
       {/* Small orange top text */}
@@ -31,17 +45,58 @@ function TopSection() {
           {/* SVG for Orbit */}
           <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[130%] pointer-events-none z-0">
             <svg viewBox="0 0 1000 300" className="w-full h-full text-[#F35D18] overflow-visible">
-              <ellipse cx="500" cy="150" rx="440" ry="105" fill="none" stroke="currentColor" strokeWidth="1.5" transform="rotate(-3 500 150)" />
-              {/* Right Dot */}
-              <circle cx="940" cy="128" r="12" fill="currentColor" />
-              {/* Left Dot */}
-              <circle cx="60" cy="172" r="4" fill="currentColor" />
+              <g transform="rotate(-3 500 150)">
+                {/* Orbit Path */}
+                <path 
+                  id="orbitPath" 
+                  d="M 940,150 a 440,105 0 0,1 -880,0 a 440,105 0 0,1 880,0" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="1.5" 
+                />
+                
+                {/* Right Big Dot */}
+                <circle r="12" fill="currentColor">
+                  <animateMotion dur="12s" repeatCount="indefinite">
+                    <mpath href="#orbitPath" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Left Small Dot */}
+                <circle r="4" fill="currentColor">
+                  <animateMotion dur="12s" repeatCount="indefinite" begin="-6s">
+                    <mpath href="#orbitPath" />
+                  </animateMotion>
+                </circle>
+              </g>
             </svg>
           </div>
 
           <h1 className="font-black text-[#0f0f0f] tracking-tighter z-10 text-center uppercase flex flex-col items-center gap-1 leading-none">
             <span className="text-[65px] lg:text-[75px] xl:text-[110px]">IDEAS INTO</span>
-            <span className="text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px]">BRANDS</span>
+            
+            {/* Animated Rotating Words */}
+            <div className="relative inline-flex flex-col items-center justify-center overflow-hidden">
+              {/* Invisible widest word to maintain layout width */}
+              <span className="text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px] opacity-0 pointer-events-none select-none">
+                EXPERIENCES
+              </span>
+              
+              {words.map((word, i) => (
+                <span
+                  key={word}
+                  className={`absolute text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px] transition-all duration-700 ease-in-out ${
+                    i === index 
+                      ? "opacity-100 translate-y-0" 
+                      : i === (index - 1 + words.length) % words.length
+                        ? "opacity-0 -translate-y-[120%]" 
+                        : "opacity-0 translate-y-[120%]"
+                  }`}
+                >
+                  {word}
+                </span>
+              ))}
+            </div>
           </h1>
         </div>
 
@@ -69,16 +124,22 @@ function TopSection() {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center gap-4 z-10 pb-4">
-        <button className="bg-[#F35D18] hover:bg-[#d94f12] text-white px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
+        <button 
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="bg-[#F35D18] hover:bg-[#d94f12] text-white px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]"
+        >
           Talk to Us About Your Idea
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19L19 5M19 5v10M19 5H9"/></svg>
         </button>
-        <button className="bg-transparent border border-[#F35D18] text-[#F35D18] hover:bg-[#F35D18]/5 px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
+        <Link href="/work" className="bg-transparent border border-[#F35D18] text-[#F35D18] hover:bg-[#F35D18]/5 px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
           See Our Work
           <div className="w-5 h-5 rounded-full bg-[#F35D18] text-white flex items-center justify-center ml-1">
             <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
           </div>
-        </button>
+        </Link>
       </div>
     </section>
   )
@@ -142,7 +203,7 @@ function BottomSection() {
           {/* Left Cards */}
           <div className="flex gap-6 w-[38%]">
             <div className="flex-1">
-              <BottomCard image="/card-1.png" number="01" title={"PRODUCT\nDEVELOPMENT"} />
+              <BottomCard image="/new-card-1.png" number="01" title={"PRODUCT\nDEVELOPMENT"} />
             </div>
             <div className="flex-1">
               <BottomCard image="/card-2.png" number="02" title={"BRAND\nBUILDING"} />

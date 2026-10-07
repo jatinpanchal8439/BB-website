@@ -97,9 +97,22 @@ export default function Footer({ hidePreFooterCTA = false }) {
 
               {/* Social Icons matching screenshot */}
               <div className="flex items-center gap-2.5">
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/people/BanegaBrandcom/61579488867371/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  </svg>
+                </a>
+
                 {/* Instagram */}
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/banegabrand?igsh=cWhocmlsNjI2bXZl"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -114,7 +127,7 @@ export default function Footer({ hidePreFooterCTA = false }) {
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/banegabrand/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -127,30 +140,20 @@ export default function Footer({ hidePreFooterCTA = false }) {
                   </svg>
                 </a>
 
-                {/* Link/Website */}
+                {/* YouTube */}
                 <a
-                  href="/"
-                  aria-label="Website"
+                  href="https://www.youtube.com/@coachmayanktiwari"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
                   className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                   </svg>
                 </a>
 
-                {/* Twitter / Community */}
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter"
-                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                  </svg>
-                </a>
               </div>
             </div>
 

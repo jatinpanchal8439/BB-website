@@ -54,30 +54,34 @@ export default function IndustryCategories() {
       title: "Perfume &\nFragrance",
       desc: "From fragrance selection to bottle, packaging and launch.",
       image: "/cat1.png",
-      dot: false
+      dot: false,
+      link: "/industries/perfume"
     },
     {
       title: "Beauty &\nSkincare",
       desc: "Formulation, packaging and brand development for beauty-focused products.",
       image: "/cat2.png",
-      dot: true
+      dot: true,
+      link: "/industries/beauty"
     },
     {
       title: "Ayurveda &\nWellness",
       desc: "Traditional wellness categories with modern product and brand positioning.",
       image: "/cat3.png",
-      dot: false
+      dot: false,
+      link: "/industries/ayurveda"
     },
     {
       title: "Nutraceuticals",
       desc: "From product development and compliance to packaging and launch.",
       image: "/cat4.png",
-      dot: true
+      dot: true,
+      link: "/industries/nutraceuticals"
     }
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#FCFBF8] font-sans">
+    <section id="categories" ref={sectionRef} className="py-24 bg-[#FCFBF8] font-sans">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
 
         {/* Header */}
@@ -97,7 +101,7 @@ export default function IndustryCategories() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-10 md:gap-y-12 relative z-10">
           {categories.map((cat, idx) => (
             <Link
-              href="#"
+              href={cat.link}
               key={idx}
               ref={el => cardsRef.current[idx] = el}
               className="flex flex-col group block cursor-pointer"

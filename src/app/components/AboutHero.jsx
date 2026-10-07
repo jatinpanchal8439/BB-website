@@ -52,7 +52,13 @@ export default function AboutHero() {
             </div>
           </div>
           
-          <button className="bg-[#0B1B36] hover:bg-[#1a2b4c] transition-colors duration-300 text-white rounded-full py-3 sm:py-3.5 pl-6 sm:pl-8 pr-2.5 sm:pr-3 font-semibold text-sm sm:text-[15px] flex items-center justify-between w-full sm:w-fit gap-4 sm:gap-6 shadow-xl">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('our-story')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="bg-[#0B1B36] hover:bg-[#1a2b4c] transition-colors duration-300 text-white rounded-full py-3 sm:py-3.5 pl-6 sm:pl-8 pr-2.5 sm:pr-3 font-semibold text-sm sm:text-[15px] flex items-center justify-between w-full sm:w-fit gap-4 sm:gap-6 shadow-xl"
+          >
             Get to Know Our Journey 
             <span className="bg-[#FF4D00] text-white rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
               <ArrowRight size={18} strokeWidth={2.5} />

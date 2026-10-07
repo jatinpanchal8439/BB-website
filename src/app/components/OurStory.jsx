@@ -3,7 +3,7 @@ import { Lightbulb, Settings, Package, FileCheck2, Quote } from 'lucide-react';
 
 export default function OurStory() {
   return (
-    <section className="relative w-full bg-[#FCFBF8] font-sans py-12 sm:py-16 lg:py-24 overflow-hidden">
+    <section id="our-story" className="relative w-full bg-[#FCFBF8] font-sans py-12 sm:py-16 lg:py-24 overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-5 sm:px-8 md:px-12 flex flex-col xl:flex-row items-center xl:items-start justify-between gap-10 lg:gap-16 relative z-10">
         
         {/* Left Side: Text Content */}

@@ -12,7 +12,6 @@ export default function MoreBrands() {
 
     "APETOME FINAL LOGO.png",
     "BELLMONTAE LOGO clean.png",
-    "108.png",
     "GenZ Obsession logo.png",
     "Tuesday london logo clean.png",
 
@@ -68,7 +67,7 @@ export default function MoreBrands() {
                   src={`/logos/${logo}`}
                   alt={`Brand logo ${index + 1}`}
                   fill
-                  className="object-contain"
+                  className={`object-contain ${['108_nobg.png', 'COSMICO_nobg.png'].includes(logo) ? 'grayscale' : ''}`}
                   sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 220px"
                 />
               </div>

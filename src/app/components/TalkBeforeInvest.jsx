@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function TalkBeforeInvest() {
   return (
-    <section className="w-full bg-[#FAF8F5] py-16 md:py-24 font-sans border-t border-gray-200/50">
+    <section id="contact" className="w-full bg-[#FAF8F5] py-16 md:py-24 font-sans border-t border-gray-200/50">
       <div className="max-w-[800px] mx-auto px-6 flex flex-col items-center text-center">
         
         {/* Top Label */}

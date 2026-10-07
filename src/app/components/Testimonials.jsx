@@ -109,20 +109,46 @@ export default function Testimonials() {
     }
   ];
 
-  const scrollPrev = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const cardWidth = carouselRef.current.children[0].offsetWidth;
+      const gap = 24; // gap-6 is 24px
+      const newIndex = Math.round(scrollLeft / (cardWidth + gap));
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const scrollTo = (index) => {
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.children[0].offsetWidth;
+      const gap = 24;
+      carouselRef.current.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' });
+    }
+  };
+
+  const scrollPrev = () => {
+    if (activeIndex > 0) {
+      scrollTo(activeIndex - 1);
+    } else {
+      // Loop to end
+      scrollTo(testimonials.length - 1);
     }
   };
 
   const scrollNext = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    if (activeIndex < testimonials.length - 1) {
+      scrollTo(activeIndex + 1);
+    } else {
+      // Loop to start
+      scrollTo(0);
     }
   };
 
   return (
-    <section ref={sectionRef} className="relative bg-[#FCFBF8] py-24 overflow-hidden border-t border-gray-100">
+    <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-24 pb-8 lg:pb-12 overflow-hidden border-t border-gray-100">
       
       {/* Decorative Background Lines */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none opacity-40 -z-0">
@@ -137,7 +163,7 @@ export default function Testimonials() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
           <div className="flex items-center gap-4 mb-4 gsap-testimonial-header">
             <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
             <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Client Voices</span>
@@ -159,7 +185,8 @@ export default function Testimonials() {
         {/* Carousel Container */}
         <div 
           ref={carouselRef}
-          className="flex overflow-x-auto gap-6 mb-12 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-8"
+          onScroll={handleScroll}
+          className="flex overflow-x-auto gap-6 mb-10 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-8"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <style dangerouslySetInnerHTML={{__html: `
@@ -227,12 +254,16 @@ export default function Testimonials() {
         <div className="flex justify-between items-center gsap-testimonial-controls">
           <div className="hidden lg:block w-32"></div> {/* Spacer for centering */}
           
-          {/* Pagination Dots (Visual only for now, since it's a native scroller) */}
+          {/* Dynamic Pagination Dots */}
           <div className="flex gap-2 mx-auto">
-            <div className="w-8 h-2 rounded-full bg-[#FF4D00]"></div>
-            <div className="w-4 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-4 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-4 h-2 rounded-full bg-gray-200"></div>
+            {testimonials.map((_, i) => (
+              <button 
+                key={i}
+                onClick={() => scrollTo(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-8 bg-[#FF4D00]' : 'w-4 bg-gray-200 hover:bg-gray-300'}`}
+              />
+            ))}
           </div>
           
           {/* Arrows */}
@@ -240,12 +271,14 @@ export default function Testimonials() {
             <button 
               onClick={scrollPrev}
               className="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-800 hover:border-gray-300 transition-all shadow-sm"
+              aria-label="Previous testimonial"
             >
               <ArrowLeft size={18} />
             </button>
             <button 
               onClick={scrollNext}
               className="w-11 h-11 rounded-full bg-[#FF4D00] border border-[#FF4D00] flex items-center justify-center text-white hover:bg-[#e64500] transition-all shadow-md"
+              aria-label="Next testimonial"
             >
               <ArrowRight size={18} />
             </button>

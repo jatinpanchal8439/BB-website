@@ -89,7 +89,13 @@ export default function IndustriesHero() {
             </div>
           </div>
 
-          <button className="bg-[#f55926] hover:bg-[#df4a1a] transition-all duration-300 text-white rounded-full py-3 px-6 lg:py-4 lg:px-8 font-semibold text-base lg:text-lg flex items-center justify-between w-fit gap-4 lg:gap-6 shadow-[0_10px_30px_rgba(245,89,38,0.3)] hover:shadow-[0_15px_35px_rgba(245,89,38,0.4)] hover:-translate-y-1">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="bg-[#f55926] hover:bg-[#df4a1a] transition-all duration-300 text-white rounded-full py-3 px-6 lg:py-4 lg:px-8 font-semibold text-base lg:text-lg flex items-center justify-between w-fit gap-4 lg:gap-6 shadow-[0_10px_30px_rgba(245,89,38,0.3)] hover:shadow-[0_15px_35px_rgba(245,89,38,0.4)] hover:-translate-y-1"
+          >
             Explore Industries 
             <span className="bg-white text-[#f55926] rounded-full w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center shrink-0">
               <ArrowUpRight size={20} strokeWidth={2.5} />

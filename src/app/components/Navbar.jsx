@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Our Work", href: "/work" },
@@ -29,12 +29,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full h-[60px] md:h-[70px] lg:h-[80px]">
           {/* Logo Area */}
           <Link href="/" className="flex items-center -ml-2">
-            <Image 
-              src="/logo-removebg-preview.png" 
-              alt="Banega Brand Logo" 
-              width={300} 
-              height={100} 
-              className="object-contain h-16 md:h-20 lg:h-28 w-auto transform origin-left scale-110 md:scale-100 -my-4 lg:-my-8" 
+            <Image
+              src="/logo-removebg-preview.png"
+              alt="Banega Brand Logo"
+              width={300}
+              height={100}
+              className="object-contain h-16 md:h-20 lg:h-28 w-auto transform origin-left scale-110 md:scale-100 -my-4 lg:-my-8"
               priority
             />
           </Link>
@@ -45,11 +45,10 @@ export default function Navbar() {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.replace('/#', '')));
               return (
                 <li key={link.name} className="relative flex flex-col items-center group">
-                  <Link 
+                  <Link
                     href={link.href}
-                    className={`text-[12px] xl:text-[13px] whitespace-nowrap transition-colors duration-200 outline-none ${
-                      isActive ? "text-gray-900 font-bold" : "text-gray-700 hover:text-gray-900 font-normal"
-                    }`}
+                    className={`text-[12px] xl:text-[13px] whitespace-nowrap transition-colors duration-200 outline-none ${isActive ? "text-gray-900 font-bold" : "text-gray-700 hover:text-gray-900 font-normal"
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -66,8 +65,8 @@ export default function Navbar() {
 
           {/* CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="hidden sm:flex group items-center gap-2 bg-[#FF4D00] hover:bg-[#E64500] transition-colors duration-300 text-white px-6 py-2.5 rounded-full text-sm font-medium"
             >
               Book a Call
@@ -75,7 +74,7 @@ export default function Navbar() {
             </Link>
 
             {/* Mobile Menu Toggle Button */}
-            <button 
+            <button
               className="lg:hidden p-2 text-gray-800"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -84,36 +83,35 @@ export default function Navbar() {
           </div>
         </div>
 
-        
+
         {/* Mobile Menu Dropdown */}
-        <div 
+        <div
           className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 py-4 px-6 flex flex-col gap-4 z-50 transition-all duration-300 origin-top ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}
         >
 
-            <ul className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block text-lg font-medium outline-none ${
-                      pathname === link.href ? "text-[#FF4D00]" : "text-gray-700"
+          <ul className="flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block text-lg font-medium outline-none ${pathname === link.href ? "text-[#FF4D00]" : "text-gray-700"
                     }`}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link 
-              href="/contact" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="sm:hidden mt-2 flex items-center justify-center gap-2 bg-[#FF4D00] text-white px-6 py-3 rounded-full text-sm font-bold w-full"
-            >
-              Book a Call
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="sm:hidden mt-2 flex items-center justify-center gap-2 bg-[#FF4D00] text-white px-6 py-3 rounded-full text-sm font-bold w-full"
+          >
+            Book a Call
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
       </nav>
     </div>
   );
