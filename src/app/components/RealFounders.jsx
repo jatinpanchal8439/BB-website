@@ -18,7 +18,7 @@ export default function RealFounders() {
   const brands = [
     {
       name: "BLUSH EN BLOOM",
-      category: "Beauty & Skincare",
+      category: "Perfume",
       image: "/mo1.png",
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Launch"],
@@ -34,7 +34,7 @@ export default function RealFounders() {
     },
     {
       name: "GREVETY",
-      category: "Ayurveda",
+      category: "Beauty & Skincare",
       image: "/mo3.png",
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Launch"],
@@ -48,14 +48,6 @@ export default function RealFounders() {
       chips: ["Formulation", "Packaging", "Launch"],
       callout: { text: "50K+ units sold in 90 days", icon: BarChart3 },
     },
-    {
-      name: "108 LUXURY",
-      category: "Nutraceuticals",
-      image: "/mo1.png", // Reusing image for demo
-      tag: "Live in 60 days",
-      chips: ["Formulation", "Launch"],
-      callout: { text: "Top rated on marketplaces", icon: TrendingUp },
-    }
   ];
 
   const filteredBrands = activeFilter === "All" 
@@ -125,11 +117,7 @@ export default function RealFounders() {
                   {brand.name}
                 </h3>
                 
-                {/* Live Tag */}
-                <div className="inline-flex items-center gap-1.5 bg-[#FFF0E8] text-[#FF4D00] px-3 py-1.5 rounded-full text-[11px] font-bold w-fit mb-5">
-                  <Zap className="w-3.5 h-3.5 fill-[#FF4D00]" />
-                  {brand.tag}
-                </div>
+
 
                 {/* Chips */}
                 <div className="flex flex-wrap gap-2 mb-6">

@@ -1,44 +1,47 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Globe, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function MarketplaceChannels() {
   const channels = [
     {
       num: "01",
-      logo: "/ama.png",
+      logo: "/amazon-icon (1) 1.png",
       logoAlt: "Amazon",
-      logoWidth: 100,
+      logoWidth: 32,
       logoHeight: 32,
+      circleBg: true,
       title: "Amazon",
       desc: "From product listing and content to marketplace launch."
     },
     {
       num: "02",
-      logo: "/flipkart-logo.png",
+      logo: "/flipkart-icon 1.png",
       logoAlt: "Flipkart",
-      logoWidth: 100,
+      logoWidth: 32,
       logoHeight: 32,
+      circleBg: true,
       title: "Flipkart",
       desc: "From catalogue setup to getting your products ready for launch."
     },
     {
       num: "03",
-      logo: "/nyka.png",
+      logo: "/Nykaa mark.png",
       logoAlt: "Nykaa",
-      logoWidth: 100,
-      logoHeight: 32,
+      logoWidth: 80,
+      logoHeight: 26,
+      circleBg: false,
       title: "Nykaa",
       desc: "For eligible beauty and personal-care brands, we help prepare the product and brand for onboarding."
     },
     {
       num: "04",
-      icon: (
-        <div className="w-10 h-10 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5000]">
-          <Globe size={22} className="text-[#FF5000]" />
-        </div>
-      ),
+      logo: "/world-globe-line-icon 1.png",
+      logoAlt: "Your Own Website",
+      logoWidth: 32,
+      logoHeight: 32,
+      circleBg: true,
       title: "Your Own Website",
       desc: "For founders who want to build their own D2C channel."
     }
@@ -78,23 +81,21 @@ export default function MarketplaceChannels() {
               key={idx} 
               className="bg-white border border-[#F0EBE1] rounded-3xl p-8 flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-orange-200 transition-all duration-300"
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-6 mb-6">
                 <div className="w-[34px] h-[34px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5000] text-[12px] font-bold shrink-0">
                   {channel.num}
                 </div>
                 {channel.logo ? (
-                  <div className="h-8 flex items-center">
+                  <div className={`flex items-center justify-center shrink-0 ${channel.circleBg ? 'w-16 h-16 rounded-full bg-[#FFF2E6]' : 'h-10'}`}>
                     <Image 
                       src={channel.logo} 
                       alt={channel.logoAlt} 
                       width={channel.logoWidth} 
                       height={channel.logoHeight} 
-                      className="h-7 w-auto object-contain"
+                      className={channel.circleBg ? "w-8 h-8 object-contain" : "h-8 w-auto object-contain"}
                     />
                   </div>
-                ) : (
-                  channel.icon
-                )}
+                ) : null}
               </div>
               
               <h3 className="text-[20px] font-extrabold text-[#0B1B36] mb-2.5">{channel.title}</h3>

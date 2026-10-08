@@ -69,13 +69,6 @@ export default function OurWork() {
             <span className="text-[#FF4D00]">Helped</span> Bring <br />
             <span className="relative inline-block">
               to Life
-              {/* Orange dash accents near heading */}
-              <div className="absolute top-[20%] -right-16 w-12 h-12 hidden md:block">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FF4D00" strokeWidth="4" strokeLinecap="round">
-                  <line x1="6" y1="4" x2="10" y2="10" />
-                  <line x1="6" y1="16" x2="12" y2="12" />
-                </svg>
-              </div>
             </span>
           </h2>
 

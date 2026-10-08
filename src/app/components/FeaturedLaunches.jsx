@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft } from "lucide-react";
@@ -34,6 +34,14 @@ export default function FeaturedLaunches() {
     },
   ];
 
+  // Auto-play animation
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev < launches.length - 1 ? prev + 1 : 0));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [launches.length]);
+
   const handlePrev = () => {
     setActiveIndex((prev) => (prev > 0 ? prev - 1 : launches.length - 1));
   };
@@ -44,9 +52,11 @@ export default function FeaturedLaunches() {
 
   return (
     <section
+      id="featured-launches"
       className="relative bg-[#FCFBF8] py-16 sm:py-20 lg:py-24 overflow-hidden border-t border-gray-100/70"
     >
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-10 md:px-12 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 relative z-10">
+        
         {/* Header Section */}
         <div className="launches-header flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-12 gap-6">
           <div className="flex flex-col max-w-2xl">
@@ -57,7 +67,6 @@ export default function FeaturedLaunches() {
                 <span className="absolute -bottom-1 left-0 w-full h-[3.5px] bg-[#FF5000]/70 rounded-full"></span>
               </span>
             </h2>
-
             <p className="text-gray-500 text-sm sm:text-base font-normal mt-3 leading-relaxed">
               Real brands. Real results. From unique ideas to successful launches across perfume, cosmetics, skincare and more.
             </p>
@@ -72,79 +81,102 @@ export default function FeaturedLaunches() {
               View All Launches
               <ArrowRight size={14} />
             </Link>
-
-            {/* Carousel Navigation Buttons */}
-            <div className="flex items-center gap-2.5 mt-1">
-              <button
-                onClick={handlePrev}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900 transition-all cursor-pointer hover:shadow"
-                aria-label="Previous launches"
-              >
-                <ArrowLeft size={16} />
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFA066] hover:bg-[#FF8A44] flex items-center justify-center text-white transition-all cursor-pointer shadow-sm shadow-[#FFA066]/30 hover:shadow"
-                aria-label="Next launches"
-              >
-                <ArrowRight size={16} />
-              </button>
-            </div>
           </div>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-          {launches.map((launch, index) => (
-            <div
-              key={index}
-              className="launch-card bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full border border-gray-100/80 group"
-            >
-              {/* Image Container */}
-              <div className="relative w-full aspect-[16/10] bg-gray-50 overflow-hidden">
-                <Image
-                  src={launch.image}
-                  alt={launch.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  priority={index === 0}
-                />
-              </div>
-
-              {/* Card Content */}
-              <div className="p-6 sm:p-7 flex flex-col flex-grow">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-xl sm:text-[22px] font-bold text-[#0F172A] tracking-tight">
-                    {launch.title}
-                  </h3>
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${launch.badgeColor}`}
-                  >
-                    {launch.badge}
-                  </span>
+        {/* Carousel Slider */}
+        <div className="relative w-full overflow-hidden rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.04)] border border-gray-100/80 bg-white">
+          <div 
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {launches.map((launch, index) => (
+              <div key={index} className="w-full shrink-0 flex flex-col md:flex-row h-full group">
+                
+                {/* Image Container */}
+                <div className="relative w-full md:w-[45%] lg:w-1/2 aspect-[16/10] md:aspect-auto min-h-[250px] md:min-h-[400px] bg-gray-50 overflow-hidden">
+                  <Image
+                    src={launch.image}
+                    alt={launch.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    priority={index === 0}
+                  />
                 </div>
 
-                <p className="text-gray-500 text-xs sm:text-[13px] font-normal leading-relaxed mb-6 flex-grow">
-                  {launch.description}
-                </p>
+                {/* Card Content */}
+                <div className="p-8 md:p-10 lg:p-14 flex flex-col justify-center w-full md:w-[55%] lg:w-1/2 bg-white">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${launch.badgeColor}`}>
+                      {launch.badge}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight mb-4">
+                    {launch.title}
+                  </h3>
+                  
+                  <p className="text-gray-500 text-base md:text-lg font-medium leading-relaxed mb-10">
+                    {launch.description}
+                  </p>
 
-                <Link
-                  href={launch.href}
-                  className="inline-flex items-center gap-1.5 text-[#3B82F6] font-semibold text-xs sm:text-sm hover:underline mt-auto group/link"
-                >
-                  Read the story
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover/link:translate-x-1"
-                  />
-                </Link>
+                  <Link
+                    href={launch.href}
+                    className="inline-flex items-center gap-2 text-[#3B82F6] font-bold text-sm hover:underline mt-auto group/link w-fit"
+                  >
+                    Read the full story
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform group-hover/link:translate-x-1"
+                    />
+                  </Link>
+                </div>
+
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Custom Navigation (Dots & Arrows aligned horizontally) */}
+        <div className="flex items-center justify-center gap-6 mt-10">
+          
+          {/* Pagination Dots */}
+          <div className="flex items-center gap-2">
+             {launches.map((_, idx) => (
+               <div 
+                 key={idx}
+                 onClick={() => setActiveIndex(idx)}
+                 className={`cursor-pointer transition-all duration-300 rounded-full ${
+                   activeIndex === idx 
+                     ? "w-7 h-2 bg-[#FF5000]" 
+                     : "w-3 h-2 bg-[#E2E8F0] hover:bg-[#CBD5E1]"
+                 }`}
+               />
+             ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex items-center gap-2 pl-2">
+              <button
+                onClick={handlePrev}
+                className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-all cursor-pointer hover:shadow-md"
+                aria-label="Previous"
+              >
+                <ArrowLeft size={18} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="w-10 h-10 rounded-full bg-[#FF5000] flex items-center justify-center text-white transition-all cursor-pointer shadow-sm hover:bg-[#E64800] hover:shadow-md shadow-[#FF5000]/20"
+                aria-label="Next"
+              >
+                <ArrowRight size={18} />
+              </button>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
 }
-

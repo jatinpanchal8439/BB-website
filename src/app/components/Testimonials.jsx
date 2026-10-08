@@ -147,6 +147,13 @@ export default function Testimonials() {
     }
   };
 
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      scrollNext();
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [activeIndex]);
+
   return (
     <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-24 pb-8 lg:pb-12 overflow-hidden border-t border-gray-100">
       
@@ -250,40 +257,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Controls Section */}
-        <div className="flex justify-between items-center gsap-testimonial-controls">
-          <div className="hidden lg:block w-32"></div> {/* Spacer for centering */}
-          
-          {/* Dynamic Pagination Dots */}
-          <div className="flex gap-2 mx-auto">
-            {testimonials.map((_, i) => (
-              <button 
-                key={i}
-                onClick={() => scrollTo(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-8 bg-[#FF4D00]' : 'w-4 bg-gray-200 hover:bg-gray-300'}`}
-              />
-            ))}
-          </div>
-          
-          {/* Arrows */}
-          <div className="flex gap-3">
-            <button 
-              onClick={scrollPrev}
-              className="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-800 hover:border-gray-300 transition-all shadow-sm"
-              aria-label="Previous testimonial"
-            >
-              <ArrowLeft size={18} />
-            </button>
-            <button 
-              onClick={scrollNext}
-              className="w-11 h-11 rounded-full bg-[#FF4D00] border border-[#FF4D00] flex items-center justify-center text-white hover:bg-[#e64500] transition-all shadow-md"
-              aria-label="Next testimonial"
-            >
-              <ArrowRight size={18} />
-            </button>
-          </div>
-        </div>
+
 
       </div>
 
