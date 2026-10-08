@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Lightbulb, BarChart2, Settings, Rocket, Quote, FlaskConical, MapPin, User, ArrowRight } from "lucide-react";
 
 export default function CaseStudyDetailed() {
@@ -33,18 +34,18 @@ export default function CaseStudyDetailed() {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-12">
-          
+
           {/* Left Column */}
           <div className="w-full lg:w-[45%] flex flex-col">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-12 h-[2px] bg-[#ff6b2b]"></span>
               <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Case Study</span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a1a2e] mb-6 leading-tight">
               Blush En Bloom<span className="text-[#ff6b2b]">.</span>
             </h2>
-            
+
             <p className="text-[#5a6072] text-lg mb-14 max-w-md font-medium leading-relaxed">
               From a simple idea to a successful fragrance brand in just 60 days with Banega Brand.
             </p>
@@ -52,7 +53,7 @@ export default function CaseStudyDetailed() {
             {/* Timeline */}
             <div className="relative mb-16">
               <div className="absolute left-[23px] top-[24px] bottom-[24px] w-[2px] border-l-2 border-dashed border-[#fcd5c5]"></div>
-              
+
               <div className="flex flex-col gap-10">
                 {timelineData.map((item, idx) => (
                   <div key={idx} className="relative flex gap-6 z-10">
@@ -89,7 +90,7 @@ export default function CaseStudyDetailed() {
 
           {/* Right Column */}
           <div className="w-full lg:w-[55%] flex flex-col gap-6">
-            
+
             {/* Website Mockup */}
             <div className="rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] border border-gray-100 bg-white">
               <Image src="/Frame 13.png" alt="Blush En Bloom Website" width={1000} height={600} className="w-full h-auto object-cover" priority />
@@ -127,17 +128,17 @@ export default function CaseStudyDetailed() {
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
                 <Image src="/blush1.jpg" alt="Unique Formulation" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Unique<br/>Formulation</p>
+                <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Unique<br />Formulation</p>
               </div>
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
                 <Image src="/blush2.jpg" alt="Premium Packaging" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Premium<br/>Packaging</p>
+                <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Premium<br />Packaging</p>
               </div>
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
                 <Image src="/ladki.jpg" alt="Launched on Amazon" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <p className="absolute bottom-5 left-5 text-white font-bold w-[80%] leading-snug">Launched on<br/>Amazon</p>
+                <p className="absolute bottom-5 left-5 text-white font-bold w-[80%] leading-snug">Launched on<br />Amazon</p>
               </div>
             </div>
 
@@ -152,12 +153,12 @@ export default function CaseStudyDetailed() {
                   <p className="text-[#5a6072] text-sm">Let's turn your idea into the next big brand.</p>
                 </div>
               </div>
-              <button className="bg-[#ff6b2b] hover:bg-[#eb5b1b] transition-all duration-300 text-white rounded-full py-3 px-6 font-semibold flex items-center justify-center gap-4 shrink-0 whitespace-nowrap shadow-lg shadow-orange-500/20 hover:-translate-y-1 hover:shadow-orange-500/30 w-full xl:w-auto">
+              <Link href="/contact" className="bg-[#ff6b2b] hover:bg-[#eb5b1b] transition-all duration-300 text-white rounded-full py-3 px-6 font-semibold flex items-center justify-center gap-4 shrink-0 whitespace-nowrap shadow-lg shadow-orange-500/20 hover:-translate-y-1 hover:shadow-orange-500/30 w-full xl:w-auto">
                 Start Your Own Story
                 <span className="bg-white text-[#ff6b2b] rounded-full w-8 h-8 flex items-center justify-center shrink-0">
                   <ArrowRight size={18} strokeWidth={2.5} />
                 </span>
-              </button>
+              </Link>
             </div>
 
           </div>
