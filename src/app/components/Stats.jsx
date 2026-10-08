@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import CountUp from "react-countup";
 
 export default function Stats() {
   return (
@@ -11,8 +13,8 @@ export default function Stats() {
           
           {/* Stat 1 */}
           <div className="flex-1 flex flex-col items-center text-center">
-            <h2 className="text-[4.5rem] leading-none font-bold text-[#FF4D00] tracking-tight mb-2">
-              200+
+            <h2 className="text-[4.5rem] leading-none font-bold text-[#FF4D00] tracking-tight mb-2 flex items-center justify-center">
+              <CountUp end={200} duration={2.5} enableScrollSpy scrollSpyOnce />+
             </h2>
             <p className="text-[#1E1E1E] text-lg font-medium">
               Brands Launched
@@ -24,8 +26,8 @@ export default function Stats() {
 
           {/* Stat 2 */}
           <div className="flex-1 flex flex-col items-center text-center">
-            <h2 className="text-[4.5rem] leading-none font-bold text-[#1D4ED8] tracking-tight mb-2">
-              100+
+            <h2 className="text-[4.5rem] leading-none font-bold text-[#1D4ED8] tracking-tight mb-2 flex items-center justify-center">
+              <CountUp end={100} duration={2.5} enableScrollSpy scrollSpyOnce />+
             </h2>
             <p className="text-[#1E1E1E] text-lg font-medium">
               Manufacturing Partners
@@ -46,8 +48,8 @@ export default function Stats() {
 
           {/* Stat 3 */}
           <div className="flex-1 flex flex-col items-center text-center">
-            <h2 className="text-[4.5rem] leading-none font-bold text-[#FF4D00] tracking-tight mb-2">
-              45–90
+            <h2 className="text-[4.5rem] leading-none font-bold text-[#FF4D00] tracking-tight mb-2 flex items-center justify-center">
+              <CountUp end={45} duration={2.5} enableScrollSpy scrollSpyOnce />–<CountUp end={90} duration={2.5} enableScrollSpy scrollSpyOnce />
             </h2>
             <p className="text-[#1E1E1E] text-lg font-medium">
               Days Typical Launch Timeline

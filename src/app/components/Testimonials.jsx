@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Testimonials() {
   const sectionRef = useRef(null);
   const carouselRef = useRef(null);
-  const [activeVideo, setActiveVideo] = useState(null);
+  const [playingIndex, setPlayingIndex] = useState(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -64,7 +64,7 @@ export default function Testimonials() {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
-      image: "/P2.png",
+      image: "/videos/speach-thumbnail.jpg",
       badgeText: "Perfume & Fragrance",
       badgeColor: "bg-[#EEF2FF] text-[#4A72FF]",
       quoteColor: "text-[#4A72FF]",
@@ -72,7 +72,7 @@ export default function Testimonials() {
       name: "Rahul Abrol",
       role: "Founder, ROUGX",
       logo: "/logos/ROUGX LOGO 1.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "/videos/speach-for-bb.mp4"
     },
     {
       image: "/P3.png",
@@ -205,23 +205,48 @@ export default function Testimonials() {
               key={index} 
               className="gsap-testimonial-card min-w-[100%] md:min-w-[calc(50%-12px)] xl:min-w-[calc(33.333%-16px)] snap-center bg-white rounded-3xl p-4 flex gap-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Left Video Thumbnail */}
+              {/* Left Video Thumbnail or Inline Video */}
               <div 
-                className="relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden cursor-pointer group"
-                onClick={() => setActiveVideo(test.videoUrl)}
+                className="relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300"
+                onClick={() => {
+                  if (playingIndex !== index) {
+                    setPlayingIndex(index);
+                  }
+                }}
               >
-                <Image 
-                  src={test.image} 
-                  alt={test.name} 
-                  fill 
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-                
-                {/* Play Button Overlay */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-                  <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
-                </div>
+                {playingIndex === index ? (
+                  test.videoUrl?.endsWith('.mp4') ? (
+                    <video 
+                      src={test.videoUrl} 
+                      poster={test.image}
+                      className="w-full h-full object-cover object-top scale-[1.05] translate-y-[-2.5%]"
+                      controls
+                      autoPlay
+                    />
+                  ) : (
+                    <iframe 
+                      src={`${test.videoUrl}?autoplay=1`} 
+                      className="w-full h-full"
+                      allow="autoplay; encrypted-media; picture-in-picture" 
+                      allowFullScreen 
+                    />
+                  )
+                ) : (
+                  <>
+                    <Image 
+                      src={test.image} 
+                      alt={test.name} 
+                      fill 
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                    
+                    {/* Play Button Overlay */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                      <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Right Text Content */}
@@ -260,28 +285,6 @@ export default function Testimonials() {
 
 
       </div>
-
-      {/* Video Modal Overlay */}
-      {activeVideo && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
-          <div className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-black/50 ring-1 ring-white/10">
-            {/* Close Button */}
-            <button 
-              onClick={() => setActiveVideo(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all"
-            >
-              <X size={20} />
-            </button>
-            {/* Embedded Video */}
-            <iframe 
-              src={activeVideo} 
-              className="w-full h-full"
-              allow="autoplay; encrypted-media; picture-in-picture" 
-              allowFullScreen 
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }

@@ -12,7 +12,15 @@ export default function FeaturedLaunches() {
       badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
       description: "A floral perfume collection with 3 scents and 5,000+ bottles sold in the first 60 days.",
       image: "/M3.png", 
-      href: "/case-study",
+      href: "/case-study/blush-en-bloom",
+    },
+    {
+      title: "ROUGX",
+      badge: "Perfume",
+      badgeColor: "bg-[#FEE2E2] text-[#DC2626]",
+      description: "Luxury fragrances that define you. Crafted with rare ingredients and timeless elegance.",
+      image: "/rougx-banner.png",
+      href: "/case-study/rougx",
     },
     {
       title: "Biographey",
@@ -20,15 +28,7 @@ export default function FeaturedLaunches() {
       badgeColor: "bg-[#EEF2FF] text-[#4A72FF]",
       description: "Crafted a signature scent with lasting depth.",
       image: "/M2.png",
-      href: "/case-study",
-    },
-    {
-      title: "Grevety",
-      badge: "Skincare",
-      badgeColor: "bg-[#ECFDF5] text-[#059669]",
-      description: "Launched a clean skincare line with strong marketplace performance.",
-      image: "/M1.png",
-      href: "/case-study",
+      href: "/case-study/biographey",
     },
   ];
 
@@ -93,9 +93,10 @@ export default function FeaturedLaunches() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {launches.map((launch, index) => (
-            <div 
+            <Link 
+              href={launch.href}
               key={index} 
-              className="bg-white rounded-[1.5rem] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full border border-gray-100 group"
+              className="bg-white rounded-[1.5rem] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full border border-gray-100 group block cursor-pointer"
             >
               {/* Image Container */}
               <div className="relative w-full aspect-[4/3] bg-[#F8F9FA] border-b border-gray-50 overflow-hidden">
@@ -121,15 +122,14 @@ export default function FeaturedLaunches() {
                   {launch.description}
                 </p>
                 
-                <Link 
-                  href={launch.href} 
-                  className="inline-flex items-center gap-2 text-[#4A72FF] font-bold text-sm hover:text-[#1d4ed8] transition-colors group/link w-fit mt-auto"
+                <div 
+                  className="inline-flex items-center gap-2 text-[#4A72FF] font-bold text-sm hover:text-[#1d4ed8] transition-colors group-hover:text-[#1d4ed8] w-fit mt-auto"
                 >
                   Read the story
-                  <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         

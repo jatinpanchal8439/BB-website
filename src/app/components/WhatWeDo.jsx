@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { Package, Factory, PaintRoller, ShieldCheck, Rocket, BarChart3, ArrowRight } from "lucide-react";
 
 export default function WhatWeDo() {
@@ -91,9 +92,10 @@ export default function WhatWeDo() {
         {/* Right Cards Grid */}
         <div className="w-full lg:w-[66%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 relative">
           {steps.map((step) => (
-            <div
+            <Link
+              href="/contact"
               key={step.number}
-              className="what-we-do-card bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100/80 flex flex-col justify-between group transition-all duration-300 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 min-h-[235px]"
+              className="what-we-do-card bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100/80 flex flex-col justify-between group transition-all duration-300 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 min-h-[235px] block cursor-pointer"
             >
               {/* Top Row: Icon and Number */}
               <div className="flex justify-between items-start mb-4">
@@ -122,7 +124,7 @@ export default function WhatWeDo() {
               <p className="text-gray-500 text-xs sm:text-[13px] font-normal leading-relaxed">
                 {step.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -7,28 +7,28 @@ const cards = [
     number: "01",
     title: <>PRODUCT<br />DEVELOPMENT</>,
     alt: "Product Development",
-    href: "/#how-it-works",
+    href: "/contact",
   },
   {
     image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80",
     number: "02",
     title: <>BRAND<br />BUILDING</>,
     alt: "Brand Building",
-    href: "/#how-it-works",
+    href: "/contact",
   },
   {
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80",
     number: "03",
     title: <>COMPLIANCE<br />& MANUFACTURING</>,
     alt: "Compliance & Manufacturing",
-    href: "/#how-it-works",
+    href: "/contact",
   },
   {
     image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80",
     number: "04",
     title: <>LAUNCH<br />& GROW</>,
     alt: "Launch & Grow",
-    href: "/#how-it-works",
+    href: "/contact",
   },
 ];
 
@@ -36,14 +36,14 @@ function Card({ image, number, title, alt, href }) {
   return (
     <Link
       href={href}
-      className="gsap-card group bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 border border-white/80 cursor-pointer"
+      className="gsap-card group bg-white/90 backdrop-blur-md rounded-xl sm:rounded-2xl flex flex-col shadow-lg shadow-black/5 overflow-hidden transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-2 hover:shadow-[#FF4D00]/20 border border-white/80 cursor-pointer"
     >
       <div className="aspect-[4/3] bg-gray-200 relative w-full overflow-hidden">
         <Image
           src={image}
           alt={alt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
       </div>
       <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">

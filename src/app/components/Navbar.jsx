@@ -17,9 +17,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
     { name: "Manufacturer Network", href: "/manufacturer" },
     { name: "Investment Guide", href: "/investment-guide" },
-    { name: "Launch", href: "/launch" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Blogs", href: "/blog" },
+    { name: "Marketplace Launch", href: "/launch" },
     { name: "Contact Us", href: "/contact" }
   ];
 
