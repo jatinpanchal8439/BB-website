@@ -50,13 +50,12 @@ export default function ProcessStep({
           
           {/* Image Side */}
           <div className="w-full md:w-1/2 flex justify-center relative">
-            <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] step-img-anim">
+            <div className="relative w-full aspect-square sm:aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-[32px] overflow-hidden step-img-anim shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
               <Image 
                 src={imageSrc} 
                 alt={`${titleBlack} ${titleOrange}`} 
                 fill 
-                style={{ mixBlendMode: 'multiply' }}
-                className="object-contain drop-shadow-2xl"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>

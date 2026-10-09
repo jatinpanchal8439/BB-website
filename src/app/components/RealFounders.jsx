@@ -23,6 +23,7 @@ export default function RealFounders() {
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Launch"],
       callout: { text: "Now on Amazon Best Sellers", icon: TrendingUp },
+      link: "/case-study/blush-en-bloom",
     },
     {
       name: "BIOGRAOPHEY",
@@ -31,6 +32,7 @@ export default function RealFounders() {
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Branding"],
       callout: { text: "Tripled revenue in 3 months", icon: BarChart3 },
+      link: "/case-study/biographey",
     },
     {
       name: "GREVETY",
@@ -39,6 +41,7 @@ export default function RealFounders() {
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Launch"],
       callout: { text: "Now on Amazon Best Sellers", icon: Trophy },
+      link: "/case-study/grevety",
     },
     {
       name: "DREFOR",
@@ -47,6 +50,7 @@ export default function RealFounders() {
       tag: "Live in 60 days",
       chips: ["Formulation", "Packaging", "Launch"],
       callout: { text: "50K+ units sold in 90 days", icon: BarChart3 },
+      link: "/case-study/drefor",
     },
   ];
 
@@ -96,7 +100,7 @@ export default function RealFounders() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {filteredBrands.map((brand, index) => (
             <Link 
-              href="/case-study"
+              href={brand.link || "/case-study"}
               key={index} 
               className="bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
             >

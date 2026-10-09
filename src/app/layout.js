@@ -19,6 +19,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://banegabrand.com"),
   title: "Banega Brand | From Idea to Market",
   description: "Helping entrepreneurs launch successful Perfume, Cosmetic, Skincare, and Ayurveda brands in India. End-to-end product development, compliance, manufacturing and brand building.",
   keywords: ["Brand Building", "Cosmetic Manufacturing", "Perfume Launch", "Ayurveda Brand", "Nutraceuticals India", "Private Labeling", "Brand Development India", "Business Strategy"],
@@ -75,6 +76,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${plusJakarta.variable} ${plusJakarta.className} ${caveat.variable} ${poppins.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col">
         <Navbar />

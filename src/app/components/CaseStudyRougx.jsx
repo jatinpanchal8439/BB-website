@@ -12,16 +12,16 @@ export default function CaseStudy() {
         {/* Background Image: using split.jpg */}
         <div className="absolute inset-0 z-0">
            <Image 
-             src="/assets/case-study-split.jpg" 
-             alt="Case Study Background" 
+             src="/frame-15.png" 
+             alt="ROUGX Case Study Background" 
              fill 
-             className="object-cover object-right md:object-center" 
+             className="object-cover object-right md:object-right" 
              priority
            />
            {/* Gradient fade on mobile to ensure text readability */}
            <div className="absolute inset-0 bg-gradient-to-b from-[#fff8f2] via-[#fff8f2]/95 to-transparent md:hidden"></div>
            {/* Subtle gradient for desktop left side just in case */}
-           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#fff8f2] via-[#fff8f2]/80 to-transparent w-1/2"></div>
+           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#fff8f2] via-[#fff8f2]/95 to-transparent w-[65%]"></div>
         </div>
 
         {/* Content Wrapper constrained to max-width */}
@@ -40,7 +40,7 @@ export default function CaseStudy() {
             </h2>
             
             <p className="text-[#4b5563] text-base sm:text-lg md:text-xl lg:text-[22px] mb-8 sm:mb-10 md:mb-12 max-w-xl leading-relaxed font-medium">
-              How Banega Brand helped launch Blush En Bloom — a premium fragrance brand loved by customers.
+              How Banega Brand helped launch ROUGX — a premium fragrance brand loved by customers.
             </p>
             
             {/* Working CTA Button (Scrolls to Details) */}

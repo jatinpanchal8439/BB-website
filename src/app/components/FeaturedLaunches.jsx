@@ -11,7 +11,7 @@ export default function FeaturedLaunches() {
       badge: "Perfume",
       badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
       description: "A floral perfume collection with 3 scents and 5,000+ bottles sold in the first 60 days.",
-      image: "/M3.png", 
+      image: "/blush-en-bloom-screenshot.png", 
       href: "/case-study/blush-en-bloom",
     },
     {
@@ -19,7 +19,7 @@ export default function FeaturedLaunches() {
       badge: "Perfume",
       badgeColor: "bg-[#FEE2E2] text-[#DC2626]",
       description: "Luxury fragrances that define you. Crafted with rare ingredients and timeless elegance.",
-      image: "/rougx-banner.png",
+      image: "/blush-en-bloom-screenshot-2.png",
       href: "/case-study/rougx",
     },
     {
@@ -27,7 +27,7 @@ export default function FeaturedLaunches() {
       badge: "Perfume",
       badgeColor: "bg-[#EEF2FF] text-[#4A72FF]",
       description: "Crafted a signature scent with lasting depth.",
-      image: "/M2.png",
+      image: "/biographey-screenshot.png",
       href: "/case-study/biographey",
     },
   ];
@@ -61,33 +61,6 @@ export default function FeaturedLaunches() {
               Real brands. Real results. From unique ideas to successful launches across perfume, cosmetics, skincare and more.
             </p>
           </div>
-
-          <div className="flex flex-col items-start lg:items-end gap-6">
-            <Link 
-              href="#all-launches" 
-              className="inline-flex items-center gap-2 bg-transparent border-[1.5px] border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-6 py-2.5 rounded-full text-sm font-bold transition-colors duration-300 shadow-sm"
-            >
-              View All Launches
-              <ArrowRight size={16} />
-            </Link>
-            
-            {/* Arrows */}
-            <div className="flex gap-4">
-              <button 
-                className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-gray-300 transition-all shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0"
-                aria-label="Previous launches"
-              >
-                <ArrowLeft size={20} />
-              </button>
-              <button 
-                className="w-12 h-12 rounded-full bg-[#FFD7BA] border border-[#FFD7BA] flex items-center justify-center text-[#FF4D00] hover:bg-[#FFC099] transition-all shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0"
-                aria-label="Next launches"
-              >
-                <ArrowRight size={20} />
-              </button>
-            </div>
-          </div>
-          
         </div>
 
         {/* Cards Grid */}

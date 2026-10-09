@@ -78,7 +78,7 @@ export default function CaseStudyDetailed() {
                 <h4 className="font-bold text-[#1a1a2e] mb-5 text-lg">In the Founder's Words</h4>
                 <div className="flex gap-4 items-start">
                   <div className="w-12 h-12 relative shrink-0 rounded-full overflow-hidden">
-                    <Image src="/ladki.jpg" alt="Founder" fill className="object-cover" />
+                    <Image src="/ladki.jpg" alt="Founder" fill sizes="48px" className="object-cover" />
                   </div>
                   <p className="text-[#5a6072] italic text-sm md:text-base leading-relaxed">
                     "Banega Brand made the entire process so simple. I just had an idea, and they brought it to life. We hit the market way sooner than I expected."
@@ -93,7 +93,7 @@ export default function CaseStudyDetailed() {
 
             {/* Website Mockup */}
             <div className="rounded-[32px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] border border-gray-100 bg-white">
-              <Image src="/Frame 13.png" alt="Blush En Bloom Website" width={1000} height={600} className="w-full h-auto object-cover" priority />
+              <Image src="/blush-en-bloom-screenshot.png" alt="Blush En Bloom Website" width={1200} height={800} className="w-full h-auto object-cover" priority />
             </div>
 
             {/* Info Bar */}
@@ -126,17 +126,17 @@ export default function CaseStudyDetailed() {
             {/* Feature Images */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
-                <Image src="/blush1.jpg" alt="Unique Formulation" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image src="/unique_formulation.jpg" alt="Unique Formulation" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Unique<br />Formulation</p>
               </div>
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
-                <Image src="/blush2.jpg" alt="Premium Packaging" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image src="/premium_packaging.jpg" alt="Premium Packaging" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <p className="absolute bottom-5 left-5 text-white font-bold w-[70%] leading-snug">Premium<br />Packaging</p>
               </div>
               <div className="relative h-[200px] rounded-[20px] overflow-hidden group">
-                <Image src="/ladki.jpg" alt="Launched on Amazon" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image src="/amazon_launch.jpg" alt="Launched on Amazon" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <p className="absolute bottom-5 left-5 text-white font-bold w-[80%] leading-snug">Launched on<br />Amazon</p>
               </div>

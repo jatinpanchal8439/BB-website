@@ -46,7 +46,7 @@ function Card({ image, number, title, alt, href }) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
       </div>
-      <div className="flex justify-between items-end p-2.5 sm:p-3 md:p-3.5 mt-auto bg-[#F8F6F2]/90">
+      <div className="flex justify-between items-end p-3 sm:p-4 mt-auto bg-[#F8F6F2]/90">
         <div>
           <span className="text-[10px] font-extrabold text-gray-500 mb-0.5 block">
             {number}
@@ -55,19 +55,15 @@ function Card({ image, number, title, alt, href }) {
             {title}
           </h3>
         </div>
-        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-gray-400/80 flex items-center justify-center text-gray-800 bg-transparent group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] group-hover:text-white transition-colors duration-300 shrink-0">
-          <svg
-            width="11"
-            height="11"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+        
+        <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-gray-500 group-hover:text-[#FF4D00] transition-colors duration-300">
+          <span className="hidden sm:inline-block">Contact Us</span>
+          <span className="sm:hidden">Contact</span>
+          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 group-hover:border-[#FF4D00] group-hover:bg-[#FF4D00] group-hover:text-white transition-all duration-300">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
         </div>
       </div>
     </Link>

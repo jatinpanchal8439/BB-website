@@ -147,9 +147,9 @@ function TopSection() {
 
 function BottomCard({ image, number, title }) {
   return (
-    <div className="bg-[#F8F6F2] rounded-xl flex flex-col aspect-square shadow-sm overflow-hidden">
-      <div className="relative w-full flex-1 bg-[#e8e8e8]">
-        <Image src={image} alt={title} fill className="object-cover" />
+    <Link href="/contact" className="bg-[#F8F6F2] rounded-xl flex flex-col aspect-square shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-shadow">
+      <div className="relative w-full flex-1 bg-[#e8e8e8] overflow-hidden">
+        <Image src={image} alt={title} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <div className="p-4 flex justify-between items-end shrink-0">
         <div>
@@ -158,11 +158,11 @@ function BottomCard({ image, number, title }) {
             {title}
           </div>
         </div>
-        <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center shrink-0 text-[#111]">
+        <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center shrink-0 text-[#111] group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] group-hover:text-white transition-colors duration-300">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -174,6 +174,7 @@ function BottomSection() {
         src="/bg.png" 
         alt="Background" 
         fill 
+        sizes="100vw"
         className="object-cover object-bottom" 
         priority 
       />

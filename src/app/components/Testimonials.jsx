@@ -41,14 +41,6 @@ export default function Testimonials() {
       ease: "power3.out",
     }, "-=0.4");
     
-    // Animate controls
-    tl.from(".gsap-testimonial-controls", {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    }, "-=0.2");
-
   }, { scope: sectionRef });
 
   const testimonials = [
@@ -237,6 +229,7 @@ export default function Testimonials() {
                       src={test.image} 
                       alt={test.name} 
                       fill 
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
@@ -272,7 +265,7 @@ export default function Testimonials() {
                     </div>
                     {test.logo && (
                       <div className="relative w-16 h-8 opacity-80 mix-blend-multiply">
-                        <Image src={test.logo} alt="Brand Logo" fill className="object-contain object-right-bottom" />
+                        <Image src={test.logo} alt="Brand Logo" fill sizes="64px" className="object-contain object-right-bottom" />
                       </div>
                     )}
                   </div>
