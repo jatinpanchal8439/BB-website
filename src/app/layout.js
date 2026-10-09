@@ -70,6 +70,7 @@ export const metadata = {
 };
 
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function RootLayout({ children }) {
   return (
@@ -81,6 +82,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );
