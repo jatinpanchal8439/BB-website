@@ -45,6 +45,17 @@ export default function Testimonials() {
 
   const testimonials = [
     {
+      image: "/klust-thumbnail.jpg",
+      badgeText: "Beauty & Lifestyle",
+      badgeColor: "bg-[#FEF3C7] text-[#D97706]",
+      quoteColor: "text-[#D97706]",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      name: "Founder",
+      role: "Founder, KLUST",
+      logo: null,
+      videoUrl: "/klust-testimonial.mp4"
+    },
+    {
       image: "/P1.png",
       badgeText: "Perfume & Fragrance",
       badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
@@ -53,7 +64,7 @@ export default function Testimonials() {
       name: "Meherban Singh",
       role: "Founder, BIOGRAPHY",
       logo: "/logos/Biography logo.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: null
     },
     {
       image: "/videos/speach-thumbnail.jpg",
@@ -67,17 +78,6 @@ export default function Testimonials() {
       videoUrl: "/videos/speach-for-bb.mp4"
     },
     {
-      image: "/P2.png",
-      badgeText: "Beauty & Lifestyle",
-      badgeColor: "bg-[#FEF3C7] text-[#D97706]",
-      quoteColor: "text-[#D97706]",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      name: "Founder",
-      role: "Founder, KLUST",
-      logo: null,
-      videoUrl: "/klust-testimonial.mp4"
-    },
-    {
       image: "/P3.png",
       badgeText: "Beauty & Skincare",
       badgeColor: "bg-[#ECFDF5] text-[#059669]",
@@ -86,7 +86,7 @@ export default function Testimonials() {
       name: "Divya Rani",
       role: "Founder, GREVETY",
       logo: "/logos/MAIN GREVETY LOGO.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: null
     },
     {
       image: "/P1.png",
@@ -97,7 +97,7 @@ export default function Testimonials() {
       name: "Sandeep Kumar",
       role: "Founder, VITALITY",
       logo: null,
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: null
     },
     {
       image: "/P2.png",
@@ -108,7 +108,7 @@ export default function Testimonials() {
       name: "Amit Sharma",
       role: "Founder, VEDA",
       logo: null,
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: null
     }
   ];
 
@@ -210,15 +210,15 @@ export default function Testimonials() {
             >
               {/* Left Video Thumbnail or Inline Video */}
               <div 
-                className="relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300"
+                className={`relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden transition-all duration-300 ${test.videoUrl ? 'cursor-pointer group' : ''}`}
                 onClick={() => {
-                  if (playingIndex !== index) {
+                  if (test.videoUrl && playingIndex !== index) {
                     setPlayingIndex(index);
                   }
                 }}
               >
-                {playingIndex === index ? (
-                  test.videoUrl?.endsWith('.mp4') ? (
+                {playingIndex === index && test.videoUrl ? (
+                  test.videoUrl.endsWith('.mp4') ? (
                     <video 
                       src={test.videoUrl} 
                       poster={test.image}
@@ -241,14 +241,19 @@ export default function Testimonials() {
                       alt={test.name} 
                       fill 
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`object-cover transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
                     />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
                     
-                    {/* Play Button Overlay */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-                      <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
-                    </div>
+                    {test.videoUrl && (
+                      <>
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                        
+                        {/* Play Button Overlay */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                          <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
+                        </div>
+                      </>
+                    )}
                   </>
                 )}
               </div>

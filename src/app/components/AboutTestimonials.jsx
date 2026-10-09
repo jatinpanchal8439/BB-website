@@ -8,10 +8,19 @@ export default function AboutTestimonials() {
 
   const testimonials = [
     {
+      id: 2.5,
+      name: "Founder",
+      role: "FOUNDER, KLUST",
+      brand: "Beauty & Lifestyle",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      image: "/klust-thumbnail.jpg",
+      logo: null
+    },
+    {
       id: 1,
       name: "Meherban Singh",
       role: "FOUNDER, BIOGRAPHY",
-      brand: "Perfumes & Fragrance",
+      brand: "Perfume & Fragrance",
       quote: "BanegaBrand helped us turn our idea into BIOGRAPHY - from product development to market launch. The process was smooth and truly professional.",
       image: "/mo1.png",
       logo: "/logos/Biography logo.png"
@@ -24,15 +33,6 @@ export default function AboutTestimonials() {
       quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
       image: "/mo2.png",
       logo: "/logos/ROUGX LOGO 1.png"
-    },
-    {
-      id: 2.5,
-      name: "Founder",
-      role: "FOUNDER, KLUST",
-      brand: "Beauty & Lifestyle",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      image: "/P2.png",
-      logo: null
     },
     {
       id: 3,
