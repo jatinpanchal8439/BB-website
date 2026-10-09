@@ -26,6 +26,15 @@ export default function AboutTestimonials() {
       logo: "/logos/ROUGX LOGO 1.png"
     },
     {
+      id: 2.5,
+      name: "Founder",
+      role: "FOUNDER, KLUST",
+      brand: "Beauty & Lifestyle",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      image: "/P2.png",
+      logo: null
+    },
+    {
       id: 3,
       name: "Divya Rani",
       role: "FOUNDER, GREVETY",

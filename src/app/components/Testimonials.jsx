@@ -67,6 +67,17 @@ export default function Testimonials() {
       videoUrl: "/videos/speach-for-bb.mp4"
     },
     {
+      image: "/P2.png",
+      badgeText: "Beauty & Lifestyle",
+      badgeColor: "bg-[#FEF3C7] text-[#D97706]",
+      quoteColor: "text-[#D97706]",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      name: "Founder",
+      role: "Founder, KLUST",
+      logo: null,
+      videoUrl: "/klust-testimonial.mp4"
+    },
+    {
       image: "/P3.png",
       badgeText: "Beauty & Skincare",
       badgeColor: "bg-[#ECFDF5] text-[#059669]",
