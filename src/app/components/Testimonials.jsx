@@ -56,7 +56,7 @@ export default function Testimonials() {
       videoUrl: "/klust-testimonial.mp4"
     },
     {
-      image: "/P1.png",
+      image: null,
       badgeText: "Perfume & Fragrance",
       badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
       quoteColor: "text-[#FF4D00]",
@@ -209,54 +209,56 @@ export default function Testimonials() {
               className="gsap-testimonial-card min-w-[100%] md:min-w-[calc(50%-12px)] xl:min-w-[calc(33.333%-16px)] snap-center bg-white rounded-3xl p-4 flex gap-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-lg transition-shadow duration-300"
             >
               {/* Left Video Thumbnail or Inline Video */}
-              <div 
-                className={`relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden transition-all duration-300 ${test.videoUrl ? 'cursor-pointer group' : ''}`}
-                onClick={() => {
-                  if (test.videoUrl && playingIndex !== index) {
-                    setPlayingIndex(index);
-                  }
-                }}
-              >
-                {playingIndex === index && test.videoUrl ? (
-                  test.videoUrl.endsWith('.mp4') ? (
-                    <video 
-                      src={test.videoUrl} 
-                      poster={test.image}
-                      className="w-full h-full object-cover object-top scale-[1.05] translate-y-[-2.5%]"
-                      controls
-                      autoPlay
-                    />
+              {test.image && (
+                <div 
+                  className={`relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden transition-all duration-300 ${test.videoUrl ? 'cursor-pointer group' : ''}`}
+                  onClick={() => {
+                    if (test.videoUrl && playingIndex !== index) {
+                      setPlayingIndex(index);
+                    }
+                  }}
+                >
+                  {playingIndex === index && test.videoUrl ? (
+                    test.videoUrl.endsWith('.mp4') ? (
+                      <video 
+                        src={test.videoUrl} 
+                        poster={test.image}
+                        className="w-full h-full object-cover object-top scale-[1.05] translate-y-[-2.5%]"
+                        controls
+                        autoPlay
+                      />
+                    ) : (
+                      <iframe 
+                        src={`${test.videoUrl}?autoplay=1`} 
+                        className="w-full h-full"
+                        allow="autoplay; encrypted-media; picture-in-picture" 
+                        allowFullScreen 
+                      />
+                    )
                   ) : (
-                    <iframe 
-                      src={`${test.videoUrl}?autoplay=1`} 
-                      className="w-full h-full"
-                      allow="autoplay; encrypted-media; picture-in-picture" 
-                      allowFullScreen 
-                    />
-                  )
-                ) : (
-                  <>
-                    <Image 
-                      src={test.image} 
-                      alt={test.name} 
-                      fill 
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className={`object-cover transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
-                    />
-                    
-                    {test.videoUrl && (
-                      <>
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-                        
-                        {/* Play Button Overlay */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
-              </div>
+                    <>
+                      <Image 
+                        src={test.image} 
+                        alt={test.name} 
+                        fill 
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className={`object-cover transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                      />
+                      
+                      {test.videoUrl && (
+                        <>
+                          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                          
+                          {/* Play Button Overlay */}
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                            <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
 
               {/* Right Text Content */}
               <div className="flex flex-col py-1 pr-2">

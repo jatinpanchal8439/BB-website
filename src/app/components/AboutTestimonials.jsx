@@ -14,7 +14,8 @@ export default function AboutTestimonials() {
       brand: "Beauty & Lifestyle",
       quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
       image: "/klust-thumbnail.jpg",
-      logo: null
+      logo: null,
+      hasVideo: true
     },
     {
       id: 1,
@@ -22,7 +23,7 @@ export default function AboutTestimonials() {
       role: "FOUNDER, BIOGRAPHY",
       brand: "Perfume & Fragrance",
       quote: "BanegaBrand helped us turn our idea into BIOGRAPHY - from product development to market launch. The process was smooth and truly professional.",
-      image: "/mo1.png",
+      image: null,
       logo: "/logos/Biography logo.png"
     },
     {
@@ -91,23 +92,27 @@ export default function AboutTestimonials() {
               <div className="flex flex-col xl:flex-row gap-4 sm:gap-5 h-full">
                 
                 {/* Image and Play button */}
-                <div className="relative w-full xl:w-[45%] h-[180px] sm:h-[200px] xl:h-[240px] rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
-                  <div className="absolute inset-0 bg-gray-200">
-                     <Image 
-                       src={t.image} 
-                       alt={t.name} 
-                       fill 
-                       sizes="(max-width: 768px) 80vw, 25vw"
-                       className="object-cover" 
-                       onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop' }} 
-                     />
+                {t.image && (
+                  <div className="relative w-full xl:w-[45%] h-[180px] sm:h-[200px] xl:h-[240px] rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
+                    <div className="absolute inset-0 bg-gray-200">
+                       <Image 
+                         src={t.image} 
+                         alt={t.name} 
+                         fill 
+                         sizes="(max-width: 768px) 80vw, 25vw"
+                         className="object-cover" 
+                         onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop' }} 
+                       />
+                    </div>
+                    {t.hasVideo && (
+                      <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                        <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                          <Play className="w-4 h-4 text-[#0B1B36] ml-1" fill="currentColor" />
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
-                    <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                      <Play className="w-4 h-4 text-[#0B1B36] ml-1" fill="currentColor" />
-                    </button>
-                  </div>
-                </div>
+                )}
 
                 {/* Content */}
                 <div className="flex flex-col flex-1 justify-between py-1 sm:py-2">
