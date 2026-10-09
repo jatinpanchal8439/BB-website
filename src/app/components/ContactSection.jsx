@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { User, Phone, ChevronDown, FileText, LayoutGrid } from 'lucide-react';
+import { User, Phone, ChevronDown, FileText, LayoutGrid, IndianRupee, Clock } from 'lucide-react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     category: '',
+    budget: '',
+    timeline: '',
     idea: ''
   });
   const [status, setStatus] = useState('idle');
@@ -27,6 +29,8 @@ export default function ContactSection() {
           name: formData.name,
           phone: formData.phone,
           industry: formData.category,
+          budget: formData.budget,
+          timeline: formData.timeline,
           description: formData.idea,
         }),
       });
@@ -136,6 +140,46 @@ export default function ContactSection() {
                   <option value="Other">Other</option>
                 </select>
                 <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+              </div>
+
+              {/* Row 2.5: Budget and Timeline */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Budget Dropdown */}
+                <div className="relative">
+                  <IndianRupee size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-10 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Estimated Budget</option>
+                    <option value="Below ₹5 Lakh">Below ₹5 Lakh</option>
+                    <option value="₹5-10 Lakh">₹5-10 Lakh</option>
+                    <option value="₹10-25 Lakh">₹10-25 Lakh</option>
+                    <option value="₹25 Lakh+">₹25 Lakh+</option>
+                  </select>
+                  <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+                </div>
+
+                {/* Timeline Dropdown */}
+                <div className="relative">
+                  <Clock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+                  <select
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border border-[#E2E8F0] rounded-xl pl-11 pr-10 py-3.5 text-[14px] text-[#0F1C36] placeholder-[#94A3B8] outline-none focus:border-[#FF5000] focus:ring-1 focus:ring-[#FF5000] transition-colors shadow-xs appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>How Soon To Launch?</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="3 Months">3 Months</option>
+                    <option value="More than 3 months">More than 3 months</option>
+                  </select>
+                  <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none" />
+                </div>
               </div>
 
               {/* Row 3: Idea Textarea */}
