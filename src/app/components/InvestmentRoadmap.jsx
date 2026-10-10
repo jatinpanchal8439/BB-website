@@ -44,9 +44,9 @@ export default function InvestmentRoadmap() {
 
         {/* Timeline Image Section */}
         <div className="stagger-opacity slide-in w-full relative z-10">
-          <div className="w-full relative overflow-hidden p-0">
-            {/* The Image (Scales naturally on mobile, full width) */}
-            <div className="relative w-full">
+          <div className="w-full relative overflow-x-auto no-scrollbar py-2 px-4 sm:px-6 md:px-8">
+            {/* The Image (Scales naturally and allows horizontal scroll on small devices) */}
+            <div className="relative min-w-[640px] sm:min-w-full">
               <Image 
                 src="/assets/group114.png" 
                 alt="Brand Building Timeline" 
@@ -57,6 +57,9 @@ export default function InvestmentRoadmap() {
               />
             </div>
           </div>
+          <p className="text-center text-[12px] text-gray-400 mt-2 block sm:hidden">
+            ← Scroll horizontally to explore roadmap →
+          </p>
         </div>
 
       </div>

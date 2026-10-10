@@ -63,13 +63,13 @@ export default function FeaturedLaunches() {
           </div>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Cards Grid / Mobile Carousel */}
+        <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-5 md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {launches.map((launch, index) => (
             <Link 
               href={launch.href}
               key={index} 
-              className="bg-white rounded-[1.5rem] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full border border-gray-100 group block cursor-pointer"
+              className="snap-center shrink-0 w-[85%] sm:w-[60%] md:w-auto bg-white rounded-[1.5rem] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-auto md:h-full border border-gray-100 group block cursor-pointer"
             >
               {/* Image Container */}
               <div className="relative w-full aspect-[4/3] bg-[#F8F9FA] border-b border-gray-50 overflow-hidden">
@@ -78,20 +78,20 @@ export default function FeaturedLaunches() {
                   alt={launch.title} 
                   fill 
                   className="object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               
               {/* Card Content */}
-              <div className="p-7 flex flex-col flex-grow">
+              <div className="p-6 md:p-7 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-[22px] font-black text-[#1E1E1E] tracking-tight">{launch.title}</h3>
-                  <span className={`px-3 py-1 rounded-full text-[11px] font-bold ${launch.badgeColor}`}>
+                  <h3 className="text-[20px] md:text-[22px] font-black text-[#1E1E1E] tracking-tight">{launch.title}</h3>
+                  <span className={`px-3 py-1 rounded-full text-[10px] md:text-[11px] font-bold ${launch.badgeColor}`}>
                     {launch.badge}
                   </span>
                 </div>
                 
-                <p className="text-gray-500 text-[13px] font-medium leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-500 text-[12px] md:text-[13px] font-medium leading-relaxed mb-6 flex-grow">
                   {launch.description}
                 </p>
                 

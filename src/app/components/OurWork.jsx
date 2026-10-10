@@ -64,7 +64,7 @@ export default function OurWork() {
           </div>
 
           {/* Main Heading */}
-          <h2 className="ow-text text-[3.5rem] md:text-[5rem] lg:text-[72px] xl:text-[80px] font-black text-[#111] leading-[1.05] tracking-tight mb-6 relative z-10 w-full">
+          <h2 className="ow-text text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[72px] xl:text-[80px] font-black text-[#111] leading-[1.05] tracking-tight mb-6 relative z-10 w-full">
             Brands We&apos;ve <br />
             <span className="text-[#FF4D00]">Helped</span> Bring <br />
             <span className="relative inline-block">

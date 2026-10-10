@@ -42,52 +42,52 @@ export default function InvestmentEstimate() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-[40px] sm:text-[48px] lg:text-[54px] font-[800] text-[#061B35] leading-[1.08] tracking-tight mb-6">
+          <h2 className="text-[30px] sm:text-[44px] lg:text-[54px] font-[800] text-[#061B35] leading-[1.12] sm:leading-[1.08] tracking-tight mb-4 sm:mb-6">
             Let's Plan Your<br className="hidden sm:block" />
-            <span className="text-[#FF5425]">Investment Clearly</span>
+            <span className="text-[#FF5425]"> Investment Clearly</span>
           </h2>
 
           {/* Description */}
-          <p className="text-gray-500 text-[15px] sm:text-[16px] font-medium leading-relaxed max-w-[480px] mb-10">
+          <p className="text-gray-500 text-[14px] sm:text-[16px] font-medium leading-relaxed max-w-[480px] mb-8 sm:mb-10">
             Your category, MOQ, packaging and launch plan all affect the final investment. We help you understand where your money will go before you start.
           </p>
 
           {/* 4 Grid Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
             {cards.map((card, idx) => (
-              <div key={idx} className="bg-white/90 backdrop-blur-sm border border-orange-100 rounded-[14px] p-4 flex flex-col items-center justify-center text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-orange-200 transition-all cursor-default group">
-                <div className="w-[42px] h-[42px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] mb-3 group-hover:scale-110 transition-transform">
+              <div key={idx} className="bg-white/90 backdrop-blur-sm border border-orange-100 rounded-xl sm:rounded-[14px] p-3.5 sm:p-4 flex flex-col items-center justify-center text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-orange-200 transition-all cursor-default group">
+                <div className="w-[38px] h-[38px] sm:w-[42px] sm:h-[42px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
                   {card.icon}
                 </div>
-                <h4 className="text-[13px] font-bold text-[#061B35] mb-1 leading-tight">{card.title}</h4>
-                <p className="text-[11px] text-gray-500 leading-snug">{card.desc}</p>
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-[#061B35] mb-1 leading-tight">{card.title}</h4>
+                <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug">{card.desc}</p>
               </div>
             ))}
           </div>
 
           {/* Investment Range Pill */}
-          <div className="bg-[#FFF8F3]/95 backdrop-blur-sm border border-orange-100 rounded-full px-6 py-4 flex flex-col sm:flex-row items-center sm:justify-between gap-4 sm:gap-6 shadow-sm">
-            <div className="flex items-center gap-4 min-w-max">
-              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-[#FF5425]">
+          <div className="bg-[#FFF8F3]/95 backdrop-blur-sm border border-orange-100 rounded-2xl sm:rounded-full px-5 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 shadow-sm w-full">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-[#FF5425] shrink-0">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold uppercase tracking-wide text-[#FF4D00] font-[family-name:var(--font-poppins)]">Estimated Investment Range</span>
-                <span className="text-[20px] font-extrabold text-[#061B35] leading-tight">₹2.5 lakh - ₹15 lakh</span>
+                <span className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-wide text-[#FF4D00] font-[family-name:var(--font-poppins)]">Estimated Investment Range</span>
+                <span className="text-[18px] sm:text-[20px] font-extrabold text-[#061B35] leading-tight">₹2.5 lakh - ₹15 lakh</span>
               </div>
             </div>
             
             <div className="hidden sm:block w-px h-10 bg-orange-200/60"></div>
             
-            <p className="text-[12px] text-gray-500 font-medium text-center sm:text-left leading-snug">
+            <p className="text-[11px] sm:text-[12px] text-gray-500 font-medium text-left leading-snug">
               (Confirm the range with the team before publishing.)
             </p>
           </div>
 
           {/* CTA Button */}
-          <Link href="/contact" className="mt-10 group flex items-center justify-between gap-6 bg-[#FF5425] text-white pl-8 pr-2 py-2 rounded-full font-bold text-[15px] hover:bg-[#E84515] hover:-translate-y-1 transition-all shadow-xl shadow-orange-500/20 w-max max-w-full">
+          <Link href="/contact" className="mt-8 sm:mt-10 group flex items-center justify-between gap-4 sm:gap-6 bg-[#FF5425] text-white pl-6 sm:pl-8 pr-2 py-2 rounded-full font-bold text-sm sm:text-[15px] hover:bg-[#E84515] hover:-translate-y-1 transition-all shadow-xl shadow-orange-500/20 w-full sm:w-max">
             <span>Get a Rough Estimate for Your Idea</span>
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF5425] shrink-0 group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center text-[#FF5425] shrink-0 group-hover:scale-105 transition-transform">
               <svg className="w-4 h-4 translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </div>
           </Link>

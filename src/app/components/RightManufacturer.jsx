@@ -67,7 +67,7 @@ export default function RightManufacturer() {
             </div>
 
             {/* Main Factory Circle */}
-            <div className="relative z-0 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] rounded-full overflow-hidden shadow-2xl ml-auto">
+            <div className="relative z-0 w-[260px] h-[260px] sm:w-[450px] sm:h-[450px] rounded-full overflow-hidden shadow-2xl mx-auto lg:ml-auto lg:mx-0">
               <Image 
                 src="/factory.jpg" 
                 alt="Factory production line" 
@@ -77,7 +77,7 @@ export default function RightManufacturer() {
             </div>
 
             {/* Overlapping Perfume Circle */}
-            <div className="absolute z-20 bottom-[-30px] left-[-10px] sm:bottom-[-40px] sm:left-[-20px] w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] rounded-full overflow-hidden border-[8px] sm:border-[12px] border-[#FAF8F5] shadow-[0_20px_40px_rgba(0,0,0,0.15)] bg-white">
+            <div className="absolute z-20 bottom-[-20px] left-[5%] sm:bottom-[-40px] sm:left-[-20px] w-[140px] h-[140px] sm:w-[260px] sm:h-[260px] rounded-full overflow-hidden border-[6px] sm:border-[12px] border-[#FAF8F5] shadow-[0_20px_40px_rgba(0,0,0,0.15)] bg-white">
               <Image 
                 src="/perfume.jpg" 
                 alt="Perfume Product" 
@@ -89,8 +89,8 @@ export default function RightManufacturer() {
           </div>
 
           {/* Right Side - Content */}
-          <div className="w-full lg:w-[55%] flex flex-col pt-12 lg:pt-0">
-            <h2 className="text-[2.5rem] sm:text-[3rem] lg:text-[3.5rem] font-extrabold text-[#0B1B36] leading-[1.1] tracking-tight mb-6">
+          <div className="w-full lg:w-[55%] flex flex-col pt-8 lg:pt-0">
+            <h2 className="text-[2.2rem] sm:text-[3rem] lg:text-[3.5rem] font-extrabold text-[#0B1B36] leading-[1.1] tracking-tight mb-6">
               Finding the Right <br className="hidden md:block" />
               Manufacturer <br className="hidden md:block" />
               <span className="text-[#FF4D00]">Shouldn't Be Your Problem</span>

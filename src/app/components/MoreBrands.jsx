@@ -43,7 +43,7 @@ export default function MoreBrands() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col items-center relative z-10">
 
         {/* Heading */}
-        <h2 className="text-[2.8rem] sm:text-[3.5rem] md:text-[4rem] font-black text-[#111] leading-[1.05] tracking-tight text-center mb-3">
+        <h2 className="text-[2rem] sm:text-[2.8rem] md:text-[4rem] font-black text-[#111] leading-[1.05] tracking-tight text-center mb-3">
           More Brands We&apos;ve
           <br />
           <span className="text-[#FF4D00]">Worked With.</span>

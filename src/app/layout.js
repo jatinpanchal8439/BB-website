@@ -76,10 +76,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${plusJakarta.className} ${caveat.variable} ${poppins.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${plusJakarta.className} ${caveat.variable} ${poppins.variable} h-full antialiased overflow-x-hidden`}
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden w-full">
         <Navbar />
         {children}
         <ScrollToTop />

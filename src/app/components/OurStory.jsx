@@ -10,10 +10,10 @@ export default function OurStory() {
         <div className="w-full xl:w-[50%] flex flex-col pt-2 sm:pt-4 xl:pt-12">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
             <span className="w-8 sm:w-12 h-[2px] bg-[#FF4D00]"></span>
-            <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Our Story</span>
+            <span className="text-[12px] sm:text-sm font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Our Story</span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#0B1B36] leading-[1.1] sm:leading-[1.05] tracking-tight mb-6 sm:mb-8">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#0B1B36] leading-[1.12] sm:leading-[1.05] tracking-tight mb-5 sm:mb-8">
             Why We Started<br/>
             <span className="text-[#FF4D00]">Banega Brand</span>
           </h2>

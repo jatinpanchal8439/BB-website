@@ -69,7 +69,7 @@ export default function RealFounders() {
           <div className="w-16 h-[1px] bg-gray-400"></div>
         </div>
 
-        <h2 className="text-[3rem] sm:text-[4rem] md:text-[5rem] font-black text-[#111] leading-[1.05] tracking-tight text-center mb-6">
+        <h2 className="text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] font-black text-[#111] leading-[1.05] tracking-tight text-center mb-6">
           Real Founders.<br />
           <span className="text-[#FF4D00]">Real Launches.</span>
         </h2>

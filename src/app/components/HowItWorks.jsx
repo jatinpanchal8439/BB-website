@@ -123,91 +123,117 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" ref={container} className="relative bg-[#FCFBF8] py-24 overflow-hidden border-t border-gray-100">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+    <section id="how-it-works" ref={container} className="relative bg-[#FCFBF8] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden border-t border-gray-100">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="mb-16 md:mb-24 how-title">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">How It Works</span>
-            <div className="h-[1px] w-12 bg-gray-300"></div>
+        <div className="mb-10 sm:mb-16 md:mb-20 how-title">
+          <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">How It Works</span>
+            <div className="h-[1px] w-10 sm:w-12 bg-gray-300"></div>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1E1E] leading-[1.1] tracking-tight mb-6">
-            Here's What the<br />
+          <h2 className="text-[28px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1E1E] leading-[1.12] sm:leading-[1.1] tracking-tight mb-4 sm:mb-6">
+            Here&apos;s What the<br />
             Journey <span className="text-[#FF4D00]">Looks Like</span>
           </h2>
           
-          <p className="text-gray-600 text-lg md:text-xl font-medium leading-relaxed max-w-xl mb-10">
+          <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-xl mb-6 sm:mb-10">
             From idea to market, we handle the key steps so you can focus on building a successful brand.
           </p>
         </div>
 
         {/* Timeline Section */}
-        <div className="relative mt-20 mb-10">
+        <div className="relative mt-8 sm:mt-14 mb-6">
           
-          {/* Connecting Line with Dots */}
-          <div className="absolute top-10 -left-4 w-[calc(100%+2rem)] h-[1px] hidden lg:block -z-10">
-             {/* The swooping curved SVG line */}
-             <svg className="absolute top-1/2 -translate-y-[20px] left-0 w-full h-[180px] overflow-visible pointer-events-none" viewBox="0 0 1400 180" fill="none" preserveAspectRatio="none">
-               <path 
-                 d="M 50 170 Q 0 170 0 95 Q 0 20 50 20 L 1350 20 Q 1400 20 1400 95 Q 1400 170 1350 170" 
-                 stroke="#FF4D00" 
-                 strokeWidth="1.2" 
-                 strokeOpacity="0.5" 
-                 fill="none" 
-               />
-             </svg>
-             
-             {/* Small dots on the line between items */}
-             <div className="absolute top-1/2 -translate-y-1/2 left-[16.5%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
-             <div className="absolute top-1/2 -translate-y-1/2 left-[32.6%] w-1.5 h-1.5 rounded-full bg-[#4A72FF]"></div>
-             <div className="absolute top-1/2 -translate-y-1/2 left-[49%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
-             <div className="absolute top-1/2 -translate-y-1/2 left-[65.4%] w-1.5 h-1.5 rounded-full bg-[#4A72FF]"></div>
-             <div className="absolute top-1/2 -translate-y-1/2 left-[81.7%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
-          </div>
+          <div className="relative w-full">
+            <div className="relative w-full">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4 relative z-10">
-            {steps.map((step, index) => {
-              const isOrange = step.colorType === 'orange';
-              const bgClass = isOrange ? 'bg-[#FFF2E8]' : 'bg-[#EEF2FF]';
-              const textClass = isOrange ? 'text-[#FF4D00]' : 'text-[#4A72FF]';
+              {/* Connecting Line with Dots (Desktop Only) */}
+              <div className="hidden xl:block absolute top-10 -left-4 w-[calc(100%+2rem)] h-[1px] -z-10 pointer-events-none">
+                {/* The swooping curved SVG line */}
+                <svg className="absolute top-1/2 -translate-y-[20px] left-0 w-full h-[180px] overflow-visible pointer-events-none" viewBox="0 0 1400 180" fill="none" preserveAspectRatio="none">
+                  <path 
+                    d="M 50 170 Q 0 170 0 95 Q 0 20 50 20 L 1350 20 Q 1400 20 1400 95 Q 1400 170 1350 170" 
+                    stroke="#FF4D00" 
+                    strokeWidth="1.2" 
+                    strokeOpacity="0.5" 
+                    fill="none" 
+                  />
+                </svg>
+                
+                {/* Small dots on the line between items */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-[16.5%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[32.6%] w-1.5 h-1.5 rounded-full bg-[#4A72FF]"></div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[49%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[65.4%] w-1.5 h-1.5 rounded-full bg-[#4A72FF]"></div>
+                <div className="absolute top-1/2 -translate-y-1/2 left-[81.7%] w-1.5 h-1.5 rounded-full bg-[#FF4D00]"></div>
+              </div>
 
-              return (
-                <div key={index} className="flex flex-col items-center lg:items-start group relative how-step">
-                  {/* Icon & Number */}
-                  <div className="relative mb-6">
-                    <div className={`w-20 h-20 rounded-full ${bgClass} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-[0_0_0_6px_#FCFBF8]`}>
-                      {step.icon}
-                    </div>
-                    {/* Number Badge */}
-                    <div className={`absolute -top-1 -right-4 w-7 h-7 rounded-full flex items-center justify-center ${bgClass} text-xs font-black ${textClass} border-[3px] border-[#FCFBF8]`}>
-                      {step.number}
-                    </div>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-6 gap-y-12 sm:gap-y-16 gap-x-4 sm:gap-x-6 relative z-10 w-full max-w-[220px] sm:max-w-none mx-auto sm:mx-0">
+                {steps.map((step, index) => {
+                  const isOrange = step.colorType === 'orange';
+                  const bgClass = isOrange ? 'bg-[#FFF2E8]' : 'bg-[#EEF2FF]';
+                  const textClass = isOrange ? 'text-[#FF4D00]' : 'text-[#4A72FF]';
 
-                  {/* Text Content */}
-                  <div className="text-center lg:text-left h-full flex flex-col">
-                    <h3 className="text-lg font-bold text-[#1E1E1E] mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-xs font-medium leading-relaxed pr-0 lg:pr-4 mb-4">
-                      {step.description}
-                    </p>
-                    
-                    {index === 0 && (
-                      <div className="mt-auto pt-4">
-                        <Link
-                          href="/our-process"
-                          className="inline-flex items-center gap-3 bg-white border border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-6 py-2.5 rounded-full text-xs font-semibold transition-colors duration-300 shadow-sm cursor-pointer"
-                        >
-                          See How It Works
-                          <ArrowRight size={14} />
-                        </Link>
+                  return (
+                    <div key={index} className="flex flex-col items-center sm:items-start group relative how-step sm:pr-2">
+                      {/* Icon & Number */}
+                      <div className="relative mb-4 sm:mb-6">
+                        <div className={`w-[72px] h-[72px] sm:w-20 sm:h-20 rounded-full ${bgClass} flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-[0_0_0_6px_#FCFBF8]`}>
+                          {step.icon}
+                        </div>
+                        {/* Number Badge */}
+                        <div className={`absolute -top-1 -right-3 sm:-right-4 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center ${bgClass} text-xs font-black ${textClass} border-[3px] border-[#FCFBF8]`}>
+                          {step.number}
+                        </div>
                       </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+
+                      {/* Text Content */}
+                      <div className="text-left h-full flex flex-col w-full">
+                        <h3 className="text-base sm:text-lg font-bold text-[#1E1E1E] mb-1.5 sm:mb-2">{step.title}</h3>
+                        <p className="text-gray-500 text-[13px] sm:text-xs font-medium leading-relaxed sm:pr-2 mb-0 sm:mb-4">
+                          {step.description}
+                        </p>
+                        
+                        {/* Mobile Vertical Timeline Line */}
+                        {index < steps.length - 1 && (
+                          <div className="flex sm:hidden flex-col items-center absolute left-1/2 -translate-x-1/2 top-[100%] h-12 w-[1.5px] z-0">
+                            <div className={`w-[1.5px] h-1/2 ${isOrange ? 'bg-[#FF4D00]/40' : 'bg-[#4A72FF]/40'}`}></div>
+                            <div className={`w-[7px] h-[7px] rounded-full shrink-0 ${isOrange ? 'bg-[#FF4D00]' : 'bg-[#4A72FF]'}`}></div>
+                            <div className={`w-[1.5px] h-1/2 ${isOrange ? 'bg-[#FF4D00]/40' : 'bg-[#4A72FF]/40'}`}></div>
+                          </div>
+                        )}
+                        
+                        {index === 0 && (
+                          <div className="hidden xl:block mt-auto pt-3">
+                            <Link
+                              href="/our-process"
+                              className="inline-flex items-center gap-2 sm:gap-3 bg-white border border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-semibold transition-colors duration-300 shadow-sm cursor-pointer whitespace-nowrap active:scale-95"
+                            >
+                              <span>See How It Works</span>
+                              <ArrowRight size={14} />
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Mobile/Tablet Centered CTA */}
+              <div className="flex xl:hidden justify-center mt-10 w-full relative z-10">
+                <Link
+                  href="/our-process"
+                  className="inline-flex items-center gap-2 sm:gap-3 bg-white border border-[#4A72FF] text-[#4A72FF] hover:bg-[#4A72FF] hover:text-white px-6 sm:px-8 py-3 rounded-full text-sm font-semibold transition-colors duration-300 shadow-sm cursor-pointer whitespace-nowrap active:scale-95"
+                >
+                  <span>See How It Works</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+
+            </div>
           </div>
           
         </div>

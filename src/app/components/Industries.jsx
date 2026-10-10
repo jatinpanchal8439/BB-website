@@ -90,28 +90,30 @@ export default function Industries() {
 
         {/* Right Cards Area */}
         <div className="w-full xl:w-[72%]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 pb-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 pb-4">
             {industries.map((industry, index) => (
               <Link 
                 href="/industries"
                 key={index}
-                className="w-full h-[420px] bg-white rounded-3xl shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden group flex flex-col border border-gray-100"
+                className="w-full h-[310px] sm:h-[420px] bg-white rounded-2xl sm:rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_35px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 relative overflow-hidden group flex flex-col border border-gray-100/60"
               >
                 {/* Top Text Section */}
-                <div className="p-5 relative z-20 flex-shrink-0">
-                  <div className={`w-11 h-11 rounded-full ${industry.iconBg} flex items-center justify-center mb-3.5 border border-white shadow-2xs`}>
-                    {industry.icon}
+                <div className="p-3.5 sm:p-5 relative z-20 flex-shrink-0">
+                  <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full ${industry.iconBg} flex items-center justify-center mb-2.5 sm:mb-3.5`}>
+                    <div className="scale-75 sm:scale-100 flex items-center justify-center">
+                      {industry.icon}
+                    </div>
                   </div>
                   
-                  <h3 className="text-[15px] font-bold text-[#1E1E1E] leading-snug whitespace-pre-line mb-2">
+                  <h3 className="text-[13px] sm:text-[15px] font-medium sm:font-bold text-[#1E1E1E] leading-[1.25] tracking-tight whitespace-pre-line mb-1.5 sm:mb-2">
                     {industry.title}
                   </h3>
                   
-                  <ArrowRight size={17} className={`${industry.arrowColor} transition-transform group-hover:translate-x-1`} />
+                  <ArrowRight size={17} className={`${industry.arrowColor} transition-transform group-hover:translate-x-1 w-3.5 h-3.5 sm:w-[17px] sm:h-[17px]`} />
                 </div>
                 
                 {/* Bottom Image Section with Curved Arch Backdrop */}
-                <div className="absolute inset-0 top-[110px] z-0 overflow-hidden rounded-b-3xl">
+                <div className="absolute inset-0 top-[85px] sm:top-[145px] lg:top-[130px] z-0 overflow-hidden rounded-b-2xl sm:rounded-b-3xl">
                   {/* Colored Curved Backdrop Arch/Circle */}
                   <div className={`absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[118%] aspect-square rounded-full ${industry.backdropColor} transition-transform duration-500 group-hover:scale-105 pointer-events-none`}></div>
                   
@@ -120,8 +122,8 @@ export default function Industries() {
                     src={industry.image} 
                     alt={industry.title.replace('\n', ' ')}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover object-bottom transition-transform duration-500 group-hover:scale-105 relative z-10"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-contain sm:object-cover object-bottom scale-[1.05] sm:scale-100 transition-transform duration-500 group-hover:scale-[1.15] sm:group-hover:scale-105 relative z-10 origin-bottom"
                   />
                 </div>
               </Link>

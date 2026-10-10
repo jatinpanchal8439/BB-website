@@ -8,12 +8,12 @@ export default function BlogBottomCTA() {
       <div className="flex flex-col items-center">
         
         {/* Heading */}
-        <h2 className="text-[44px] sm:text-[56px] lg:text-[68px] font-[800] leading-[1.05] tracking-tight text-[#061B35] mb-4 text-center relative">
+        <h2 className="text-[36px] sm:text-[56px] lg:text-[68px] font-[800] leading-[1.05] tracking-tight text-[#061B35] mb-4 text-center relative">
           Have a<br />
           <span className="text-[#FF5425] relative inline-block">
             Similar Question?
             {/* Sparkle lines SVG */}
-            <svg className="absolute -right-10 -top-2 w-10 h-10 text-[#FF5425]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="absolute -right-10 -top-2 w-8 h-8 sm:w-10 sm:h-10 text-[#FF5425]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2v6" />
               <path d="M21 7l-4.5 4.5" />
               <path d="M23 15h-6" />
