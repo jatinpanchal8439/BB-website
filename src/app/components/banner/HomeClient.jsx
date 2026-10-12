@@ -167,63 +167,77 @@ function BottomCard({ image, number, title }) {
 
 function BottomSection() {
   return (
-    <section className="relative w-full h-[600px] overflow-hidden bg-transparent z-0 -mt-16 lg:-mt-24 pointer-events-none">
-      {/* Background Image */}
-      <Image
-        src="/bg.png"
-        alt="Background"
-        fill
-        sizes="100vw"
-        className="object-cover object-bottom"
-        priority
-      />
-
-      {/* Overlay Content Container */}
-      <div className="absolute inset-0 max-w-[1300px] mx-auto w-full pointer-events-none hidden md:block">
-
-        {/* Floating Text Left */}
-        <div className="absolute top-[34%] left-[36%] z-10">
-          <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
-            Your<br />Idea<br />Here
-          </p>
-          <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
-        </div>
-
-        {/* Floating Text Right */}
-        <div className="absolute top-[34%] right-[31%] z-10">
-          <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
-            A Real<br />Brand<br />Tomorrow
-          </p>
-          <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
-        </div>
-
-        {/* Cards Row */}
-        <div className="absolute bottom-18 w-full px-6 flex justify-between items-end pointer-events-auto">
-
-          {/* Left Cards */}
-          <div className="flex gap-6 w-[38%]">
-            <div className="flex-1">
-              <BottomCard image="/new-card-1.png" number="01" title={"PRODUCT\nDEVELOPMENT"} />
-            </div>
-            <div className="flex-1">
-              <BottomCard image="/card-2.png" number="02" title={"BRAND\nBUILDING"} />
-            </div>
-          </div>
-
-          {/* Right Cards */}
-          <div className="flex gap-6 w-[38%]">
-            <div className="flex-1">
-              <BottomCard image="/card-3.png" number="03" title={"COMPLIANCE\n& MANUFACTURING"} />
-            </div>
-            <div className="flex-1">
-              <BottomCard image="/card-4.png" number="04" title={"LAUNCH\n& GROW"} />
-            </div>
-          </div>
-
+    <>
+      {/* Mobile View: Dedicated clean hero door image */}
+      <div className="md:hidden relative w-full -mt-2 mb-2 overflow-hidden pointer-events-none">
+        <div className="relative w-full aspect-[16/9] xs:aspect-[16/8.5]">
+          <Image
+            src="/hero-door-mobile.png"
+            alt="Open Door to Your Brand"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+          />
         </div>
       </div>
-    </section>
-  )
+
+      {/* Desktop View: Full background with overlay text and cards */}
+      <section className="hidden md:block relative w-full h-[520px] lg:h-[600px] overflow-hidden bg-transparent z-0 md:-mt-16 lg:-mt-24 pointer-events-none">
+        {/* Background Image */}
+        <Image
+          src="/bg.png"
+          alt="Background"
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom"
+          priority
+        />
+
+        {/* Overlay Content Container */}
+        <div className="absolute inset-0 max-w-[1300px] mx-auto w-full pointer-events-none">
+          {/* Floating Text Left */}
+          <div className="absolute top-[34%] left-[36%] z-10">
+            <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
+              Your<br />Idea<br />Here
+            </p>
+            <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
+          </div>
+
+          {/* Floating Text Right */}
+          <div className="absolute top-[34%] right-[31%] z-10">
+            <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
+              A Real<br />Brand<br />Tomorrow
+            </p>
+            <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
+          </div>
+
+          {/* Cards Row */}
+          <div className="absolute bottom-18 w-full px-6 flex justify-between items-end pointer-events-auto">
+            {/* Left Cards */}
+            <div className="flex gap-6 w-[38%]">
+              <div className="flex-1">
+                <BottomCard image="/new-card-1.png" number="01" title={"PRODUCT\nDEVELOPMENT"} />
+              </div>
+              <div className="flex-1">
+                <BottomCard image="/card-2.png" number="02" title={"BRAND\nBUILDING"} />
+              </div>
+            </div>
+
+            {/* Right Cards */}
+            <div className="flex gap-6 w-[38%]">
+              <div className="flex-1">
+                <BottomCard image="/card-3.png" number="03" title={"COMPLIANCE\n& MANUFACTURING"} />
+              </div>
+              <div className="flex-1">
+                <BottomCard image="/card-4.png" number="04" title={"LAUNCH\n& GROW"} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
 
 export default function HomeClient() {
