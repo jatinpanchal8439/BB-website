@@ -7,12 +7,46 @@ import { Zap, ArrowRight, TrendingUp, Trophy, BarChart3, Droplet, Sparkles, Leaf
 export default function RealFounders() {
   const [activeFilter, setActiveFilter] = useState("All");
 
+  const SprayIcon = ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 11h10v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V11z" />
+      <path d="M6 11V8a3 3 0 0 1 6 0v3" />
+      <path d="M9 4V2" />
+      <path d="M17 6h3" />
+      <path d="M16 3l2-1" />
+      <path d="M16 9l2 1" />
+    </svg>
+  );
+
+  const BottleIcon = ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="6" y="9" width="12" height="12" rx="2" />
+      <path d="M9 5h6v4H9z" />
+      <path d="M12 2v3" />
+      <circle cx="12" cy="15" r="1.5" />
+    </svg>
+  );
+
+  const LeafIcon = ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 20A7 7 0 0 1 4 13C4 7 10 3 20 3c0 10-4 16-9 17Z" />
+      <path d="M4 21c3.5-3.5 6-8 7-13" />
+    </svg>
+  );
+
+  const PillIcon = ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" />
+      <path d="m8.5 8.5 7 7" />
+    </svg>
+  );
+
   const filters = [
     { name: "All", icon: null },
-    { name: "Perfume", icon: Droplet },
-    { name: "Beauty & Skincare", icon: Sparkles },
-    { name: "Ayurveda", icon: Leaf },
-    { name: "Nutraceuticals", icon: Pill },
+    { name: "Perfumes", icon: SprayIcon, category: "Perfume" },
+    { name: "Beauty & Skincare", icon: BottleIcon, category: "Beauty & Skincare" },
+    { name: "Ayurveda", icon: LeafIcon, category: "Ayurveda" },
+    { name: "Nutraceuticals", icon: PillIcon, category: "Nutraceuticals" },
   ];
 
   const brands = [
@@ -56,44 +90,51 @@ export default function RealFounders() {
 
   const filteredBrands = activeFilter === "All" 
     ? brands 
-    : brands.filter(brand => brand.category === activeFilter);
+    : brands.filter(brand => {
+        const selected = filters.find(f => f.name === activeFilter);
+        return brand.category === (selected?.category || activeFilter);
+      });
 
   return (
-    <section className="w-full bg-[#FCFBF8] py-20 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col items-center">
+    <section className="w-full bg-[#FCFBF8] py-14 sm:py-20 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-12 flex flex-col items-center">
         
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-[1px] bg-gray-400"></div>
-          <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Brands We&apos;ve Helped</span>
-          <div className="w-16 h-[1px] bg-gray-400"></div>
+        {/* Header Badge */}
+        <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+          <div className="w-8 sm:w-16 h-[1px] bg-gray-300"></div>
+          <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#18181B] whitespace-nowrap font-[family-name:var(--font-poppins)]">
+            Brands We&apos;ve Helped
+          </span>
+          <div className="w-8 sm:w-16 h-[1px] bg-gray-300"></div>
         </div>
 
-        <h2 className="text-[2.2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] font-black text-[#111] leading-[1.05] tracking-tight text-center mb-6">
+        <h2 className="text-[2.2rem] xs:text-[2.6rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-black text-[#111] leading-[1.06] tracking-tight text-center mb-3 sm:mb-4">
           Real Founders.<br />
           <span className="text-[#FF4D00]">Real Launches.</span>
         </h2>
 
-        <p className="text-lg md:text-xl text-gray-500 font-medium text-center mb-12">
+        <p className="text-sm sm:text-base md:text-lg text-gray-500 font-normal sm:font-medium text-center mb-6 sm:mb-10 max-w-xl px-2">
           From idea to market — explore the brands we&apos;ve helped build.
         </p>
 
-        {/* Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16">
-          {filters.map((filter) => (
-            <button
-              key={filter.name}
-              onClick={() => setActiveFilter(filter.name)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeFilter === filter.name
-                  ? "bg-[#FF4D00] text-white shadow-lg shadow-orange-500/30"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:shadow-sm"
-              }`}
-            >
-              {filter.icon && <filter.icon className="w-4 h-4" strokeWidth={2.5} />}
-              {filter.name}
-            </button>
-          ))}
+        {/* Filters - Horizontal scrollable single-row without scrollbar */}
+        <div className="w-full max-w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pb-1 mb-8 sm:mb-14">
+          <div className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-3 px-3 sm:px-0 min-w-max mx-auto">
+            {filters.map((filter) => (
+              <button
+                key={filter.name}
+                onClick={() => setActiveFilter(filter.name)}
+                className={`flex items-center gap-1.5 px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 shrink-0 ${
+                  activeFilter === filter.name
+                    ? "bg-[#FF4D00] text-white shadow-md shadow-orange-500/25"
+                    : "bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:shadow-sm"
+                }`}
+              >
+                {filter.icon && <filter.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-current" />}
+                <span>{filter.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Cards Grid */}
