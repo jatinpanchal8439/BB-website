@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Zap, ArrowRight, TrendingUp, Trophy, BarChart3, Droplet, Sparkles, Leaf, Pill } from "lucide-react";
+import { Zap, ArrowRight, TrendingUp, Trophy, BarChart3, Droplet, Sparkles, Leaf, Pill, Flower2 } from "lucide-react";
 
 export default function RealFounders() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -15,15 +15,6 @@ export default function RealFounders() {
       <path d="M17 6h3" />
       <path d="M16 3l2-1" />
       <path d="M16 9l2 1" />
-    </svg>
-  );
-
-  const BottleIcon = ({ className }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="6" y="9" width="12" height="12" rx="2" />
-      <path d="M9 5h6v4H9z" />
-      <path d="M12 2v3" />
-      <circle cx="12" cy="15" r="1.5" />
     </svg>
   );
 
@@ -43,8 +34,8 @@ export default function RealFounders() {
 
   const filters = [
     { name: "All", icon: null },
-    { name: "Perfumes", icon: SprayIcon, category: "Perfume" },
-    { name: "Beauty & Skincare", icon: BottleIcon, category: "Beauty & Skincare" },
+    { name: "Perfume", icon: SprayIcon, category: "Perfume" },
+    { name: "Beauty & Skincare", icon: Flower2, category: "Beauty & Skincare" },
     { name: "Ayurveda", icon: LeafIcon, category: "Ayurveda" },
     { name: "Nutraceuticals", icon: PillIcon, category: "Nutraceuticals" },
   ];
