@@ -24,7 +24,7 @@ function TopSection() {
 
       {/* Title & Stats Wrapper */}
       <div className="relative w-full flex justify-center items-center ">
-        
+
         {/* Left Side stat */}
         <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-4 xl:left-[4%] items-center z-10">
           <div className="flex flex-col">
@@ -34,7 +34,7 @@ function TopSection() {
               <span className="w-6 xl:w-8 h-[1px] bg-[#d1d1d1] shrink-0"></span>
             </div>
             <div className="text-[9px] xl:text-[10px] text-[#555] font-bold leading-snug mt-1 w-20 uppercase tracking-wider">
-              BRANDS<br/>LAUNCHED
+              BRANDS<br />LAUNCHED
             </div>
           </div>
           <div className="w-[1px] h-[45px] xl:h-[52px] bg-[#d1d1d1] ml-4 xl:ml-8"></div>
@@ -47,21 +47,21 @@ function TopSection() {
             <svg viewBox="0 0 1000 300" className="w-full h-full text-[#F35D18] overflow-visible">
               <g transform="rotate(-3 500 150)">
                 {/* Orbit Path */}
-                <path 
-                  id="orbitPath" 
-                  d="M 940,150 a 440,105 0 0,1 -880,0 a 440,105 0 0,1 880,0" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5" 
+                <path
+                  id="orbitPath"
+                  d="M 940,150 a 440,105 0 0,1 -880,0 a 440,105 0 0,1 880,0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
                 />
-                
+
                 {/* Right Big Dot */}
                 <circle r="12" fill="currentColor">
                   <animateMotion dur="12s" repeatCount="indefinite">
                     <mpath href="#orbitPath" />
                   </animateMotion>
                 </circle>
-                
+
                 {/* Left Small Dot */}
                 <circle r="4" fill="currentColor">
                   <animateMotion dur="12s" repeatCount="indefinite" begin="-6s">
@@ -74,24 +74,23 @@ function TopSection() {
 
           <h1 className="font-black text-[#0f0f0f] tracking-tighter z-10 text-center uppercase flex flex-col items-center gap-1 leading-none">
             <span className="text-[65px] lg:text-[75px] xl:text-[110px]">IDEAS INTO</span>
-            
+
             {/* Animated Rotating Words */}
             <div className="relative inline-flex flex-col items-center justify-center overflow-hidden">
               {/* Invisible widest word to maintain layout width */}
               <span className="text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px] opacity-0 pointer-events-none select-none">
                 EXPERIENCES
               </span>
-              
+
               {words.map((word, i) => (
                 <span
                   key={word}
-                  className={`absolute text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px] transition-all duration-700 ease-in-out ${
-                    i === index 
-                      ? "opacity-100 translate-y-0" 
+                  className={`absolute text-[#F35D18] text-[75px] lg:text-[85px] xl:text-[125px] transition-all duration-700 ease-in-out ${i === index
+                      ? "opacity-100 translate-y-0"
                       : i === (index - 1 + words.length) % words.length
-                        ? "opacity-0 -translate-y-[120%]" 
+                        ? "opacity-0 -translate-y-[120%]"
                         : "opacity-0 translate-y-[120%]"
-                  }`}
+                    }`}
                 >
                   {word}
                 </span>
@@ -109,7 +108,7 @@ function TopSection() {
               <span className="w-6 xl:w-8 h-[1px] bg-[#d1d1d1] shrink-0"></span>
             </div>
             <div className="text-[9px] xl:text-[10px] text-[#555] font-bold leading-snug mt-1 w-28 uppercase tracking-wider">
-              DAYS TYPICAL<br/>LAUNCH TIMELINE
+              DAYS TYPICAL<br />LAUNCH TIMELINE
             </div>
           </div>
           <div className="w-[1px] h-[45px] xl:h-[52px] bg-[#d1d1d1] mr-4 xl:mr-8"></div>
@@ -124,7 +123,7 @@ function TopSection() {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center gap-4 z-10 pb-4">
-        <button 
+        <button
           onClick={(e) => {
             e.preventDefault();
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -132,12 +131,12 @@ function TopSection() {
           className="bg-[#F35D18] hover:bg-[#d94f12] text-white px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]"
         >
           Talk to Us About Your Idea
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19L19 5M19 5v10M19 5H9"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 19L19 5M19 5v10M19 5H9" /></svg>
         </button>
         <Link href="/work" className="bg-transparent border border-[#F35D18] text-[#F35D18] hover:bg-[#F35D18]/5 px-7 py-3 rounded-md font-bold flex items-center gap-2 transition-colors text-[14px]">
           See Our Work
           <div className="w-5 h-5 rounded-full bg-[#F35D18] text-white flex items-center justify-center ml-1">
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z" /></svg>
           </div>
         </Link>
       </div>
@@ -159,7 +158,7 @@ function BottomCard({ image, number, title }) {
           </div>
         </div>
         <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center shrink-0 text-[#111] group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] group-hover:text-white transition-colors duration-300">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </div>
       </div>
     </Link>
@@ -170,22 +169,22 @@ function BottomSection() {
   return (
     <section className="relative w-full h-[600px] overflow-hidden bg-transparent z-0 -mt-16 lg:-mt-24 pointer-events-none">
       {/* Background Image */}
-      <Image 
-        src="/bg.png" 
-        alt="Background" 
-        fill 
+      <Image
+        src="/bg.png"
+        alt="Background"
+        fill
         sizes="100vw"
-        className="object-cover object-bottom" 
-        priority 
+        className="object-cover object-bottom"
+        priority
       />
-      
+
       {/* Overlay Content Container */}
       <div className="absolute inset-0 max-w-[1300px] mx-auto w-full pointer-events-none hidden md:block">
-        
+
         {/* Floating Text Left */}
         <div className="absolute top-[34%] left-[36%] z-10">
           <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
-            Your<br/>Idea<br/>Here
+            Your<br />Idea<br />Here
           </p>
           <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
         </div>
@@ -193,14 +192,14 @@ function BottomSection() {
         {/* Floating Text Right */}
         <div className="absolute top-[34%] right-[31%] z-10">
           <p className="text-[#1f1f1f] font-semibold tracking-widest text-[13px] leading-relaxed uppercase">
-            A Real<br/>Brand<br/>Tomorrow
+            A Real<br />Brand<br />Tomorrow
           </p>
           <div className="w-6 h-[1px] bg-[#1f1f1f] mt-2"></div>
         </div>
 
         {/* Cards Row */}
         <div className="absolute bottom-18 w-full px-6 flex justify-between items-end pointer-events-auto">
-          
+
           {/* Left Cards */}
           <div className="flex gap-6 w-[38%]">
             <div className="flex-1">
@@ -210,7 +209,7 @@ function BottomSection() {
               <BottomCard image="/card-2.png" number="02" title={"BRAND\nBUILDING"} />
             </div>
           </div>
-          
+
           {/* Right Cards */}
           <div className="flex gap-6 w-[38%]">
             <div className="flex-1">

@@ -103,7 +103,8 @@ export default function ManufacturerProblem() {
             {/* Lead Copy */}
             <div className="text-[#5A687D] text-sm sm:text-base leading-[1.6] font-medium mb-6 sm:mb-8 max-w-[540px]">
               <p className="mb-3">
-                Finding a manufacturer is easy. Finding the right one for your product,<br className="hidden lg:block" />
+                Finding a manufacturer is easy. Finding the right one for your product,{" "}
+                <br className="hidden lg:block" />
                 quantity, category and budget is where things get complicated.
               </p>
               <p className="text-[#0B1B36] font-bold">

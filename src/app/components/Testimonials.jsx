@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Play, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -11,55 +10,60 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
-  const carouselRef = useRef(null);
   const [playingIndex, setPlayingIndex] = useState(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
+    // Safe animation: immediateRender: false prevents elements from ever being stuck hidden as white space
+    gsap.from(".gsap-testimonial-header", {
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 75%",
-        toggleActions: "play none none reverse",
-      }
+        start: "top 95%",
+        once: true,
+      },
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.out",
+      immediateRender: false,
+      clearProps: "all",
     });
 
-    // Animate headers
-    tl.from(".gsap-testimonial-header", {
-      y: 30,
+    gsap.from(".gsap-testimonial-card", {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 95%",
+        once: true,
+      },
+      y: 25,
       opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out",
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power2.out",
+      immediateRender: false,
+      clearProps: "all",
     });
-
-    // Animate cards
-    tl.from(".gsap-testimonial-card", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    }, "-=0.4");
-    
   }, { scope: sectionRef });
 
   const testimonials = [
     {
-      image: "/klust-thumbnail.jpg",
+      image: "/klust-thumb.jpg",
       badgeText: "Beauty & Lifestyle",
-      badgeColor: "bg-[#FEF3C7] text-[#D97706]",
-      quoteColor: "text-[#D97706]",
+      badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
+      quoteColor: "text-[#FF4D00]",
+      lineColor: "bg-[#FF4D00]",
       quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      name: "Founder",
+      name: "Kangna Sharma",
       role: "Founder, KLUST",
       logo: null,
       videoUrl: "/klust-testimonial.mp4"
     },
     {
-      image: null,
+      image: null, // No image as requested: "dusre pr biography umsi image add mt krna"
       badgeText: "Perfume & Fragrance",
-      badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
-      quoteColor: "text-[#FF4D00]",
+      badgeColor: "bg-[#EEF2FF] text-[#4A72FF]",
+      quoteColor: "text-[#4A72FF]",
+      lineColor: "bg-[#4A72FF]",
       quote: "BanegaBrand helped us turn our idea into BIOGRAPHY — from product development to market launch. The process was smooth and truly professional.",
       name: "Meherban Singh",
       role: "Founder, BIOGRAPHY",
@@ -67,98 +71,21 @@ export default function Testimonials() {
       videoUrl: null
     },
     {
-      image: "/videos/speach-thumbnail.jpg",
+      image: "/videos/rougx-thumb.jpg",
       badgeText: "Perfume & Fragrance",
-      badgeColor: "bg-[#EEF2FF] text-[#4A72FF]",
-      quoteColor: "text-[#4A72FF]",
+      badgeColor: "bg-[#ECFDF5] text-[#059669]",
+      quoteColor: "text-[#059669]",
+      lineColor: "bg-[#059669]",
       quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
       name: "Rahul Abrol",
       role: "Founder, ROUGX",
       logo: "/logos/ROUGX LOGO 1.png",
       videoUrl: "/videos/speach-for-bb.mp4"
-    },
-    {
-      image: "/P3.png",
-      badgeText: "Beauty & Skincare",
-      badgeColor: "bg-[#ECFDF5] text-[#059669]",
-      quoteColor: "text-[#059669]",
-      quote: "BanegaBrand made the entire journey of launching GREVETY easy and well-structured. Their guidance, product development and support were exceptional.",
-      name: "Divya Rani",
-      role: "Founder, GREVETY",
-      logo: "/logos/MAIN GREVETY LOGO.png",
-      videoUrl: null
-    },
-    {
-      image: "/P1.png",
-      badgeText: "Nutraceuticals",
-      badgeColor: "bg-[#F3E8FF] text-[#9333EA]",
-      quoteColor: "text-[#9333EA]",
-      quote: "BanegaBrand's expertise helped us formulate and launch our supplement line in record time. Their go-to-market strategy was flawless.",
-      name: "Sandeep Kumar",
-      role: "Founder, VITALITY",
-      logo: null,
-      videoUrl: null
-    },
-    {
-      image: "/P2.png",
-      badgeText: "Ayurveda",
-      badgeColor: "bg-[#FEF3C7] text-[#D97706]",
-      quoteColor: "text-[#D97706]",
-      quote: "Creating an authentic Ayurvedic brand is tough, but BanegaBrand provided the right sourcing and packaging solutions to make us stand out.",
-      name: "Amit Sharma",
-      role: "Founder, VEDA",
-      logo: null,
-      videoUrl: null
     }
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleScroll = () => {
-    if (carouselRef.current) {
-      const scrollLeft = carouselRef.current.scrollLeft;
-      const cardWidth = carouselRef.current.children[0].offsetWidth;
-      const gap = 24; // gap-6 is 24px
-      const newIndex = Math.round(scrollLeft / (cardWidth + gap));
-      setActiveIndex(newIndex);
-    }
-  };
-
-  const scrollTo = (index) => {
-    if (carouselRef.current) {
-      const cardWidth = carouselRef.current.children[0].offsetWidth;
-      const gap = 24;
-      carouselRef.current.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' });
-    }
-  };
-
-  const scrollPrev = () => {
-    if (activeIndex > 0) {
-      scrollTo(activeIndex - 1);
-    } else {
-      // Loop to end
-      scrollTo(testimonials.length - 1);
-    }
-  };
-
-  const scrollNext = () => {
-    if (activeIndex < testimonials.length - 1) {
-      scrollTo(activeIndex + 1);
-    } else {
-      // Loop to start
-      scrollTo(0);
-    }
-  };
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      scrollNext();
-    }, 3500);
-    return () => clearInterval(timer);
-  }, [activeIndex]);
-
   return (
-    <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-24 pb-8 lg:pb-12 overflow-hidden border-t border-gray-100">
+    <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-14 sm:pt-18 lg:pt-22 pb-14 sm:pt-18 lg:pb-22 overflow-hidden border-t border-gray-100">
       
       {/* Decorative Background Lines */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none opacity-40 -z-0">
@@ -170,48 +97,39 @@ export default function Testimonials() {
 
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] pointer-events-none bg-[#FFF2E8] rounded-tr-full opacity-60 -z-0"></div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 relative z-10">
         
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-12 lg:mb-16">
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-14 lg:mb-16">
           <div className="flex items-center gap-4 mb-4 gsap-testimonial-header">
             <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
             <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Client Voices</span>
             <div className="w-8 h-[1px] bg-[#FF4D00]"></div>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1E1E] leading-[1.1] tracking-tight mb-5 gsap-testimonial-header">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1E1E1E] leading-[1.1] tracking-tight mb-4 gsap-testimonial-header">
             What <span className="text-[#FF4D00] relative">
               Founders
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#FF4D00] opacity-80 rounded-full" style={{ borderRadius: '50% 50% 50% 50% / 10% 10% 90% 90%' }}></div>
             </span> Say
           </h2>
           
-          <p className="text-gray-500 text-lg md:text-xl font-medium gsap-testimonial-header">
+          <p className="text-gray-500 text-sm sm:text-base md:text-lg lg:text-xl font-medium gsap-testimonial-header">
             Real people. Real brands. Real results.
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div 
-          ref={carouselRef}
-          onScroll={handleScroll}
-          className="flex overflow-x-auto gap-6 mb-10 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-8"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          <style dangerouslySetInnerHTML={{__html: `
-            .hide-scrollbar::-webkit-scrollbar { display: none; }
-          `}} />
-          
+        {/* Testimonials Static Grid: Stacked vertically on mobile, 3-columns on desktop */}
+        <div className="flex flex-col gap-4 sm:gap-5 lg:grid lg:grid-cols-3 lg:gap-6 w-full max-w-7xl mx-auto items-stretch">
           {testimonials.map((test, index) => (
             <div 
               key={index} 
-              className="gsap-testimonial-card min-w-[100%] md:min-w-[calc(50%-12px)] xl:min-w-[calc(33.333%-16px)] snap-center bg-white rounded-3xl p-4 flex gap-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+              className={`gsap-testimonial-card bg-white rounded-[22px] sm:rounded-3xl p-4 sm:p-5 flex ${test.image ? 'flex-row gap-3.5 sm:gap-4' : 'flex-col justify-between'} shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)] border border-[#F2ECE4] hover:shadow-lg transition-all duration-300 w-full min-h-[200px]`}
             >
-              {/* Left Video Thumbnail or Inline Video */}
+              {/* Left Video Thumbnail or Inline Video (if image exists) */}
               {test.image && (
                 <div 
-                  className={`relative w-[150px] flex-shrink-0 h-full min-h-[220px] rounded-2xl overflow-hidden transition-all duration-300 ${test.videoUrl ? 'cursor-pointer group' : ''}`}
+                  className={`relative w-[115px] min-[380px]:w-[125px] sm:w-[145px] shrink-0 self-stretch min-h-[160px] sm:min-h-[180px] rounded-[16px] sm:rounded-2xl overflow-hidden transition-all duration-300 ${test.videoUrl ? 'cursor-pointer group' : ''}`}
                   onClick={() => {
                     if (test.videoUrl && playingIndex !== index) {
                       setPlayingIndex(index);
@@ -219,70 +137,61 @@ export default function Testimonials() {
                   }}
                 >
                   {playingIndex === index && test.videoUrl ? (
-                    test.videoUrl.endsWith('.mp4') ? (
-                      <video 
-                        src={test.videoUrl} 
-                        poster={test.image}
-                        className="w-full h-full object-cover object-top scale-[1.05] translate-y-[-2.5%]"
-                        controls
-                        autoPlay
-                      />
-                    ) : (
-                      <iframe 
-                        src={`${test.videoUrl}?autoplay=1`} 
-                        className="w-full h-full"
-                        allow="autoplay; encrypted-media; picture-in-picture" 
-                        allowFullScreen 
-                      />
-                    )
+                    <video 
+                      src={test.videoUrl} 
+                      poster={test.image}
+                      className="w-full h-full object-cover object-top scale-[1.05]"
+                      controls
+                      autoPlay
+                    />
                   ) : (
                     <>
                       <Image 
                         src={test.image} 
                         alt={test.name} 
                         fill 
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className={`object-cover transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                        sizes="(max-width: 768px) 130px, (max-width: 1200px) 160px, 200px"
+                        className={`object-cover object-top transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
                       />
-                      
                       {test.videoUrl && (
-                        <>
-                          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-                          
-                          {/* Play Button Overlay */}
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-                            <Play className="w-5 h-5 text-gray-800 ml-1 fill-gray-800" />
+                        <div className="absolute inset-0 bg-black/15 flex items-center justify-center transition-colors group-hover:bg-black/25">
+                          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <svg className="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
                           </div>
-                        </>
+                        </div>
                       )}
                     </>
                   )}
                 </div>
               )}
 
-              {/* Right Text Content */}
-              <div className="flex flex-col py-1 pr-2">
-                <span className={`w-max px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2 ${test.badgeColor}`}>
-                  {test.badgeText}
-                </span>
-                
-                <div className={`text-4xl font-serif leading-none mb-1 opacity-50 ${test.quoteColor}`}>
-                  "
+              {/* Text Content */}
+              <div className="flex flex-col py-0.5 flex-grow min-w-0 justify-between">
+                <div>
+                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] min-[380px]:text-[10px] font-semibold mb-1 ${test.badgeColor}`}>
+                    {test.badgeText}
+                  </span>
+                  
+                  <div className={`text-xl min-[380px]:text-2xl font-serif leading-none mb-1 opacity-60 select-none ${test.quoteColor}`}>
+                    “
+                  </div>
+                  
+                  <p className={`text-[#2B2B2B] ${test.image ? 'text-[11px] min-[380px]:text-[12px] sm:text-[13px] leading-[1.55]' : 'text-xs sm:text-[13.5px] leading-[1.65]'} font-normal mb-2.5`}>
+                    {test.quote}
+                  </p>
                 </div>
                 
-                <p className="text-[#1E1E1E] text-[13px] leading-[1.6] font-medium mb-5 flex-grow">
-                  {test.quote}
-                </p>
-                
-                <div className="mt-auto">
-                  <div className={`w-8 h-[2px] mb-3 ${test.quoteColor.replace('text-', 'bg-')}`}></div>
-                  <div className="flex justify-between items-end">
-                    <div className="flex flex-col">
-                      <h4 className="text-sm font-black text-[#1E1E1E]">{test.name}</h4>
-                      <span className="text-[10px] font-medium text-gray-500 uppercase tracking-widest mt-0.5">{test.role}</span>
+                <div className="pt-2">
+                  <div className={`w-6 sm:w-8 h-[1.5px] mb-2 ${test.lineColor}`}></div>
+                  <div className="flex justify-between items-end gap-2">
+                    <div className="flex flex-col min-w-0">
+                      <h4 className="text-[12px] min-[380px]:text-[13px] sm:text-sm font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
+                      <span className="text-[9px] min-[380px]:text-[9.5px] font-medium text-gray-400 uppercase tracking-wider mt-0.5 truncate">{test.role}</span>
                     </div>
                     {test.logo && (
-                      <div className="relative w-16 h-8 opacity-80 mix-blend-multiply">
+                      <div className="relative w-14 min-[380px]:w-16 h-6 min-[380px]:h-7 shrink-0 opacity-80 mix-blend-multiply">
                         <Image src={test.logo} alt="Brand Logo" fill sizes="64px" className="object-contain object-right-bottom" />
                       </div>
                     )}
@@ -292,8 +201,6 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
-
-
 
       </div>
     </section>

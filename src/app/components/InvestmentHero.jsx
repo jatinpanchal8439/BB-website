@@ -77,8 +77,10 @@ export default function InvestmentHero() {
 
           {/* Heading */}
           <h1 className="hero-text-anim text-[42px] sm:text-[50px] lg:text-[64px] font-[800] text-[#061B35] leading-[1.08] tracking-tight mb-6">
-            How Much Does<br className="hidden sm:block" />
-            It Cost to Launch<br className="hidden sm:block" />
+            How Much Does{" "}
+            <br className="hidden sm:block" />
+            It Cost to Launch{" "}
+            <br className="hidden sm:block" />
             <span className="text-[#FF5425]">a Brand in India?</span>
           </h1>
 

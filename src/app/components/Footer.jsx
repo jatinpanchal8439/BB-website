@@ -95,21 +95,8 @@ export default function Footer({ hidePreFooterCTA = false }) {
                 </p>
               </div>
 
-              {/* Social Icons matching screenshot */}
+              {/* Social Icons matching screenshot: Instagram, LinkedIn, YouTube, WhatsApp */}
               <div className="flex items-center gap-2.5">
-                {/* Facebook */}
-                <a
-                  href="https://www.facebook.com/people/BanegaBrandcom/61579488867371/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#FF4D00] hover:text-white hover:border-[#FF4D00] transition-all shadow-2xs"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                </a>
-
                 {/* Instagram */}
                 <a
                   href="https://www.instagram.com/banegabrand?igsh=cWhocmlsNjI2bXZl"
@@ -154,54 +141,70 @@ export default function Footer({ hidePreFooterCTA = false }) {
                   </svg>
                 </a>
 
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/918439000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-8 h-8 rounded-full bg-white border border-[#E8DFD3] flex items-center justify-center text-gray-700 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all shadow-2xs"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                </a>
+
               </div>
             </div>
 
-            {/* Column 2: Navigation */}
-            <div className="lg:col-span-2 lg:px-6 lg:border-r lg:border-[#F0EBE1]">
-              <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Navigation</h4>
-              <div className="w-8 h-[2px] bg-[#FF4D00] mb-5"></div>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { name: "Our Work", href: "/work" },
-                  { name: "About Us", href: "/about" },
-                  { name: "Industries", href: "/industries" },
-                  { name: "Manufacturer Network", href: "/manufacturer" },
-                  { name: "Investment Guide", href: "/investment-guide" },
-                  { name: "Marketplace Launch", href: "/launch" },
-                  { name: "Blogs", href: "/blog" },
-                  { name: "FAQ", href: "/faq" },
-                  { name: "Contact Us", href: "/contact" }
-                ].map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
-                      <span className="truncate pr-1">{item.name}</span>
-                      <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Navigation & Industries 2-Column Layout on Mobile */}
+            <div className="col-span-1 md:col-span-2 lg:col-span-4 grid grid-cols-2 gap-4 sm:gap-6 lg:gap-0 my-2 lg:my-0">
+              {/* Column 2: Navigation */}
+              <div className="pr-3 sm:pr-6 lg:px-6 border-r border-[#F0EBE1]">
+                <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Navigation</h4>
+                <div className="w-8 h-[2px] bg-[#FF4D00] mb-4 sm:mb-5"></div>
+                <ul className="flex flex-col gap-2.5 sm:gap-3">
+                  {[
+                    { name: "Our Work", href: "/work" },
+                    { name: "About Us", href: "/about" },
+                    { name: "Industries", href: "/industries" },
+                    { name: "Manufacturer Network", href: "/manufacturer" },
+                    { name: "Investment Guide", href: "/investment-guide" },
+                    { name: "Marketplace Launch", href: "/launch" },
+                    { name: "Blogs", href: "/blog" },
+                    { name: "FAQ", href: "/faq" },
+                    { name: "Contact Us", href: "/contact" }
+                  ].map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
+                        <span className="truncate pr-1">{item.name}</span>
+                        <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Column 3: Industries */}
-            <div className="lg:col-span-2 lg:px-6 lg:border-r lg:border-[#F0EBE1]">
-              <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Industries</h4>
-              <div className="w-8 h-[2px] bg-[#FF4D00] mb-5"></div>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { name: "Perfume", href: "/industries" },
-                  { name: "Skincare", href: "/industries" },
-                  { name: "Ayurveda", href: "/industries" },
-                  { name: "Nutraceuticals", href: "/industries" }
-                ].map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
-                      <span>{item.name}</span>
-                      <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {/* Column 3: Industries */}
+              <div className="pl-3 sm:pl-6 lg:px-6 lg:border-r lg:border-[#F0EBE1]">
+                <h4 className="text-[#0B1B3D] font-bold text-sm sm:text-[15px] mb-1">Industries</h4>
+                <div className="w-8 h-[2px] bg-[#FF4D00] mb-4 sm:mb-5"></div>
+                <ul className="flex flex-col gap-2.5 sm:gap-3">
+                  {[
+                    { name: "Perfume", href: "/industries" },
+                    { name: "Skincare", href: "/industries" },
+                    { name: "Ayurveda", href: "/industries" },
+                    { name: "Nutraceuticals", href: "/industries" }
+                  ].map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.href} className="flex items-center justify-between text-gray-600 hover:text-[#FF4D00] text-xs sm:text-[13px] font-medium transition-colors group py-0.5">
+                        <span>{item.name}</span>
+                        <ChevronRight size={13} className="text-[#FF4D00] shrink-0 transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Column 4: Stay Updated */}
