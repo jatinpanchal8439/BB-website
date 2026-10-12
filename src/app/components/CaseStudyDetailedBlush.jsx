@@ -89,72 +89,111 @@ export default function CaseStudyDetailed() {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-[55%] flex flex-col gap-6">
+          <div className="w-full lg:w-[55%] flex flex-col gap-3 sm:gap-6">
 
             {/* Website Mockup */}
-            <div className="rounded-2xl sm:rounded-[32px] overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.06)] border border-gray-100 bg-white">
-              <Image src="/Group 192.png" alt="Blush Darling Website" width={1200} height={800} className="w-full h-auto object-cover" priority />
+            <div className="rounded-2xl sm:rounded-[32px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f0e6de] bg-white">
+              <Image 
+                src="/Frame 13.png" 
+                alt="Blush Darling Website" 
+                width={1200} 
+                height={750} 
+                className="w-full h-auto object-cover block" 
+                priority 
+              />
             </div>
 
             {/* Info Bar - 3 Columns Horizontal */}
-            <div className="grid grid-cols-3 items-center bg-white rounded-xl sm:rounded-[20px] p-2.5 sm:p-6 shadow-sm border border-gray-100 divide-x divide-gray-100">
-              <div className="flex items-center gap-1.5 sm:gap-4 px-1 sm:px-3">
-                <FlaskConical className="text-[#ff6b2b] w-4 h-4 sm:w-8 sm:h-8 shrink-0" />
+            <div className="bg-white rounded-2xl sm:rounded-[20px] p-2.5 sm:p-5 shadow-sm border border-[#F2E5DA] grid grid-cols-3 divide-x divide-[#F0E2D6]">
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
+                <FlaskConical className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[8px] sm:text-[11px] text-[#5a6072] uppercase font-bold tracking-wider truncate">Category</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-lg truncate">Perfume</p>
+                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Category</p>
+                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Perfume</p>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5 sm:gap-4 px-1 sm:px-3 justify-center">
-                <MapPin className="text-[#ff6b2b] w-4 h-4 sm:w-8 sm:h-8 shrink-0" />
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
+                <MapPin className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[8px] sm:text-[11px] text-[#5a6072] uppercase font-bold tracking-wider truncate">City</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-lg truncate">Delhi</p>
+                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">City</p>
+                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Delhi</p>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5 sm:gap-4 px-1 sm:px-3 justify-end sm:justify-start">
-                <User className="text-[#ff6b2b] w-4 h-4 sm:w-8 sm:h-8 shrink-0" />
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
+                <User className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[8px] sm:text-[11px] text-[#5a6072] uppercase font-bold tracking-wider truncate">Founder</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-lg truncate">Riya Mehta</p>
+                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Founder</p>
+                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Riya Mehta</p>
                 </div>
               </div>
             </div>
 
-            {/* Feature Images - 3 Columns Side-by-Side */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-5">
-              <div className="relative h-[105px] sm:h-[200px] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
-                <Image src="/unique_formulation.jpg" alt="Unique Formulation" fill sizes="(max-width: 768px) 33vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-                <p className="absolute bottom-2 sm:bottom-5 left-2 sm:left-5 text-white font-bold text-[9.5px] sm:text-base leading-tight">Unique<br />Formulation</p>
+            {/* Feature Images - 3 Columns Horizontal */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
+              <div className="relative aspect-[1.05/1] sm:aspect-[4/3] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
+                <Image 
+                  src="/blush1.jpg" 
+                  alt="Unique Formulation" 
+                  fill 
+                  sizes="(max-width: 768px) 33vw, 20vw" 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <p className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 text-white font-bold text-[10px] sm:text-sm md:text-base leading-tight drop-shadow-sm">
+                  Unique<br />Formulation
+                </p>
               </div>
-              <div className="relative h-[105px] sm:h-[200px] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
-                <Image src="/premium_packaging.jpg" alt="Premium Packaging" fill sizes="(max-width: 768px) 33vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-                <p className="absolute bottom-2 sm:bottom-5 left-2 sm:left-5 text-white font-bold text-[9.5px] sm:text-base leading-tight">Premium<br />Packaging</p>
+
+              <div className="relative aspect-[1.05/1] sm:aspect-[4/3] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
+                <Image 
+                  src="/blus.jpg" 
+                  alt="Premium Packaging" 
+                  fill 
+                  sizes="(max-width: 768px) 33vw, 20vw" 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <p className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 text-white font-bold text-[10px] sm:text-sm md:text-base leading-tight drop-shadow-sm">
+                  Premium<br />Packaging
+                </p>
               </div>
-              <div className="relative h-[105px] sm:h-[200px] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
-                <Image src="/amazon_launch.jpg" alt="Launched on Amazon" fill sizes="(max-width: 768px) 33vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-                <p className="absolute bottom-2 sm:bottom-5 left-2 sm:left-5 text-white font-bold text-[9.5px] sm:text-base leading-tight">Launched on<br />Amazon</p>
+
+              <div className="relative aspect-[1.05/1] sm:aspect-[4/3] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
+                <Image 
+                  src="/blush2.jpg" 
+                  alt="Launched on Amazon" 
+                  fill 
+                  sizes="(max-width: 768px) 33vw, 20vw" 
+                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                <p className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 text-white font-bold text-[10px] sm:text-sm md:text-base leading-tight drop-shadow-sm">
+                  Launched on<br />Amazon
+                </p>
               </div>
             </div>
 
-            {/* Bottom CTA */}
-            <div className="bg-[#fff4eb] border border-[#ffdfc8] rounded-2xl sm:rounded-[24px] p-4 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-              <div className="flex items-center gap-3 sm:gap-5 w-full">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
-                  <Rocket className="text-[#ff6b2b] w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
+            {/* Bottom CTA Banner */}
+            <div className="bg-[#FFF5EC] border border-[#FFDFC9] rounded-2xl sm:rounded-[24px] p-3 sm:p-5 md:p-6 shadow-sm flex items-center justify-between gap-2 sm:gap-6">
+              <div className="flex items-center gap-2 sm:gap-3.5 min-w-0">
+                <Rocket className="text-[#ff6b2b] w-5 h-5 sm:w-7 sm:h-7 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <h4 className="font-bold text-[#1a1a2e] text-[13px] sm:text-[17px] mb-0.5 leading-snug">Want to Create a Success Story Like This?</h4>
-                  <p className="text-[#5a6072] text-[11px] sm:text-sm truncate">Let's turn your idea into the next big brand.</p>
+                  <h4 className="font-bold text-[#1a1a2e] text-[11px] sm:text-[15px] md:text-[17px] leading-tight mb-0.5">
+                    Want to Create a<br className="sm:hidden" /> Success Story Like This?
+                  </h4>
+                  <p className="text-[#5a6072] text-[9px] sm:text-xs md:text-sm truncate sm:overflow-visible">
+                    Let's turn your idea into the next big brand.
+                  </p>
                 </div>
               </div>
-              <Link href="/contact" className="bg-[#ff6b2b] hover:bg-[#eb5b1b] transition-all duration-300 text-white rounded-full py-2.5 px-5 sm:py-3 sm:px-6 font-semibold text-xs sm:text-sm flex items-center justify-center gap-3 shrink-0 whitespace-nowrap shadow-md shadow-orange-500/20 hover:-translate-y-0.5 w-full sm:w-auto">
+              <Link 
+                href="/contact" 
+                className="bg-[#ff6b2b] hover:bg-[#eb5b1b] transition-all duration-300 text-white rounded-full py-2 px-3 sm:py-3 sm:px-5 md:px-6 font-semibold text-[10px] sm:text-xs md:text-sm flex items-center gap-1.5 sm:gap-3 shrink-0 whitespace-nowrap shadow-md shadow-orange-500/20 hover:-translate-y-0.5"
+              >
                 Start Your Own Story
-                <span className="bg-white text-[#ff6b2b] rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center shrink-0">
-                  <ArrowRight size={14} className="sm:w-[18px] sm:h-[18px]" strokeWidth={2.5} />
+                <span className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-white text-[#ff6b2b] rounded-full flex items-center justify-center shrink-0">
+                  <ArrowRight size={10} className="sm:hidden" strokeWidth={2.5} />
+                  <ArrowRight size={14} className="hidden sm:block" strokeWidth={2.5} />
                 </span>
               </Link>
             </div>

@@ -76,14 +76,14 @@ export default function WhatWeDo() {
             <div className="h-[1.5px] w-8 sm:w-10 bg-[#FF5000]/25"></div>
           </div>
 
-          <h2 className="text-[36px] min-[360px]:text-[38px] min-[390px]:text-[42px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.08] sm:leading-[1.12] mb-4 sm:mb-6 text-left">
+          <h2 className="text-[38px] min-[360px]:text-[42px] min-[390px]:text-[46px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.05] sm:leading-[1.12] tracking-tight mb-4 sm:mb-6 text-left w-full">
             From <span className="text-[#FF5000]">Idea</span><br />
             to Launch,<br />
             We Handle<br />
             the Pieces<span className="text-[#FF5000]">.</span>
           </h2>
 
-          <p className="text-gray-600 text-[12.5px] min-[380px]:text-[13px] sm:text-base lg:text-[17px] font-normal leading-[1.6] max-w-[290px] min-[390px]:max-w-[310px] sm:max-w-sm text-left">
+          <p className="text-gray-600 text-[13px] min-[380px]:text-[13.5px] sm:text-base lg:text-[17px] font-normal leading-[1.65] max-w-[340px] min-[390px]:max-w-[365px] sm:max-w-sm text-left">
             You don&apos;t need to figure everything out before you start. We help with the important parts of building a product brand:
           </p>
         </div>
