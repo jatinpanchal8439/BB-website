@@ -87,13 +87,13 @@ export default function AboutTestimonials() {
           className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 sm:gap-6 pb-6 sm:pb-10 -mx-5 px-5 sm:mx-0 sm:px-0"
         >
           {testimonials.map((t) => (
-            <div key={t.id} className="min-w-[85%] sm:min-w-[70%] md:min-w-[48%] lg:min-w-[32%] snap-start bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+            <div key={t.id} className="min-w-[78%] sm:min-w-[65%] md:min-w-[48%] lg:min-w-[32%] snap-start bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
               
-              <div className="flex flex-col xl:flex-row gap-4 sm:gap-5 h-full">
+              <div className="flex flex-col xl:flex-row gap-3.5 sm:gap-5 h-full">
                 
                 {/* Image and Play button */}
                 {t.image && (
-                  <div className="relative w-full xl:w-[45%] h-[180px] sm:h-[200px] xl:h-[240px] rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
+                  <div className="relative w-full xl:w-[45%] h-[145px] sm:h-[180px] xl:h-[240px] rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
                     <div className="absolute inset-0 bg-gray-200">
                        <Image 
                          src={t.image} 
