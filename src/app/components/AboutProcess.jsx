@@ -9,7 +9,6 @@ export default function AboutProcess() {
         {/* Header Content */}
         <div className="flex flex-col mb-10 sm:mb-16">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <span className="text-[#FF4D00] font-bold tracking-widest text-[11px]">09</span>
             <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
             <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">How We Work</span>
           </div>

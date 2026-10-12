@@ -15,9 +15,8 @@ export default function AboutHero() {
         {/* Left Side: Text Content */}
         <div className="w-full xl:w-[45%] flex flex-col pt-2 sm:pt-4 md:pt-10">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <span className="text-[#FF4D00] font-bold tracking-widest text-xs sm:text-sm">07</span>
-            <span className="w-8 sm:w-10 h-[1px] bg-[#FF4D00]"></span>
-            <span className="font-bold tracking-widest sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">About</span>
+            <span className="w-8 sm:w-10 h-[2px] bg-[#FF4D00]"></span>
+            <span className="font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">About</span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-extrabold text-[#0B1B36] leading-[1.1] sm:leading-[1.05] tracking-tight mb-4">
