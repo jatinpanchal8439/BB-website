@@ -68,22 +68,22 @@ export default function WhatWeDo() {
     >
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-14 xl:px-16 flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-12 xl:gap-14 items-start">
         {/* Left Content Area */}
-        <div className="w-full lg:w-[35%] flex flex-col items-center lg:items-start text-center lg:text-left pt-1 lg:pt-4 what-we-do-title">
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-3 sm:mb-5">
+        <div className="w-full lg:w-[35%] flex flex-col items-start text-left pt-1 lg:pt-4 what-we-do-title">
+          <div className="flex items-center justify-start gap-3 mb-3 sm:mb-5">
             <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
               WHAT WE DO
             </span>
             <div className="h-[1.5px] w-8 sm:w-10 bg-[#FF5000]/25"></div>
           </div>
 
-          <h2 className="text-[36px] min-[360px]:text-[40px] min-[390px]:text-[44px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.08] sm:leading-[1.12] [word-spacing:0.18em] mb-4 sm:mb-6 text-center lg:text-left w-full">
-            From&nbsp;<span className="text-[#FF5000]">Idea</span><br />
-            to&nbsp;Launch,<br />
-            We&nbsp;Handle<br />
-            the&nbsp;Pieces<span className="text-[#FF5000]">.</span>
+          <h2 className="text-[36px] min-[360px]:text-[38px] min-[390px]:text-[42px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.08] sm:leading-[1.12] mb-4 sm:mb-6 text-left">
+            From <span className="text-[#FF5000]">Idea</span><br />
+            to Launch,<br />
+            We Handle<br />
+            the Pieces<span className="text-[#FF5000]">.</span>
           </h2>
 
-          <p className="text-gray-600 text-[13px] min-[380px]:text-[13.5px] sm:text-base lg:text-[17px] font-normal leading-[1.65] max-w-[340px] min-[390px]:max-w-[365px] sm:max-w-sm text-center lg:text-left mx-auto lg:mx-0">
+          <p className="text-gray-600 text-[12.5px] min-[380px]:text-[13px] sm:text-base lg:text-[17px] font-normal leading-[1.6] max-w-[290px] min-[390px]:max-w-[310px] sm:max-w-sm text-left">
             You don&apos;t need to figure everything out before you start. We help with the important parts of building a product brand:
           </p>
         </div>
