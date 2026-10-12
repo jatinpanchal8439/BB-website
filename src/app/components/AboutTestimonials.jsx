@@ -132,9 +132,11 @@ export default function AboutTestimonials() {
                       <p className="text-[#6b7280] text-[8px] sm:text-[9px] font-semibold tracking-wider">{t.role}</p>
                     </div>
                     {/* Logo area */}
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                       <Image src={t.logo} alt="Brand Logo" fill className="object-contain" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-                    </div>
+                    {t.logo && (
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                        <Image src={t.logo} alt="Brand Logo" fill className="object-contain" />
+                      </div>
+                    )}
                   </div>
                 </div>
 
