@@ -4,21 +4,23 @@ import { Rocket, Trophy, AlertTriangle, Quote } from 'lucide-react';
 
 export default function MeetFounder() {
   return (
-    <section className="relative w-full bg-[#FCFBF8] font-sans py-12 sm:py-16 lg:py-24 overflow-hidden">
+    <section id="meet-founder" className="relative w-full bg-[#FCFBF8] font-sans py-12 sm:py-16 lg:py-24 overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-5 sm:px-8 md:px-12 flex flex-col items-center relative z-10">
         
         {/* Header Content */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
-          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <span className="w-8 sm:w-10 h-[2px] bg-[#FF4D00]"></span>
-            <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Meet The Founder</span>
+        <div className="flex flex-col items-center text-center mb-6 sm:mb-10 lg:mb-16">
+          <div className="flex items-center gap-2.5 sm:gap-3 mb-2.5 sm:mb-4">
+            <span className="w-6 sm:w-10 h-[1.5px] bg-[#FF4D00]"></span>
+            <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-[#6B7280] font-[family-name:var(--font-poppins)]">
+              Meet The Founder
+            </span>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#0B1B36] leading-[1.1] sm:leading-[1.05] tracking-tight mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-[#0B1B36] leading-[1.1] tracking-tight mb-2.5 sm:mb-4">
             Meet <span className="text-[#FF4D00]">Mayank</span>
           </h2>
           
-          <p className="text-[#4b5563] text-sm sm:text-base md:text-[17px] leading-[1.8] max-w-[680px] font-medium">
+          <p className="text-[#4b5563] text-[12px] min-[380px]:text-[12.5px] sm:text-base leading-[1.65] max-w-[340px] sm:max-w-[620px] font-normal sm:font-medium">
             Banega Brand is founded by Mayank Tiwari, an entrepreneur who has been through the real process of building and launching brands in India.
           </p>
         </div>
@@ -26,20 +28,26 @@ export default function MeetFounder() {
         <div className="w-full flex flex-col xl:flex-row items-center xl:items-stretch justify-between gap-8 sm:gap-12 lg:gap-16">
           
           {/* Left Side: Founder Image */}
-          <div className="w-full xl:w-[42%] relative flex justify-center xl:justify-start items-end h-[340px] sm:h-[440px] md:h-[500px] xl:h-[650px] overflow-hidden rounded-3xl">
-            {/* Beige Blob Background */}
-            <div 
-              className="absolute left-[-10%] sm:left-[-15%] bottom-[0%] w-[120%] sm:w-[130%] h-[80%] bg-[#FFF5E6] -z-10"
-              style={{ borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%' }}
-            ></div>
+          <div className="w-full xl:w-[44%] relative flex justify-center items-end">
+            {/* Soft Organic Curved Background Shapes (matches reference screenshot) */}
+            <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center overflow-hidden">
+              <div 
+                className="absolute left-[-12%] sm:left-[-8%] bottom-[6%] w-[85%] sm:w-[80%] h-[60%] sm:h-[65%] bg-[#FCECDC] opacity-85"
+                style={{ borderRadius: '65% 35% 70% 30% / 50% 65% 35% 50%' }}
+              />
+              <div 
+                className="absolute right-[-12%] sm:right-[-8%] bottom-[10%] w-[90%] sm:w-[85%] h-[55%] sm:h-[60%] bg-[#FCE3D0] opacity-75"
+                style={{ borderRadius: '35% 65% 30% 70% / 65% 45% 55% 35%' }}
+              />
+            </div>
             
-            <div className="relative w-full max-w-[500px] h-full flex items-end justify-center">
+            <div className="relative w-full max-w-[340px] min-[390px]:max-w-[370px] sm:max-w-[440px] xl:max-w-[480px] h-[380px] min-[390px]:h-[420px] sm:h-[480px] md:h-[540px] xl:h-[620px] overflow-hidden">
               <Image 
                 src="/founder-new.png" 
                 alt="Mayank Tiwari - Founder" 
                 fill
-                sizes="(max-width: 768px) 90vw, 42vw"
-                className="object-cover object-top scale-[1.35] origin-top drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)]"
+                sizes="(max-width: 768px) 370px, (max-width: 1280px) 480px, 520px"
+                className="object-cover object-top drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
                 priority
               />
             </div>

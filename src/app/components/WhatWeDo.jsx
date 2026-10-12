@@ -76,14 +76,12 @@ export default function WhatWeDo() {
             <div className="h-[1.5px] w-8 sm:w-10 bg-[#FF5000]/25"></div>
           </div>
 
-          <h2 className="text-[34px] xs:text-[40px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.08] sm:leading-[1.12] tracking-tight mb-4 sm:mb-6 text-left">
-            From <span className="text-[#FF5000]">Idea</span><br />
-            to Launch,<br />
-            We Handle<br />
-            the Pieces<span className="text-[#FF5000]">.</span>
+          <h2 className="text-[28px] min-[360px]:text-[32px] sm:text-4xl lg:text-[44px] xl:text-[50px] font-black text-[#18181B] leading-[1.16] sm:leading-[1.12] tracking-tight mb-3 sm:mb-6 text-left w-full">
+            From <span className="text-[#FF5000]">Idea</span> to Launch, <br className="hidden lg:block" />
+            We Handle the Pieces<span className="text-[#FF5000]">.</span>
           </h2>
 
-          <p className="text-gray-600 text-sm sm:text-base lg:text-[17px] font-normal leading-relaxed max-w-sm text-left">
+          <p className="text-gray-600 text-[13px] min-[380px]:text-[13.5px] sm:text-base lg:text-[17px] font-normal leading-relaxed w-full max-w-full lg:max-w-sm text-left">
             You don&apos;t need to figure everything out before you start. We help with the important parts of building a product brand:
           </p>
         </div>
