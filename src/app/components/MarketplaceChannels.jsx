@@ -48,58 +48,58 @@ export default function MarketplaceChannels() {
   ];
 
   return (
-    <section className="w-full bg-[#FAF8F5] py-20 lg:py-28 font-sans flex flex-col items-center">
+    <section className="w-full bg-[#FAF8F5] pt-4 pb-16 sm:py-20 lg:py-24 font-sans flex flex-col items-center">
       
       {/* Top Section: Channels Grid */}
-      <div className="max-w-[1050px] mx-auto px-6 md:px-12 flex flex-col items-center w-full">
+      <div className="max-w-[1050px] mx-auto px-5 sm:px-12 flex flex-col items-center w-full">
         
         {/* Eyebrow */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="sm: font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+        <div className="flex items-center gap-3 mb-4 sm:mb-6">
+          <div className="h-[1px] w-8 sm:w-16 bg-orange-200"></div>
+          <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Where can your brand sell?
           </span>
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
+          <div className="h-[1px] w-8 sm:w-16 bg-orange-200"></div>
         </div>
 
         {/* Heading */}
-        <h2 className="text-[40px] sm:text-[48px] lg:text-[56px] font-[800] leading-[1.08] tracking-tight text-[#0B1B36] mb-5 text-center">
+        <h2 className="text-[30px] xs:text-[34px] sm:text-[48px] lg:text-[56px] font-[800] leading-[1.08] tracking-tight text-[#0B1B36] mb-3 sm:mb-5 text-center">
           Where Can Your<br />
           <span className="text-[#FF5000]">Brand Sell?</span>
         </h2>
 
         {/* Subheading */}
-        <p className="text-[15px] sm:text-[17px] text-[#5F6D7E] font-medium leading-relaxed max-w-[500px] mb-14 text-center">
+        <p className="text-[13px] sm:text-[17px] text-[#5F6D7E] font-medium leading-relaxed max-w-[360px] sm:max-w-[500px] mb-8 sm:mb-14 text-center">
           Your product doesn&apos;t need to be everywhere on day one.<br className="hidden sm:block" />
           We help you figure out where it makes sense to start.
         </p>
 
         {/* 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-24">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 w-full mb-16 sm:mb-24">
           {channels.map((channel, idx) => (
             <div 
               key={idx} 
-              className="bg-white border border-[#F0EBE1] rounded-3xl p-8 flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-orange-200 transition-all duration-300"
+              className="bg-white border border-[#F0EBE1] rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 flex flex-col shadow-[0_2px_12px_rgba(0,0,0,0.02)] sm:shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-orange-200 transition-all duration-300"
             >
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-[34px] h-[34px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5000] text-[12px] font-bold shrink-0">
+              <div className="flex items-center gap-2.5 sm:gap-4 mb-3 sm:mb-5">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5000] text-[10px] sm:text-xs font-bold shrink-0">
                   {channel.num}
                 </div>
                 {channel.logo ? (
-                  <div className={`flex items-center justify-center shrink-0 ${channel.circleBg ? 'w-16 h-16 rounded-full bg-[#FFF2E6]' : 'h-10'}`}>
+                  <div className={`flex items-center justify-center shrink-0 ${channel.circleBg ? 'w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#FFF2E6]' : 'h-7 sm:h-9'}`}>
                     <Image 
                       src={channel.logo} 
                       alt={channel.logoAlt} 
                       width={channel.logoWidth} 
                       height={channel.logoHeight} 
-                      className={channel.circleBg ? "w-8 h-8 object-contain" : "h-8 w-auto object-contain"}
+                      className={channel.circleBg ? "w-5 h-5 sm:w-7 sm:h-7 object-contain" : "h-5 sm:h-7 w-auto object-contain"}
                     />
                   </div>
                 ) : null}
               </div>
               
-              <h3 className="text-[20px] font-extrabold text-[#0B1B36] mb-2.5">{channel.title}</h3>
-              <p className="text-[14px] text-gray-500 leading-relaxed font-medium">
+              <h3 className="text-[14px] sm:text-[19px] font-extrabold text-[#0B1B36] mb-1 sm:mb-2 leading-tight">{channel.title}</h3>
+              <p className="text-[11px] sm:text-[14px] text-gray-500 leading-snug sm:leading-relaxed font-normal">
                 {channel.desc}
               </p>
             </div>

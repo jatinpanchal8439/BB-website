@@ -11,7 +11,7 @@ export default function IndustryBanners() {
       orangeText: "Perfume Brand",
       brandText: "Perfume Brand",
       src: "/banner-perfume.png",
-      // Text on LEFT, products on RIGHT — so push bg to right
+      prodImg: "/assets/banner-perfume-prod.png",
       bgPos: "right center",
       gradient: "linear-gradient(to right, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.55) 75%, rgba(255,255,255,0) 100%)",
       textSide: "left",
@@ -27,7 +27,7 @@ export default function IndustryBanners() {
       orangeText: "Skincare Brand",
       brandText: "Skin Care Brand",
       src: "/banner3.png",
-      // Text on RIGHT, products on LEFT — push bg to left
+      prodImg: "/assets/banner-skincare-prod.png",
       bgPos: "left center",
       gradient: "linear-gradient(to left, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.55) 75%, rgba(255,255,255,0) 100%)",
       textSide: "right",
@@ -43,6 +43,7 @@ export default function IndustryBanners() {
       orangeText: "Ayurveda & Wellness Brand",
       brandText: "Ayurveda Brand",
       src: "/banner2.png",
+      prodImg: "/assets/banner-ayurveda-prod.png",
       bgPos: "right center",
       gradient: "linear-gradient(to right, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.55) 75%, rgba(255,255,255,0) 100%)",
       textSide: "left",
@@ -58,6 +59,7 @@ export default function IndustryBanners() {
       orangeText: "Nutraceutical Brand",
       brandText: "Nutraceutical Brand",
       src: "/banner1.png",
+      prodImg: "/assets/banner-nutra-prod.png",
       bgPos: "left center",
       gradient: "linear-gradient(to left, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.55) 75%, rgba(255,255,255,0) 100%)",
       textSide: "right",
@@ -142,30 +144,16 @@ export default function IndustryBanners() {
             </div>
 
             {/* Mobile View (< md) */}
-            <div className="md:hidden w-full bg-white border-y border-gray-100/80 overflow-hidden shadow-sm">
-              {/* Product Showcase Image */}
-              <div className="relative w-full h-[230px] sm:h-[300px] bg-[#FAF8F5] overflow-hidden">
-                <Image
-                  src={banner.src}
-                  alt={banner.brandText}
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                  style={{
-                    objectPosition: banner.textSide === 'right' ? 'left center' : 'right center'
-                  }}
-                  priority={index === 0}
-                />
-                {/* Subtle soft gradient fade into white card below */}
-                <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Content below image */}
-              <div className="px-4 sm:px-6 pb-8 pt-3 flex flex-col items-start bg-white">
+            <Link
+              href="/our-process"
+              className="md:hidden w-full bg-white border-y border-gray-100/80 overflow-hidden shadow-sm block active:opacity-90 transition-opacity"
+            >
+              {/* Content on top */}
+              <div className="px-5 sm:px-6 pt-6 pb-2 flex flex-col items-start bg-white">
                 {/* Orange dash */}
                 <div className="w-10 h-[3px] bg-[#FF5A19] mb-3.5 rounded-full" />
 
-                <h2 className="text-[1.85rem] sm:text-[2.2rem] font-black text-[#0B1E3E] leading-[1.1] tracking-tight mb-2.5">
+                <h2 className="text-[1.85rem] sm:text-[2.2rem] font-black text-[#0B1E3E] leading-[1.08] tracking-tight mb-2.5">
                   Launch Your Own<br />
                   <span className="text-[#FF5A19]">{banner.orangeText}</span>
                 </h2>
@@ -175,7 +163,7 @@ export default function IndustryBanners() {
                 </p>
 
                 {/* Feature Cards in 3-column row */}
-                <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-6 w-full">
+                <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-5 w-full">
                   {banner.features.map((feat, i) => (
                     <div 
                       key={i} 
@@ -195,17 +183,28 @@ export default function IndustryBanners() {
                 </div>
 
                 {/* CTA Button */}
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2.5 bg-[#0B1E3E] hover:bg-[#071329] text-white pl-5 pr-1.5 py-1.5 rounded-full text-[12px] font-semibold transition-all duration-300 shadow-md group"
-                >
+                <div className="inline-flex items-center gap-2.5 bg-[#0B1E3E] text-white pl-5 pr-1.5 py-1.5 rounded-full text-[12px] font-semibold shadow-md">
                   <span>Start Your {banner.brandText}</span>
-                  <div className="w-7 h-7 rounded-full bg-white text-[#0B1E3E] flex items-center justify-center shrink-0 group-hover:translate-x-0.5 transition-transform">
+                  <div className="w-7 h-7 rounded-full bg-white text-[#0B1E3E] flex items-center justify-center shrink-0">
                     <ArrowRight size={13} strokeWidth={2.5} />
                   </div>
-                </Link>
+                </div>
               </div>
-            </div>
+
+              {/* Product Showcase Image below content */}
+              <div className="relative w-full h-[240px] xs:h-[280px] sm:h-[340px] bg-gradient-to-b from-white via-[#FAF8F5]/60 to-[#FAF8F5] overflow-hidden flex items-center justify-center px-4">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={banner.prodImg}
+                    alt={banner.brandText}
+                    fill
+                    sizes="100vw"
+                    className="object-contain object-bottom drop-shadow-md"
+                    priority={index === 0}
+                  />
+                </div>
+              </div>
+            </Link>
 
           </div>
         ))}

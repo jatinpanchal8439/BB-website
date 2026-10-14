@@ -169,9 +169,10 @@ export default function HowItWorks() {
             const isLeftColumn = index % 2 === 0;
 
             return (
-              <div
+              <Link
+                href="/our-process"
                 key={step.number}
-                className="how-step-card bg-white rounded-2xl p-3.5 min-[380px]:p-4 sm:p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100/80 flex flex-col justify-between min-h-[175px] sm:min-h-[210px] relative"
+                className="how-step-card bg-white rounded-2xl p-3.5 min-[380px]:p-4 sm:p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-100/80 flex flex-col justify-between min-h-[175px] sm:min-h-[210px] relative active:opacity-80 transition-opacity"
               >
                 {/* Top Row: Icon and Number */}
                 <div className="flex justify-between items-start mb-3 sm:mb-4">
@@ -209,7 +210,7 @@ export default function HowItWorks() {
                 <p className="text-gray-500 text-[11px] sm:text-[13px] font-normal leading-relaxed">
                   {step.description}
                 </p>
-              </div>
+              </Link>
             );
           })}
         </div>

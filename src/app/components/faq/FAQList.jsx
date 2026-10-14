@@ -60,83 +60,84 @@ export default function FAQList() {
     }
   ];
 
-  const [openIndex, setOpenIndex] = useState(0); // First one open by default
+  const [openIndices, setOpenIndices] = useState({ 0: true, 1: true, 2: true, 3: true });
 
   const toggleFaq = (index) => {
-    setOpenIndex(openIndex === index ? -1 : index);
+    setOpenIndices(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
   return (
-    <section className="w-full bg-white py-20 lg:py-28 font-sans">
-      <div className="max-w-[800px] mx-auto px-6 md:px-8 flex flex-col items-center">
+    <section className="w-full bg-[#FCF8F5] pt-4 pb-16 sm:py-20 lg:py-24 font-sans">
+      <div className="max-w-[860px] mx-auto px-5 sm:px-8 flex flex-col items-center">
         
         {/* Eyebrow */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="sm: font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+        <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+          <div className="h-[1px] w-8 sm:w-14 bg-orange-300"></div>
+          <span className="text-[11px] sm:text-[13px] font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             FAQ
           </span>
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
+          <div className="h-[1px] w-8 sm:w-14 bg-orange-300"></div>
         </div>
 
         {/* Heading */}
-        <h2 className="text-[36px] sm:text-[44px] lg:text-[52px] font-[800] leading-[1.1] tracking-tight text-[#061B35] mb-6 text-center">
+        <h2 className="text-[30px] xs:text-[34px] sm:text-[44px] lg:text-[52px] font-[800] leading-[1.1] tracking-tight text-[#061B35] mb-3 sm:mb-4 text-center">
           Questions Founders<br />
           <span className="text-[#FF5425]">Usually Ask</span>
         </h2>
 
         {/* Subheading */}
-        <p className="text-[15px] sm:text-[16px] text-gray-500 font-medium leading-relaxed max-w-[460px] mb-16 text-center">
+        <p className="text-[13px] sm:text-[15px] text-gray-500 font-medium leading-relaxed max-w-[360px] sm:max-w-[460px] mb-8 sm:mb-12 text-center">
           Here are some common questions we get from founders, with clear and practical answers.
         </p>
 
-        {/* FAQ Accordion */}
-        <div className="w-full flex flex-col">
+        {/* FAQ Accordion Cards */}
+        <div className="w-full flex flex-col gap-3 sm:gap-4">
           {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+            const isOpen = !!openIndices[index];
             
             return (
               <div 
                 key={index} 
-                className={`w-full flex gap-4 sm:gap-6 py-6 sm:py-8 border-t border-gray-100 ${isOpen ? 'bg-[#FCF8F5]/30' : 'bg-transparent hover:bg-gray-50/50'} transition-colors cursor-pointer px-2 sm:px-4 rounded-xl`}
+                className="w-full bg-white rounded-2xl border border-[#F0EAE1] shadow-[0_2px_12px_rgba(0,0,0,0.02)] p-4 sm:p-5 flex flex-col gap-2 transition-all duration-300 hover:border-orange-200 cursor-pointer"
                 onClick={() => toggleFaq(index)}
               >
-                {/* Number Circle */}
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] text-[12px] sm:text-[14px] font-bold shrink-0 mt-1">
-                  {faq.num}
-                </div>
+                {/* Header Row */}
+                <div className="flex items-start justify-between gap-3 sm:gap-4">
+                  {/* Number Circle */}
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] text-[11px] sm:text-[13px] font-bold shrink-0 mt-0.5">
+                    {faq.num}
+                  </div>
 
-                {/* Content */}
-                <div className="flex flex-col flex-1">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className={`text-[16px] sm:text-[18px] font-bold mt-2 ${isOpen ? 'text-[#FF5425]' : 'text-[#061B35]'} transition-colors`}>
-                      {faq.question}
-                    </h3>
-                    
-                    {/* Plus/Minus Icon */}
-                    <button className="shrink-0 w-8 h-8 rounded-full border border-orange-200 flex items-center justify-center text-[#FF5425] mt-1 hover:bg-[#FF5425] hover:text-white transition-colors">
-                      {isOpen ? (
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
-                        </svg>
-                      ) : (
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
+                  {/* Title */}
+                  <h3 className={`text-[14px] sm:text-[16px] font-bold leading-snug flex-1 pt-1 ${isOpen ? 'text-[#061B35]' : 'text-[#061B35]'} transition-colors`}>
+                    {faq.question}
+                  </h3>
                   
-                  {/* Answer (Accordion) */}
+                  {/* Chevron Toggle Button */}
                   <div 
-                    className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}
+                    className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-orange-200/90 flex items-center justify-center text-[#FF5425] mt-0.5 transition-colors ${isOpen ? 'bg-[#FFF2E6] text-[#FF5425]' : 'bg-transparent'}`}
                   >
-                    <div className="overflow-hidden">
-                      <p className="text-[14px] sm:text-[15px] text-gray-500 leading-relaxed font-medium">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <svg 
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor" 
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
                   </div>
+                </div>
+                
+                {/* Collapsible Answer */}
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out pl-11 sm:pl-13 ${
+                    isOpen ? 'max-h-96 opacity-100 pt-1 pb-1' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="text-[12px] sm:text-[14px] text-gray-500 leading-relaxed font-normal">
+                    {faq.answer}
+                  </p>
                 </div>
 
               </div>

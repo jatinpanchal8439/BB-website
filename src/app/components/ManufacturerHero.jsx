@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket, Users, MapPin } from "lucide-react";
 import gsap from "gsap";
 
 export default function ManufacturerHero() {
@@ -9,7 +9,6 @@ export default function ManufacturerHero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Text entrance animations
       gsap.fromTo(".hero-badge", 
         { y: -15, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
@@ -34,11 +33,6 @@ export default function ManufacturerHero() {
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.7, delay: 0.4, ease: "power3.out" }
       );
-
-      gsap.fromTo(".hero-cta", 
-        { scale: 0.9, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6, delay: 0.5, ease: "back.out(1.7)" }
-      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -47,8 +41,8 @@ export default function ManufacturerHero() {
   return (
     <section ref={heroRef} className="relative w-full font-sans overflow-hidden bg-[#FAF8F3]">
       
-      {/* FULL WIDTH BACKGROUND IMAGE */}
-      <div className="absolute inset-0 z-0 w-full h-full">
+      {/* Background image on desktop */}
+      <div className="absolute inset-0 z-0 w-full h-full hidden lg:block">
         <Image 
           src="/assets/manufacturer-hero-bg.jpg" 
           alt="Manufacturer Network Background" 
@@ -56,28 +50,24 @@ export default function ManufacturerHero() {
           className="object-cover object-center lg:object-right" 
           priority
         />
-        {/* Subtle gradient overlays to ensure text readability on mobile/tablet */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F3] via-[#FAF8F3]/80 to-transparent lg:hidden w-3/4"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F3]/40 to-transparent lg:hidden"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F3] via-[#FAF8F3]/90 to-transparent w-[55%]"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 flex flex-col pt-16 lg:pt-32 pb-16 lg:pb-32 min-h-[500px] sm:min-h-[600px] lg:min-h-[750px] justify-center">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 flex flex-col pt-8 sm:pt-14 lg:pt-28 pb-4 sm:pb-8 lg:pb-24 justify-center">
         
-        {/* =========================================================
-            LEFT COLUMN: Text Content & CTA (Background spans right)
-           ========================================================= */}
+        {/* LEFT COLUMN: Text Content */}
         <div className="w-full lg:w-[50%] flex flex-col">
           
           {/* Top Label */}
-          <div className="hero-badge flex items-center gap-3 mb-6 sm:mb-8 mt-4 lg:mt-0">
-            <span className="w-10 sm:w-12 h-[1.5px] bg-[#FF4D00]"></span>
-            <span className="font-extrabold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)] text-xs sm:text-sm">
-              MANUFACTURER NETWORK
+          <div className="hero-badge flex items-center gap-3 mb-4 sm:mb-6 mt-2 lg:mt-0">
+            <span className="w-8 sm:w-10 h-[2px] bg-[#FF4D00]"></span>
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)] text-[11px] sm:text-xs">
+              Manufacturer Network
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[84px] font-[900] leading-[1.05] tracking-tight mb-5 sm:mb-6">
+          <h1 className="text-[40px] xs:text-[46px] sm:text-[58px] lg:text-[76px] font-[900] leading-[1.05] tracking-tight mb-3 sm:mb-4">
             <span className="hero-title-1 block text-[#0B1B36]">
               Manufacturer
             </span>
@@ -87,30 +77,40 @@ export default function ManufacturerHero() {
           </h1>
 
           {/* Subheadline */}
-          <h2 className="hero-subtitle text-xl sm:text-2xl md:text-[27px] font-bold text-[#0B1B36] tracking-tight mb-4">
+          <h2 className="hero-subtitle text-[18px] xs:text-[20px] sm:text-2xl font-bold text-[#0B1B36] tracking-tight mb-3 sm:mb-4">
             Find the Right Factory for Your Brand
           </h2>
 
           {/* Paragraph */}
-          <p className="hero-desc text-[#64748B] text-base sm:text-[17px] leading-relaxed max-w-[480px] font-medium mb-8 sm:mb-10 drop-shadow-sm">
+          <p className="hero-desc text-[#64748B] text-[13px] sm:text-[16px] leading-relaxed max-w-[460px] font-medium mb-5 sm:mb-6">
             Finding a manufacturer is easy. Finding the right one for your product, MOQ and budget isn't. See how Banega Brand's manufacturer network helps.
           </p>
 
-          {/* CTA Button */}
-          <div className="hero-cta flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <a 
-              href="#manufacturers" 
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('manufacturers')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="group bg-[#0B1B36] hover:bg-[#15284B] transition-all duration-300 text-white rounded-full py-[16px] px-8 font-bold text-[15px] sm:text-[15px] flex items-center justify-between sm:justify-center gap-6 shadow-xl shadow-[#0B1B36]/15 hover:shadow-2xl hover:-translate-y-0.5 w-fit"
-            >
-              <span>Explore Manufacturer Network</span>
-              <span className="transform transition-transform duration-300 group-hover:translate-x-2">
-                <ArrowRight size={20} strokeWidth={2.5} />
-              </span>
-            </a>
+          {/* Stats Row (3 Columns) */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 pt-2 pb-4 sm:pb-6 w-full max-w-[480px]">
+            <div className="flex flex-col items-start">
+              <div className="w-8 h-8 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF4D00] mb-1.5 sm:mb-2">
+                <Rocket size={16} strokeWidth={2.2} />
+              </div>
+              <span className="text-[17px] sm:text-[22px] font-black text-[#FF4D00] leading-tight">500+</span>
+              <span className="text-[10px] sm:text-[12px] text-gray-500 font-medium leading-tight mt-0.5">Brands<br />Launched</span>
+            </div>
+
+            <div className="flex flex-col items-start">
+              <div className="w-8 h-8 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF4D00] mb-1.5 sm:mb-2">
+                <Users size={16} strokeWidth={2.2} />
+              </div>
+              <span className="text-[17px] sm:text-[22px] font-black text-[#FF4D00] leading-tight">1000+</span>
+              <span className="text-[10px] sm:text-[12px] text-gray-500 font-medium leading-tight mt-0.5">Entrepreneurs<br />Supported</span>
+            </div>
+
+            <div className="flex flex-col items-start">
+              <div className="w-8 h-8 rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF4D00] mb-1.5 sm:mb-2">
+                <MapPin size={16} strokeWidth={2.2} />
+              </div>
+              <span className="text-[17px] sm:text-[22px] font-black text-[#FF4D00] leading-tight">25+</span>
+              <span className="text-[10px] sm:text-[12px] text-gray-500 font-medium leading-tight mt-0.5">Cities<br />Across India</span>
+            </div>
           </div>
 
         </div>

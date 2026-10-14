@@ -27,75 +27,96 @@ export default function InvestmentEstimate() {
   ];
 
   return (
-    <section className="w-full py-16 lg:py-28 font-sans bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: "url('/assets/investment-full-bg.png')" }}>
-      <div className="max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-10 relative z-10">
+    <section className="w-full pt-8 pb-12 sm:pt-14 sm:pb-20 lg:py-24 font-sans bg-[#FAF7F2] relative overflow-hidden">
+      <div className="max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 relative z-10">
         
         {/* Left Content */}
-        <div className="w-full lg:w-[55%] flex flex-col">
+        <div className="w-full lg:w-[54%] flex flex-col z-10">
           
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4 sm:mb-6">
             <div className="w-8 h-[1.5px] bg-[#FF5425]"></div>
-            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] text-[11px] sm:text-[13px] font-[family-name:var(--font-poppins)]">
               Investment Guide
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="text-[30px] sm:text-[44px] lg:text-[54px] font-[800] text-[#061B35] leading-[1.12] sm:leading-[1.08] tracking-tight mb-4 sm:mb-6">
-            Let's Plan Your<br className="hidden sm:block" />
-            <span className="text-[#FF5425]"> Investment Clearly</span>
+          <h2 className="text-[30px] xs:text-[36px] sm:text-[44px] lg:text-[54px] font-[800] text-[#061B35] leading-[1.08] tracking-tight mb-3 sm:mb-5">
+            Let's Plan Your<br />
+            <span className="text-[#FF5425]">Investment Clearly</span>
           </h2>
 
           {/* Description */}
-          <p className="text-gray-500 text-[14px] sm:text-[16px] font-medium leading-relaxed max-w-[480px] mb-8 sm:mb-10">
+          <p className="text-gray-500 text-[13px] sm:text-[16px] font-medium leading-relaxed max-w-[480px] mb-6 sm:mb-8">
             Your category, MOQ, packaging and launch plan all affect the final investment. We help you understand where your money will go before you start.
           </p>
 
           {/* 4 Grid Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-4 sm:mb-6">
             {cards.map((card, idx) => (
-              <div key={idx} className="bg-white/90 backdrop-blur-sm border border-orange-100 rounded-xl sm:rounded-[14px] p-3.5 sm:p-4 flex flex-col items-center justify-center text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-orange-200 transition-all cursor-default group">
-                <div className="w-[38px] h-[38px] sm:w-[42px] sm:h-[42px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
+              <div key={idx} className="bg-white/95 backdrop-blur-sm border border-orange-100/80 rounded-xl sm:rounded-[14px] p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-md hover:border-orange-200 transition-all cursor-default group">
+                <div className="w-[34px] h-[34px] sm:w-[42px] sm:h-[42px] rounded-full bg-[#FFF2E6] flex items-center justify-center text-[#FF5425] mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
                   {card.icon}
                 </div>
-                <h4 className="text-[12px] sm:text-[13px] font-bold text-[#061B35] mb-1 leading-tight">{card.title}</h4>
-                <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug">{card.desc}</p>
+                <h4 className="text-[11px] sm:text-[13px] font-bold text-[#061B35] mb-0.5 leading-tight">{card.title}</h4>
+                <p className="text-[9px] sm:text-[11px] text-gray-500 leading-snug">{card.desc}</p>
               </div>
             ))}
           </div>
 
           {/* Investment Range Pill */}
-          <div className="bg-[#FFF8F3]/95 backdrop-blur-sm border border-orange-100 rounded-2xl sm:rounded-full px-5 sm:px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 shadow-sm w-full">
+          <div className="bg-[#FFF8F3]/95 backdrop-blur-sm border border-orange-200/80 rounded-2xl sm:rounded-full px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-6 shadow-sm w-full">
             <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-[#FF5425] shrink-0">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-orange-100 flex items-center justify-center text-[#FF5425] shrink-0">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-wide text-[#FF4D00] font-[family-name:var(--font-poppins)]">Estimated Investment Range</span>
-                <span className="text-[18px] sm:text-[20px] font-extrabold text-[#061B35] leading-tight">₹2.5 lakh - ₹15 lakh</span>
+                <span className="text-[10px] sm:text-[12px] font-semibold uppercase tracking-wide text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+                  Estimated Investment Range
+                </span>
+                <span className="text-[16px] sm:text-[20px] font-extrabold text-[#061B35] leading-tight">
+                  ₹2.5 lakh – ₹10 lakh
+                </span>
               </div>
             </div>
             
-            <div className="hidden sm:block w-px h-10 bg-orange-200/60"></div>
+            <div className="hidden sm:block w-px h-8 bg-orange-200/60"></div>
             
-            <p className="text-[11px] sm:text-[12px] text-gray-500 font-medium text-left leading-snug">
-              (Confirm the range with the team before publishing.)
+            <p className="text-[10px] sm:text-[12px] text-gray-500 font-medium text-left leading-snug">
+              (Cost can vary depending on your choice of category)
             </p>
           </div>
 
           {/* CTA Button */}
-          <Link href="/contact" className="mt-8 sm:mt-10 group flex items-center justify-between gap-4 sm:gap-6 bg-[#FF5425] text-white pl-6 sm:pl-8 pr-2 py-2 rounded-full font-bold text-sm sm:text-[15px] hover:bg-[#E84515] hover:-translate-y-1 transition-all shadow-xl shadow-orange-500/20 w-full sm:w-max">
+          <Link 
+            href="/contact" 
+            className="mt-6 sm:mt-8 group flex items-center justify-between gap-4 sm:gap-6 bg-[#FF5425] text-white pl-5 sm:pl-7 pr-2 py-2 rounded-full font-bold text-xs sm:text-[14px] hover:bg-[#E84515] hover:-translate-y-0.5 transition-all shadow-lg shadow-orange-500/20 w-full sm:w-max"
+          >
             <span>Get a Rough Estimate for Your Idea</span>
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center text-[#FF5425] shrink-0 group-hover:scale-105 transition-transform">
-              <svg className="w-4 h-4 translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white flex items-center justify-center text-[#FF5425] shrink-0 group-hover:scale-105 transition-transform">
+              <svg className="w-4 h-4 translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           </Link>
 
         </div>
 
-        {/* Right side is intentionally empty so the background image shows through */}
-        <div className="hidden lg:block w-[40%]"></div>
+        {/* Right Artwork (Laptop with Charts & Notepad) */}
+        <div className="w-full lg:w-[44%] relative h-[260px] xs:h-[300px] sm:h-[380px] lg:h-[480px] flex items-center justify-center mt-4 sm:mt-6 lg:mt-0">
+          <div className="relative w-full h-full drop-shadow-lg">
+            <Image 
+              src="/assets/investment-estimate-right.png"
+              alt="Investment Estimate Calculator and Plan"
+              fill
+              priority
+              className="object-contain object-center"
+            />
+          </div>
+        </div>
 
       </div>
     </section>

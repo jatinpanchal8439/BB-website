@@ -1,185 +1,363 @@
 "use client";
-import React, { useRef } from 'react';
-import Image from 'next/image';
-import { Play, ArrowLeft, ArrowRight, Quote } from 'lucide-react';
+
+import React, { useRef, useState } from "react";
+import Image from "next/image";
 
 export default function AboutTestimonials() {
-  const carouselRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const [playingIndex, setPlayingIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials = [
     {
-      id: 2.5,
-      name: "Founder",
-      role: "FOUNDER, KLUST",
-      brand: "Beauty & Lifestyle",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      image: "/klust-thumbnail.jpg",
-      logo: null,
-      hasVideo: true
-    },
-    {
-      id: 1,
+      image: "/biography-founders.png",
+      badgeText: "Perfume & Fragrance",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF6A2A]",
+      accentCol: "#FF6A2A",
+      quote: "BanegaBrand helped us turn our idea into BIOGRAPHY — from product development to market launch. The process was smooth and truly professional.",
       name: "Meherban Singh",
-      role: "FOUNDER, BIOGRAPHY",
-      brand: "Perfume & Fragrance",
-      quote: "BanegaBrand helped us turn our idea into BIOGRAPHY - from product development to market launch. The process was smooth and truly professional.",
-      image: null,
-      logo: "/logos/Biography logo.png"
+      role: "Founder, BIOGRAPHY",
+      logo: "/logos/Biography logo.png",
+      videoUrl: null
     },
     {
-      id: 2,
-      name: "Rahul Abrol",
-      role: "FOUNDER, ROUGX",
-      brand: "Perfume & Fragrance",
+      image: "/rougx-founders.png",
+      badgeText: "Perfume & Fragrance",
+      badgeBg: "bg-[#EEF5FF]",
+      badgeTextCol: "text-[#3B82F6]",
+      accentCol: "#3B82F6",
       quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
-      image: "/mo2.png",
-      logo: "/logos/ROUGX LOGO 1.png"
+      name: "Swapnil R Srivastava",
+      role: "Founder, ROUGX",
+      logo: "/logos/ROUGX LOGO 1.png",
+      videoUrl: "/videos/speach-for-bb.mp4"
     },
     {
-      id: 3,
-      name: "Divya Rani",
-      role: "FOUNDER, GREVETY",
-      brand: "Beauty & Skincare",
+      image: "/grevety-founders.png",
+      badgeText: "Beauty & Skincare",
+      badgeBg: "bg-[#EAFBF0]",
+      badgeTextCol: "text-[#10B981]",
+      accentCol: "#10B981",
       quote: "BanegaBrand made the entire journey of launching GREVETY easy and well-structured. Their guidance, product development and support were exceptional.",
-      image: "/mo3.png",
-      logo: "/logos/MAIN GREVETY LOGO.png"
+      name: "Divya Rani",
+      role: "Founder, GREVETY",
+      logo: "/logos/MAIN GREVETY LOGO.png",
+      videoUrl: null
+    },
+    {
+      image: "/klust-thumb.jpg",
+      badgeText: "Beauty & Lifestyle",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF4D00]",
+      accentCol: "#FF4D00",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      name: "Kangna Sharma",
+      role: "Founder, KLUST",
+      logo: null,
+      videoUrl: "/klust-testimonial.mp4"
     }
   ];
 
-  const handleScroll = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -340 : 340;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  const scrollDirection = (dir) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
+      const gap = 20;
+      const scrollAmount = (cardWidth + gap) * (dir === 'left' ? -1 : 1);
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollToIndex = (idx) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
+      const gap = 20;
+      scrollContainerRef.current.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+      setActiveIndex(idx);
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
+      const gap = 20;
+      const newIndex = Math.round(scrollContainerRef.current.scrollLeft / (cardWidth + gap));
+      setActiveIndex(Math.min(testimonials.length - 1, Math.max(0, newIndex)));
     }
   };
 
   return (
-    <section className="relative w-full bg-[#FCFBF8] font-sans py-12 sm:py-16 lg:py-24 overflow-hidden">
+    <section className="relative bg-[#FCFBF8] pt-12 sm:pt-16 lg:pt-22 pb-14 sm:pb-18 lg:pb-22 overflow-hidden border-t border-gray-100 font-sans">
       
-      {/* Background Arc Line */}
-      <div className="absolute right-0 top-0 bottom-0 w-[50%] pointer-events-none overflow-hidden">
-        <div className="absolute right-[-20%] top-[10%] w-[100%] h-[80%] rounded-[100%] border-[1px] border-[#FF4D00]/20"></div>
-        <div className="absolute right-[5%] top-[40%] w-2 h-2 rounded-full bg-[#FF4D00]"></div>
+      {/* Top right decorative curve with orange dot */}
+      <div className="absolute top-0 right-0 w-[450px] h-[380px] pointer-events-none overflow-hidden -z-0">
+        <svg className="w-full h-full" viewBox="0 0 450 380" fill="none">
+          <path d="M450 40 C320 40 230 130 205 380" stroke="#FF5425" strokeWidth="1.5" strokeOpacity="0.4" />
+          <circle cx="210" cy="250" r="4.5" fill="#FF5425" />
+        </svg>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 relative z-10">
+      {/* Bottom left subtle warm blob */}
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] pointer-events-none bg-[#FFF2E8] rounded-tr-full opacity-60 -z-0"></div>
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        {/* Header Content */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-16">
-          <div className="flex items-center gap-3 sm:gap-4 mb-4">
-            <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
-            <span className="font-bold tracking-[0.2em] sm: uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">Client Voices</span>
-            <span className="w-6 sm:w-8 h-[2px] bg-[#FF4D00]"></span>
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 sm:gap-4 mb-3">
+            <div className="w-8 sm:w-12 h-[1.5px] bg-[#FFBCA0]"></div>
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] text-xs sm:text-[13px] font-[family-name:var(--font-poppins)]">
+              CLIENT VOICES
+            </span>
+            <div className="w-8 sm:w-12 h-[1.5px] bg-[#FFBCA0]"></div>
           </div>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-[#0B1B36] leading-[1.1] tracking-tight mb-3 sm:mb-4">
-            What <span className="text-[#FF4D00]">Founders</span> Say
+          {/* Headline */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-[#0B1B36] leading-[1.1] tracking-tight mb-3 font-[family-name:var(--font-plus-jakarta)]">
+            What <span className="text-[#FF4D00] relative inline-block">
+              Founders
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#FF4D00]" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                <path d="M2 9C25 3 75 3 98 9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </span> Say
           </h2>
           
-          <p className="text-[#6b7280] text-sm sm:text-[15px] font-medium">
+          {/* Subtitle */}
+          <p className="text-[#64748B] text-xs sm:text-sm md:text-base font-medium">
             Real people. Real brands. Real results.
           </p>
         </div>
 
-        {/* Testimonials Grid/Flex */}
-        <div 
-          ref={carouselRef}
-          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 sm:gap-6 pb-6 sm:pb-10 -mx-5 px-5 sm:mx-0 sm:px-0"
-        >
-          {testimonials.map((t) => (
-            <div key={t.id} className="min-w-[78%] sm:min-w-[65%] md:min-w-[48%] lg:min-w-[32%] snap-start bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.08)] border border-gray-100 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-              
-              <div className="flex flex-col xl:flex-row gap-3.5 sm:gap-5 h-full">
-                
-                {/* Image and Play button */}
-                {t.image && (
-                  <div className="relative w-full xl:w-[45%] h-[145px] sm:h-[180px] xl:h-[240px] rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
-                    <div className="absolute inset-0 bg-gray-200">
-                       <Image 
-                         src={t.image} 
-                         alt={t.name} 
-                         fill 
-                         sizes="(max-width: 768px) 80vw, 25vw"
-                         className="object-cover" 
-                         onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop' }} 
-                       />
-                    </div>
-                    {t.hasVideo && (
-                      <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
-                        <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                          <Play className="w-4 h-4 text-[#0B1B36] ml-1" fill="currentColor" />
-                        </button>
+        {/* MOBILE VIEW: Vertically Stacked Cards */}
+        <div className="flex flex-col gap-4 lg:hidden w-full max-w-lg mx-auto">
+          {testimonials.map((test, index) => (
+            <div 
+              key={`about-mobile-${index}`} 
+              className="bg-white rounded-2xl p-3 min-[380px]:p-3.5 sm:p-4 flex flex-row gap-3 min-[380px]:gap-3.5 shadow-[0_3px_18px_-4px_rgba(0,0,0,0.06)] border border-[#F0ECE6] w-full items-stretch"
+            >
+              {/* Left Column: Image / Video */}
+              <div 
+                className={`w-[115px] min-[380px]:w-[125px] sm:w-[145px] shrink-0 relative rounded-xl overflow-hidden bg-[#F7F5F2] self-stretch min-h-[145px] sm:min-h-[165px] ${test.videoUrl ? 'cursor-pointer group' : ''}`}
+                onClick={() => {
+                  if (test.videoUrl && playingIndex !== `about-mobile-${index}`) {
+                    setPlayingIndex(`about-mobile-${index}`);
+                  }
+                }}
+              >
+                {playingIndex === `about-mobile-${index}` && test.videoUrl ? (
+                  <video 
+                    src={test.videoUrl} 
+                    poster={test.image}
+                    className="w-full h-full object-cover"
+                    controls
+                    autoPlay
+                  />
+                ) : (
+                  <>
+                    <Image 
+                      src={test.image} 
+                      alt={test.name} 
+                      fill 
+                      sizes="(max-width: 640px) 140px, 160px"
+                      className={`object-cover object-top transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                    />
+                    {test.videoUrl && (
+                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
+                        <div className="w-8 h-8 rounded-full bg-white/95 flex items-center justify-center shadow-md">
+                          <svg className="w-3.5 h-3.5 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
                       </div>
                     )}
-                  </div>
+                  </>
                 )}
+              </div>
 
-                {/* Content */}
-                <div className="flex flex-col flex-1 justify-between py-1 sm:py-2">
-                  <div>
-                    <span className="font-bold tracking-wider uppercase mb-1.5 sm:mb-2 block text-[#FF4D00] font-[family-name:var(--font-poppins)]">
-                      {t.brand}
-                    </span>
-                    <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF4D00]/40 fill-[#FF4D00]/40 rotate-180 mb-2 sm:mb-3" />
-                    <p className="text-[#4b5563] text-xs sm:text-[13px] leading-[1.6] sm:leading-[1.7] font-medium mb-4 sm:mb-6">
-                      {t.quote}
-                    </p>
-                  </div>
-
-                  <div className="flex items-end justify-between mt-auto pt-2 border-t border-gray-50">
-                    <div>
-                      <h4 className="text-[#0B1B36] font-bold text-xs sm:text-[14px]">{t.name}</h4>
-                      <p className="text-[#6b7280] text-[8px] sm:text-[9px] font-semibold tracking-wider">{t.role}</p>
+              {/* Right Column: Text Content */}
+              <div className="flex flex-col flex-1 justify-between min-w-0 py-0.5">
+                <div>
+                  <span className={`inline-block px-2 py-0.5 rounded-full text-[8.5px] min-[380px]:text-[9px] sm:text-[9.5px] font-semibold mb-1 ${test.badgeBg} ${test.badgeTextCol}`}>
+                    {test.badgeText}
+                  </span>
+                  
+                  <svg 
+                    className="w-4 h-4 min-[380px]:w-5 min-[380px]:h-5 mb-0.5 opacity-75" 
+                    style={{ color: test.accentCol }}
+                    fill="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                  
+                  <p className="text-[#333333] text-[10.5px] min-[380px]:text-[11px] sm:text-[12px] leading-[1.5] font-normal line-clamp-4 mb-2">
+                    {test.quote}
+                  </p>
+                </div>
+                
+                <div className="pt-1.5">
+                  <div 
+                    className="w-5 sm:w-6 h-[1.5px] mb-1.5" 
+                    style={{ backgroundColor: test.accentCol }}
+                  ></div>
+                  <div className="flex justify-between items-end gap-1.5">
+                    <div className="flex flex-col min-w-0">
+                      <h4 className="text-[12px] min-[380px]:text-[12.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
+                      <span className="text-[8px] min-[380px]:text-[8.5px] font-medium text-gray-400 uppercase tracking-wider mt-0.5 truncate">{test.role}</span>
                     </div>
-                    {/* Logo area */}
-                    {t.logo && (
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                        <Image src={t.logo} alt="Brand Logo" fill className="object-contain" />
+                    {test.logo && (
+                      <div className="relative w-11 min-[380px]:w-13 h-5 min-[380px]:h-6 shrink-0 opacity-80 mix-blend-multiply">
+                        <Image src={test.logo} alt="Brand Logo" fill sizes="52px" className="object-contain object-right-bottom" />
                       </div>
                     )}
                   </div>
                 </div>
-
               </div>
             </div>
           ))}
         </div>
 
-        {/* Carousel Controls */}
-        <div className="flex items-center justify-center gap-4 mt-4 sm:mt-6">
-          <div className="w-8 sm:w-10 h-1.5 sm:h-2 bg-[#FF4D00] rounded-full"></div>
-          <div className="w-3 sm:w-4 h-1.5 sm:h-2 bg-gray-200 rounded-full"></div>
-          <div className="w-3 sm:w-4 h-1.5 sm:h-2 bg-gray-200 rounded-full"></div>
-          
-          <div className="flex items-center gap-3 ml-4 sm:ml-6">
-            <button 
-              onClick={() => handleScroll('left')}
-              aria-label="Previous testimonial"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#0B1B36] hover:border-gray-300 transition-colors active:scale-95"
-            >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-            <button 
-              onClick={() => handleScroll('right')}
-              aria-label="Next testimonial"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#e64500] transition-colors shadow-lg shadow-[#FF4D00]/30 active:scale-95"
-            >
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+        {/* DESKTOP VIEW: Horizontal Carousel with 3 cards visible + Navigation */}
+        <div className="hidden lg:block w-full">
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-3 px-1 hide-scrollbar scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((test, index) => (
+              <div 
+                key={`about-desktop-${index}`} 
+                className="w-[calc((100%-40px)/3)] min-w-[calc((100%-40px)/3)] max-w-[calc((100%-40px)/3)] snap-start bg-white rounded-3xl p-4.5 xl:p-5 flex flex-row gap-4 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)] border border-[#F0ECE6] hover:shadow-lg transition-all duration-300 items-stretch shrink-0"
+              >
+                {/* Left Column: Image / Video */}
+                <div 
+                  className={`w-[145px] xl:w-[160px] shrink-0 relative rounded-2xl overflow-hidden bg-[#F7F5F2] self-stretch min-h-[185px] ${test.videoUrl ? 'cursor-pointer group' : ''}`}
+                  onClick={() => {
+                    if (test.videoUrl && playingIndex !== `about-desktop-${index}`) {
+                      setPlayingIndex(`about-desktop-${index}`);
+                    }
+                  }}
+                >
+                  {playingIndex === `about-desktop-${index}` && test.videoUrl ? (
+                    <video 
+                      src={test.videoUrl} 
+                      poster={test.image}
+                      className="w-full h-full object-cover"
+                      controls
+                      autoPlay
+                    />
+                  ) : (
+                    <>
+                      <Image 
+                        src={test.image} 
+                        alt={test.name} 
+                        fill 
+                        sizes="180px"
+                        className={`object-cover object-top transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                      />
+                      {test.videoUrl && (
+                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
+                          <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <svg className="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                {/* Right Column: Text Content */}
+                <div className="flex flex-col flex-1 justify-between min-w-0 py-0.5">
+                  <div>
+                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold mb-1.5 ${test.badgeBg} ${test.badgeTextCol}`}>
+                      {test.badgeText}
+                    </span>
+                    
+                    <svg 
+                      className="w-5 h-5 mb-1 opacity-75" 
+                      style={{ color: test.accentCol }}
+                      fill="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    
+                    <p className="text-[#333333] text-[12.5px] leading-[1.6] font-normal line-clamp-4 mb-2">
+                      {test.quote}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <div 
+                      className="w-6 h-[1.5px] mb-2" 
+                      style={{ backgroundColor: test.accentCol }}
+                    ></div>
+                    <div className="flex justify-between items-end gap-2">
+                      <div className="flex flex-col min-w-0">
+                        <h4 className="text-[13.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
+                        <span className="text-[9.5px] font-medium text-gray-400 uppercase tracking-wider mt-0.5 truncate">{test.role}</span>
+                      </div>
+                      {test.logo && (
+                        <div className="relative w-14 h-7 shrink-0 opacity-80 mix-blend-multiply">
+                          <Image src={test.logo} alt="Brand Logo" fill sizes="60px" className="object-contain object-right-bottom" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Navigation: Center Dots + Right Arrow Buttons */}
+          <div className="flex items-center justify-between mt-10 px-2">
+            <div className="w-24"></div>
+
+            {/* Center Dots */}
+            <div className="flex items-center justify-center gap-2 mx-auto">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    activeIndex === idx 
+                      ? 'w-6 h-1.5 bg-[#FF4D00]' 
+                      : 'w-2 h-1.5 bg-[#FFD6C0] hover:bg-[#FFB48A]'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Right Arrow Buttons */}
+            <div className="flex items-center gap-2.5">
+              <button 
+                onClick={() => scrollDirection('left')}
+                aria-label="Previous testimonial"
+                className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-gray-400 hover:text-black transition-all shadow-sm active:scale-95 cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button 
+                onClick={() => scrollDirection('right')}
+                aria-label="Next testimonial"
+                className="w-10 h-10 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#E64500] transition-all shadow-md active:scale-95 cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
-
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
     </section>
   );
 }

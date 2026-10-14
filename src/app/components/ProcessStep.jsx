@@ -50,7 +50,7 @@ export default function ProcessStep({
           
           {/* Image Side */}
           <div className="w-full md:w-1/2 flex justify-center relative">
-            <div className="relative w-full aspect-square sm:aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-[32px] overflow-hidden step-img-anim shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+            <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl sm:rounded-[32px] overflow-hidden step-img-anim shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
               <Image 
                 src={imageSrc} 
                 alt={`${titleBlack} ${titleOrange}`} 

@@ -7,21 +7,21 @@ export default function CategoryCTA() {
       <div className="max-w-3xl mx-auto flex flex-col items-center">
         
         {/* Eyebrow with lines */}
-        <div className="flex items-center gap-4 mb-8">
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
-          <span className="sm: font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="h-[1px] w-8 sm:w-16 bg-orange-200"></div>
+          <span className="text-[10px] sm:text-xs font-bold tracking-[0.15em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
             Not sure which category is right for your idea?
           </span>
-          <div className="h-[1px] w-12 sm:w-16 bg-orange-200"></div>
+          <div className="h-[1px] w-8 sm:w-16 bg-orange-200"></div>
         </div>
 
         {/* Heading */}
-        <h2 className="text-[42px] sm:text-[56px] lg:text-[64px] font-[800] leading-[1.1] tracking-tight text-[#061B35] mb-6 relative">
+        <h2 className="text-[30px] xs:text-[36px] sm:text-[52px] lg:text-[64px] font-[800] leading-[1.1] tracking-tight text-[#061B35] mb-4 sm:mb-6 relative">
           Let’s talk before<br />
           <span className="text-[#FF5425] relative inline-block">
             you invest.
             {/* Sparkle lines SVG */}
-            <svg className="absolute -right-8 -top-2 w-8 h-8 text-[#FF5425]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="absolute -right-6 -top-1 sm:-right-8 sm:-top-2 w-6 h-6 sm:w-8 sm:h-8 text-[#FF5425]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2v6" />
               <path d="M21 7l-4.5 4.5" />
               <path d="M23 15h-6" />

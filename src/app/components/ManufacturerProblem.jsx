@@ -61,19 +61,19 @@ export default function ManufacturerProblem() {
     <section 
       ref={sectionRef} 
       id="manufacturers"
-      className="relative w-full bg-[#FAF8F3] font-sans py-16 sm:py-20 lg:py-28 overflow-hidden border-b border-[#EFECE5]"
+      className="relative w-full bg-[#FAF8F3] font-sans pt-0 pb-14 sm:py-20 lg:py-28 overflow-hidden border-b border-[#EFECE5]"
     >
       {/* Background Soft Glow Highlights */}
       <div className="absolute top-1/3 left-10 w-[450px] h-[450px] bg-[#FFF2E0]/70 rounded-full blur-[120px] pointer-events-none -z-10"></div>
       <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#FFF5E6]/60 rounded-full blur-[130px] pointer-events-none -z-10"></div>
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 relative z-10">
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-14 lg:gap-20">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-8 lg:gap-20">
           
           {/* =========================================================
               LEFT COLUMN: Dual Circle Collage Image (Group 113)
              ========================================================= */}
-          <div className="w-full xl:w-[44%] flex items-center justify-center select-none py-6 sm:py-10">
+          <div className="w-full xl:w-[44%] flex items-center justify-center select-none py-2 sm:py-10">
             <div className="left-circle-group relative w-full max-w-[400px] sm:max-w-[500px] xl:max-w-[550px] aspect-square flex items-center justify-center">
               <Image 
                 src="/assets/manufacturer-collage.png" 

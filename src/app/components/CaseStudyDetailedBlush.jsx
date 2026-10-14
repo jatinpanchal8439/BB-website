@@ -88,11 +88,11 @@ export default function CaseStudyDetailed() {
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="w-full lg:w-[55%] flex flex-col gap-3 sm:gap-6">
+          {/* Right Column (Visual showcase - shown first on mobile) */}
+          <div className="w-full lg:w-[55%] flex flex-col gap-3 sm:gap-6 order-first lg:order-last mb-8 lg:mb-0">
 
             {/* Website Mockup */}
-            <div className="rounded-2xl sm:rounded-[32px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f0e6de] bg-white">
+            <div className="rounded-2xl sm:rounded-[32px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#f0e6de] bg-white">
               <Image 
                 src="/Frame 13.png" 
                 alt="Blush Darling Website" 
@@ -104,32 +104,32 @@ export default function CaseStudyDetailed() {
             </div>
 
             {/* Info Bar - 3 Columns Horizontal */}
-            <div className="bg-white rounded-2xl sm:rounded-[20px] p-2.5 sm:p-5 shadow-sm border border-[#F2E5DA] grid grid-cols-3 divide-x divide-[#F0E2D6]">
-              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
-                <FlaskConical className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
+            <div className="bg-white rounded-2xl sm:rounded-[20px] p-3 sm:p-5 shadow-sm border border-[#F2E5DA] grid grid-cols-3 divide-x divide-[#F0E2D6]">
+              <div className="flex items-center justify-start gap-2 sm:gap-3 px-2 sm:px-4">
+                <FlaskConical className="text-[#ff6b2b] w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Category</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Perfume</p>
+                  <p className="text-[10px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Category</p>
+                  <p className="font-bold text-[#1a1a2e] text-[12px] sm:text-base leading-tight truncate">Perfume</p>
                 </div>
               </div>
-              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
-                <MapPin className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
+              <div className="flex items-center justify-start gap-2 sm:gap-3 px-2 sm:px-4">
+                <MapPin className="text-[#ff6b2b] w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">City</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Delhi</p>
+                  <p className="text-[10px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">City</p>
+                  <p className="font-bold text-[#1a1a2e] text-[12px] sm:text-base leading-tight truncate">Delhi</p>
                 </div>
               </div>
-              <div className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-3 px-1 sm:px-4">
-                <User className="text-[#ff6b2b] w-4 h-4 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
+              <div className="flex items-center justify-start gap-2 sm:gap-3 px-2 sm:px-4">
+                <User className="text-[#ff6b2b] w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
-                  <p className="text-[9px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Founder</p>
-                  <p className="font-bold text-[#1a1a2e] text-[11px] sm:text-base leading-tight truncate">Riya Mehta</p>
+                  <p className="text-[10px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Founder</p>
+                  <p className="font-bold text-[#1a1a2e] text-[12px] sm:text-base leading-tight truncate">Riya Mehta</p>
                 </div>
               </div>
             </div>
 
             {/* Feature Images - 3 Columns Horizontal */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-4 md:gap-5">
               <div className="relative aspect-[1.05/1] sm:aspect-[4/3] rounded-xl sm:rounded-[20px] overflow-hidden group shadow-sm">
                 <Image 
                   src="/blush1.jpg" 

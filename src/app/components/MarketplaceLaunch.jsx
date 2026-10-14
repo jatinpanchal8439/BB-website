@@ -1,44 +1,82 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function MarketplaceLaunch() {
   return (
-    <section 
-      className="w-full pt-10 pb-16 lg:pt-16 lg:pb-24 font-sans bg-cover bg-right lg:bg-top bg-no-repeat relative overflow-hidden" 
-      style={{ backgroundImage: "url('/assets/marketplace-full-bg-clean.png')" }}
-    >
-      {/* Background mask to ensure text on left is always sharp and readable */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FFFDFB] via-[#FFFDFB]/90 to-transparent w-full lg:w-[62%] pointer-events-none"></div>
+    <section className="w-full font-sans bg-[#FAF8F5] relative overflow-hidden">
 
-      <div className="max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between relative z-10">
-        
-        {/* Left Content */}
-        <div className="w-full lg:w-[48%] flex flex-col">
-          
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6">
+      {/* Desktop Layout — full background image with left text overlay */}
+      <div className="hidden lg:block w-full relative lg:aspect-[1671/841] min-h-[480px] xl:min-h-[540px] 2xl:min-h-[620px]">
+        {/* Background Image — full section banner */}
+        <Image
+          src="/assets/marketplace-full-bg-clean.png"
+          alt="Sell on Amazon, Flipkart and Nykaa"
+          fill
+          priority
+          className="object-cover object-right"
+        />
+
+        {/* Content container aligned left */}
+        <div className="relative z-10 w-full h-full max-w-[1360px] mx-auto px-8 sm:px-12 lg:px-16 2xl:px-20 flex items-center">
+          <div className="max-w-[480px] xl:max-w-[520px] py-12">
+            {/* Eyebrow — orange */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-[2px] bg-[#FF5000]"></div>
+              <span className="font-bold tracking-[0.2em] uppercase text-[#FF5000] text-[11px] xl:text-[12px] font-[family-name:var(--font-poppins)]">
+                Marketplace Launch
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h1 className="text-[38px] xl:text-[46px] 2xl:text-[54px] font-[800] text-[#0B1B36] leading-[1.08] tracking-tight mb-4">
+              Sell on Amazon,<br />
+              <span className="text-[#FF5000]">Flipkart &amp; Nykaa</span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-gray-600 text-[14px] xl:text-[15px] font-medium leading-relaxed max-w-[400px]">
+              Not every brand needs every channel. See how Banega Brand helps you decide where to launch first &ndash; Amazon, Flipkart, Nykaa or your own website.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Layout — stacked text and full-width edge-to-edge image */}
+      <div className="lg:hidden flex flex-col pt-8 pb-0">
+        {/* Text Content */}
+        <div className="px-6 flex flex-col items-start mb-6">
+          {/* Eyebrow — orange */}
+          <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-[2px] bg-[#FF5000]"></div>
-            <span className="font-bold tracking-[0.2em] uppercase text-[#FF4D00] font-[family-name:var(--font-poppins)]">
+            <span className="font-bold tracking-[0.2em] uppercase text-[#FF5000] text-[11px] sm:text-[13px] font-[family-name:var(--font-poppins)]">
               Marketplace Launch
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-[44px] sm:text-[54px] lg:text-[62px] font-[800] text-[#0B1B36] leading-[1.08] tracking-tight mb-6">
+          <h1 className="text-[32px] xs:text-[38px] sm:text-[46px] font-[800] text-[#0B1B36] leading-[1.08] tracking-tight mb-4">
             Sell on Amazon,<br />
             <span className="text-[#FF5000]">Flipkart &amp; Nykaa</span>
           </h1>
 
           {/* Description */}
-          <p className="text-[#5F6D7E] text-[15px] sm:text-[17px] font-medium leading-relaxed max-w-[460px]">
+          <p className="text-gray-600 text-[14px] sm:text-[16px] font-medium leading-relaxed max-w-[460px]">
             Not every brand needs every channel. See how Banega Brand helps you decide where to launch first &ndash; Amazon, Flipkart, Nykaa or your own website.
           </p>
-
         </div>
 
-        {/* Right side spacer for background image artwork (phone mockup, icons, etc.) */}
-        <div className="hidden lg:block w-[50%] h-[360px] lg:h-[520px]"></div>
-
+        {/* Full-width image — edge-to-edge with exact aspect ratio to prevent ANY cropping */}
+        <div className="relative w-full aspect-[971/941]">
+          <Image
+            src="/assets/marketplace-visual.png"
+            alt="Sell on Amazon, Flipkart and Nykaa"
+            fill
+            priority
+            className="object-contain object-center"
+          />
+        </div>
       </div>
+
     </section>
   );
 }
