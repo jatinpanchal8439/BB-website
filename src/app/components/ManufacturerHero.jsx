@@ -113,6 +113,18 @@ export default function ManufacturerHero() {
             </div>
           </div>
 
+          {/* Mobile Visual: 3 tilted factory photos */}
+          <div className="lg:hidden relative w-full aspect-[1/1] sm:aspect-[4/3] mt-6 sm:mt-8">
+            <Image 
+              src="/assets/manufacturer-hero-visual.png" 
+              alt="Manufacturer Network - Right Factory, Your Product, Your Brand" 
+              fill 
+              className="object-contain object-center" 
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+
         </div>
 
       </div>
