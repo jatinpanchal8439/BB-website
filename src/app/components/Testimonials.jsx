@@ -60,6 +60,19 @@ export default function Testimonials() {
       videoUrl: null
     },
     {
+      image: "/videos/paroha-thumb.jpg",
+      objectPosition: "object-center",
+      badgeText: "Skincare & Perfume",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF4D00]",
+      accentCol: "#FF4D00",
+      quote: "We planned the vision, but Banega Brand executed it to perfection. From product development to the grand launch, their dedicated team delivered a true 10/10 experience.",
+      name: "Mohan Paroha",
+      role: "Founder, CONTEMPRORY",
+      logo: "/logos/Contempory logo clean.png",
+      videoUrl: "/videos/paroha-testimonial.mp4"
+    },
+    {
       image: "/rougx-founders.png",
       badgeText: "Perfume & Fragrance",
       badgeBg: "bg-[#EEF5FF]",
@@ -70,6 +83,19 @@ export default function Testimonials() {
       role: "Founder, ROUGX",
       logo: "/logos/ROUGX LOGO 1.png",
       videoUrl: "/videos/speach-for-bb.mp4"
+    },
+    {
+      image: "/videos/contemprory-launch-thumb.jpg",
+      objectPosition: "object-center",
+      badgeText: "Brand Launch",
+      badgeBg: "bg-[#EEF2FF]",
+      badgeTextCol: "text-[#4F46E5]",
+      accentCol: "#4F46E5",
+      quote: "The grand launch of CONTEMPRORY organized by Banega Brand was an electrifying success. The creators, the energy, and the seamless execution were truly unforgettable.",
+      name: "CONTEMPRORY Launch Event",
+      role: "Grand Launch, CONTEMPRORY",
+      logo: "/logos/Contempory logo clean.png",
+      videoUrl: "/videos/contemprory-launch-testimonial.mp4"
     },
     {
       image: "/grevety-founders.png",
@@ -190,6 +216,7 @@ export default function Testimonials() {
                     className="w-full h-full object-cover"
                     controls
                     autoPlay
+                    playsInline
                   />
                 ) : (
                   <>
@@ -198,7 +225,7 @@ export default function Testimonials() {
                       alt={test.name} 
                       fill 
                       sizes="(max-width: 640px) 140px, 160px"
-                      className={`object-cover object-top transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                      className={`object-cover ${test.objectPosition || 'object-top'} transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
                     />
                     {test.videoUrl && (
                       <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
@@ -289,6 +316,7 @@ export default function Testimonials() {
                       className="w-full h-full object-cover"
                       controls
                       autoPlay
+                      playsInline
                     />
                   ) : (
                     <>
@@ -297,7 +325,7 @@ export default function Testimonials() {
                         alt={test.name} 
                         fill 
                         sizes="180px"
-                        className={`object-cover object-top transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
+                        className={`object-cover ${test.objectPosition || 'object-top'} transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
                       />
                       {test.videoUrl && (
                         <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
