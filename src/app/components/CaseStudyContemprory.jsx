@@ -30,7 +30,7 @@ export default function CaseStudyContemprory() {
             <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-8">
               <span className="w-10 sm:w-12 md:w-16 h-[2px] bg-[#f55926]"></span>
               <span className="text-[#FF4D00] font-[family-name:var(--font-poppins)] font-extrabold tracking-widest text-xs sm:text-sm md:text-base uppercase">Case Study</span>
-              <span className="bg-[#FFF0E6] text-[#FF4D00] text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider">Skincare & Perfume</span>
+              <span className="bg-[#FFF0E6] text-[#FF4D00] text-[10px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider">Clinical Skincare</span>
             </div>
             
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-[800] text-[#111928] leading-[1.05] mb-4 sm:mb-6 md:mb-8 tracking-tight">
@@ -39,7 +39,7 @@ export default function CaseStudyContemprory() {
             </h1>
             
             <p className="text-[#4b5563] text-sm sm:text-lg md:text-xl lg:text-[22px] mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed font-medium">
-              How Banega Brand partnered with Paroha Life Sciences to build CONTEMPRORY — a next-generation lifestyle brand with premium skincare, luxury fragrances, and an unforgettable creator grand launch.
+              How Banega Brand partnered with Paroha Life Sciences to build CONTEMPRORY — a next-generation clinical skincare brand with premium formulations, dermatological care, and an unforgettable creator grand launch.
             </p>
 
             {/* Working CTA Button (Scrolls to Details) */}

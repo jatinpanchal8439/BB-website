@@ -25,12 +25,12 @@ export default function CaseStudyDetailedContemprory() {
     {
       icon: <Lightbulb className="text-[#ff6b2b] w-6 h-6" />,
       title: "The Idea",
-      desc: "Mohan Paroha, Founder of Paroha Life Sciences, envisioned CONTEMPRORY — a next-generation lifestyle brand bridging advanced dermatological skincare with fine luxury perfumes."
+      desc: "Mohan Paroha, Founder of Paroha Life Sciences, envisioned CONTEMPRORY — a next-generation clinical skincare brand delivering advanced dermatological care and active ingredient efficacy."
     },
     {
       icon: <BarChart2 className="text-[#ff6b2b] w-6 h-6" />,
       title: "What Was Hard",
-      desc: "Developing dermatologically backed active formulations, creating custom fragrance accords, sourcing premium glass packaging, managing strict compliances, and planning an impactful market debut."
+      desc: "Developing dermatologically backed active formulations, sourcing airless pump and glass packaging, managing strict quality compliances, and planning an impactful market debut."
     },
     {
       icon: <Settings className="text-[#ff6b2b] w-6 h-6" />,
@@ -208,7 +208,7 @@ export default function CaseStudyDetailedContemprory() {
                 <FlaskConical className="text-[#ff6b2b] w-5 h-5 shrink-0" strokeWidth={1.8} />
                 <div className="min-w-0">
                   <p className="text-[10px] sm:text-xs text-[#8A90A2] font-semibold tracking-wide">Category</p>
-                  <p className="font-bold text-[#1a1a2e] text-[12px] sm:text-sm leading-tight truncate">Skincare & Perfume</p>
+                  <p className="font-bold text-[#1a1a2e] text-[12px] sm:text-sm leading-tight truncate">Advanced Skincare</p>
                 </div>
               </div>
 

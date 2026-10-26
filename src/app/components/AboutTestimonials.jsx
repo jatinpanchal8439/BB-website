@@ -28,7 +28,7 @@ export default function AboutTestimonials() {
     {
       image: "/videos/paroha-thumb.jpg",
       objectPosition: "object-center",
-      badgeText: "Skincare & Perfume",
+      badgeText: "Clinical Skincare",
       badgeBg: "bg-[#FFF0E6]",
       badgeTextCol: "text-[#FF4D00]",
       accentCol: "#FF4D00",
