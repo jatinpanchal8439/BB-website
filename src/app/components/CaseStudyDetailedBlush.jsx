@@ -124,7 +124,7 @@ export default function CaseStudyDetailed() {
                   src="/videos/blush-en-bloom-thumb.jpg" 
                   alt="Blush En Bloom Grand Launch Event" 
                   fill 
-                  className="object-cover object-top" 
+                  className="object-cover object-center" 
                 />
                 <button 
                   onClick={() => setActiveVideoModal({ url: "/videos/blush-en-bloom-testimonial.mp4", title: "Blush En Bloom Grand Launch Event" })}

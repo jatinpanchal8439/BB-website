@@ -12,16 +12,32 @@ export default function AboutTestimonials() {
 
   const testimonials = [
     {
-      image: "/klust-thumb.jpg",
-      badgeText: "Beauty & Lifestyle",
+      image: "/videos/blush-en-bloom-thumb.jpg",
+      objectPosition: "object-center",
+      badgeText: "Perfume Launch",
       badgeBg: "bg-[#FFF0E6]",
       badgeTextCol: "text-[#FF4D00]",
       accentCol: "#FF4D00",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      name: "Kangna Sharma",
-      role: "Founder, KLUST",
-      logo: null,
-      videoUrl: "/klust-testimonial.mp4"
+      quote: "A grand event, a little luxury, a new chapter. Launching BLUSH EN BLOOM with Banega Brand was truly magical — from product development to an unforgettable launch event.",
+      name: "Blush En Bloom",
+      role: "Grand Launch, BLUSH EN BLOOM",
+      logo: "/logos/Blush en Bloom Logo.png",
+      videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
+      caseStudyUrl: "/case-study/blush-en-bloom"
+    },
+    {
+      image: "/videos/paroha-thumb.jpg",
+      objectPosition: "object-center",
+      badgeText: "Skincare & Perfume",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF4D00]",
+      accentCol: "#FF4D00",
+      quote: "We planned the vision, but Banega Brand executed it to perfection. From product development to the grand launch, their dedicated team delivered a true 10/10 experience.",
+      name: "Mohan Paroha",
+      role: "Founder, CONTEMPRORY",
+      logo: "/logos/Contempory logo clean.png",
+      videoUrl: "/videos/paroha-testimonial.mp4",
+      caseStudyUrl: "/case-study/contemprory"
     },
     {
       image: "/rougx-founders.png",
@@ -37,18 +53,16 @@ export default function AboutTestimonials() {
       caseStudyUrl: "/case-study/rougx"
     },
     {
-      image: "/videos/paroha-thumb.jpg",
-      objectPosition: "object-center",
-      badgeText: "Skincare & Perfume",
+      image: "/klust-thumb.jpg",
+      badgeText: "Beauty & Lifestyle",
       badgeBg: "bg-[#FFF0E6]",
       badgeTextCol: "text-[#FF4D00]",
       accentCol: "#FF4D00",
-      quote: "We planned the vision, but Banega Brand executed it to perfection. From product development to the grand launch, their dedicated team delivered a true 10/10 experience.",
-      name: "Mohan Paroha",
-      role: "Founder, CONTEMPRORY",
-      logo: "/logos/Contempory logo clean.png",
-      videoUrl: "/videos/paroha-testimonial.mp4",
-      caseStudyUrl: "/case-study/contemprory"
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      name: "Kangna Sharma",
+      role: "Founder, KLUST",
+      logo: null,
+      videoUrl: "/klust-testimonial.mp4"
     },
     {
       image: "/videos/contemprory-launch-thumb.jpg",
@@ -76,20 +90,6 @@ export default function AboutTestimonials() {
       logo: "/logos/Biography logo.png",
       videoUrl: null,
       caseStudyUrl: "/case-study/biographey"
-    },
-    {
-      image: "/videos/blush-en-bloom-thumb.jpg",
-      objectPosition: "object-center",
-      badgeText: "Perfume Launch",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF4D00]",
-      accentCol: "#FF4D00",
-      quote: "A grand event, a little luxury, a new chapter. Launching BLUSH EN BLOOM with Banega Brand was truly magical — from product development to an unforgettable launch event.",
-      name: "Blush En Bloom Launch",
-      role: "Grand Launch, BLUSH EN BLOOM",
-      logo: "/logos/Blush en Bloom Logo.png",
-      videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
-      caseStudyUrl: "/case-study/blush-en-bloom"
     },
     {
       image: "/grevety-founders.png",
