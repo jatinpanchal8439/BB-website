@@ -42,6 +42,15 @@ export default function RealFounders() {
 
   const brands = [
     {
+      name: "CONTEMPRORY",
+      category: "Beauty & Skincare",
+      image: "/videos/paroha-thumb.jpg",
+      tag: "Live in 60 days",
+      chips: ["Formulation", "Packaging", "Launch"],
+      callout: { text: "Grand Launch with 50+ Creators", icon: Sparkles },
+      link: "/case-study/contemprory",
+    },
+    {
       name: "BLUSH EN BLOOM",
       category: "Perfume",
       image: "/mo1.png",

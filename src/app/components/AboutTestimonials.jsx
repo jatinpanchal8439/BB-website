@@ -1,25 +1,40 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutTestimonials() {
   const scrollContainerRef = useRef(null);
   const [playingIndex, setPlayingIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
     {
-      image: "/biography-founders.png",
-      badgeText: "Perfume & Fragrance",
+      image: "/klust-thumb.jpg",
+      badgeText: "Beauty & Lifestyle",
       badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF6A2A]",
-      accentCol: "#FF6A2A",
-      quote: "BanegaBrand helped us turn our idea into BIOGRAPHY — from product development to market launch. The process was smooth and truly professional.",
-      name: "Meherban Singh",
-      role: "Founder, BIOGRAPHY",
-      logo: "/logos/Biography logo.png",
-      videoUrl: null
+      badgeTextCol: "text-[#FF4D00]",
+      accentCol: "#FF4D00",
+      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
+      name: "Kangna Sharma",
+      role: "Founder, KLUST",
+      logo: null,
+      videoUrl: "/klust-testimonial.mp4"
+    },
+    {
+      image: "/rougx-founders.png",
+      badgeText: "Perfume & Fragrance",
+      badgeBg: "bg-[#EEF5FF]",
+      badgeTextCol: "text-[#3B82F6]",
+      accentCol: "#3B82F6",
+      quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
+      name: "Swapnil R Srivastava",
+      role: "Founder, ROUGX",
+      logo: "/logos/ROUGX LOGO 1.png",
+      videoUrl: "/videos/speach-for-bb.mp4",
+      caseStudyUrl: "/case-study/rougx"
     },
     {
       image: "/videos/paroha-thumb.jpg",
@@ -32,19 +47,8 @@ export default function AboutTestimonials() {
       name: "Mohan Paroha",
       role: "Founder, CONTEMPRORY",
       logo: "/logos/Contempory logo clean.png",
-      videoUrl: "/videos/paroha-testimonial.mp4"
-    },
-    {
-      image: "/rougx-founders.png",
-      badgeText: "Perfume & Fragrance",
-      badgeBg: "bg-[#EEF5FF]",
-      badgeTextCol: "text-[#3B82F6]",
-      accentCol: "#3B82F6",
-      quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
-      name: "Swapnil R Srivastava",
-      role: "Founder, ROUGX",
-      logo: "/logos/ROUGX LOGO 1.png",
-      videoUrl: "/videos/speach-for-bb.mp4"
+      videoUrl: "/videos/paroha-testimonial.mp4",
+      caseStudyUrl: "/case-study/contemprory"
     },
     {
       image: "/videos/contemprory-launch-thumb.jpg",
@@ -57,7 +61,35 @@ export default function AboutTestimonials() {
       name: "CONTEMPRORY Launch Event",
       role: "Grand Launch, CONTEMPRORY",
       logo: "/logos/Contempory logo clean.png",
-      videoUrl: "/videos/contemprory-launch-testimonial.mp4"
+      videoUrl: "/videos/contemprory-launch-testimonial.mp4",
+      caseStudyUrl: "/case-study/contemprory"
+    },
+    {
+      image: "/biography-founders.png",
+      badgeText: "Perfume & Fragrance",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF6A2A]",
+      accentCol: "#FF6A2A",
+      quote: "BanegaBrand helped us turn our idea into BIOGRAPHY — from product development to market launch. The process was smooth and truly professional.",
+      name: "Meherban Singh",
+      role: "Founder, BIOGRAPHY",
+      logo: "/logos/Biography logo.png",
+      videoUrl: null,
+      caseStudyUrl: "/case-study/biographey"
+    },
+    {
+      image: "/videos/blush-en-bloom-thumb.jpg",
+      objectPosition: "object-center",
+      badgeText: "Perfume Launch",
+      badgeBg: "bg-[#FFF0E6]",
+      badgeTextCol: "text-[#FF4D00]",
+      accentCol: "#FF4D00",
+      quote: "A grand event, a little luxury, a new chapter. Launching BLUSH EN BLOOM with Banega Brand was truly magical — from product development to an unforgettable launch event.",
+      name: "Blush En Bloom Launch",
+      role: "Grand Launch, BLUSH EN BLOOM",
+      logo: "/logos/Blush en Bloom Logo.png",
+      videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
+      caseStudyUrl: "/case-study/blush-en-bloom"
     },
     {
       image: "/grevety-founders.png",
@@ -70,27 +102,29 @@ export default function AboutTestimonials() {
       role: "Founder, GREVETY",
       logo: "/logos/MAIN GREVETY LOGO.png",
       videoUrl: null
-    },
-    {
-      image: "/klust-thumb.jpg",
-      badgeText: "Beauty & Lifestyle",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF4D00]",
-      accentCol: "#FF4D00",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      name: "Kangna Sharma",
-      role: "Founder, KLUST",
-      logo: null,
-      videoUrl: "/klust-testimonial.mp4"
     }
   ];
 
   const scrollDirection = (dir) => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 380;
       const gap = 20;
-      const scrollAmount = (cardWidth + gap) * (dir === 'left' ? -1 : 1);
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      
+      if (dir === 'right') {
+        if (container.scrollLeft >= maxScroll - 20) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+        }
+      } else {
+        if (container.scrollLeft <= 20) {
+          container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+        }
+      }
     }
   };
 
@@ -111,6 +145,28 @@ export default function AboutTestimonials() {
       setActiveIndex(Math.min(testimonials.length - 1, Math.max(0, newIndex)));
     }
   };
+
+  // Auto-slideshow functionality
+  useEffect(() => {
+    if (isPaused || playingIndex !== null) return;
+
+    const interval = setInterval(() => {
+      if (!scrollContainerRef.current) return;
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 380;
+      const gap = 20;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      if (container.scrollLeft >= maxScroll - 20) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+        setActiveIndex(0);
+      } else {
+        container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+      }
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused, playingIndex]);
 
   return (
     <section className="relative bg-[#FCFBF8] pt-12 sm:pt-16 lg:pt-22 pb-14 sm:pb-18 lg:pb-22 overflow-hidden border-t border-gray-100 font-sans">
@@ -228,9 +284,17 @@ export default function AboutTestimonials() {
                     style={{ backgroundColor: test.accentCol }}
                   ></div>
                   <div className="flex justify-between items-end gap-1.5">
-                    <div className="flex flex-col min-w-0">
+                    <div className="flex flex-col min-w-0 flex-1">
                       <h4 className="text-[12px] min-[380px]:text-[12.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
-                      <span className="text-[8px] min-[380px]:text-[8.5px] font-medium text-gray-400 uppercase tracking-wider mt-0.5 truncate">{test.role}</span>
+                      <span className="text-[7.5px] min-[380px]:text-[8.5px] font-medium text-gray-400 uppercase tracking-tight min-[380px]:tracking-normal mt-0.5 leading-tight whitespace-normal">{test.role}</span>
+                      {test.caseStudyUrl && (
+                        <Link 
+                          href={test.caseStudyUrl}
+                          className="text-[8px] min-[380px]:text-[8.5px] font-bold text-[#FF4D00] hover:underline flex items-center gap-0.5 mt-0.5"
+                        >
+                          View Case Study →
+                        </Link>
+                      )}
                     </div>
                     {test.logo && (
                       <div className="relative w-11 min-[380px]:w-13 h-5 min-[380px]:h-6 shrink-0 opacity-80 mix-blend-multiply">
@@ -245,7 +309,11 @@ export default function AboutTestimonials() {
         </div>
 
         {/* DESKTOP VIEW: Horizontal Carousel with 3 cards visible + Navigation */}
-        <div className="hidden lg:block w-full">
+        <div 
+          className="hidden lg:block w-full"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
@@ -323,9 +391,17 @@ export default function AboutTestimonials() {
                       style={{ backgroundColor: test.accentCol }}
                     ></div>
                     <div className="flex justify-between items-end gap-2">
-                      <div className="flex flex-col min-w-0">
+                      <div className="flex flex-col min-w-0 flex-1">
                         <h4 className="text-[13.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
-                        <span className="text-[9.5px] font-medium text-gray-400 uppercase tracking-wider mt-0.5 truncate">{test.role}</span>
+                        <span className="text-[9px] min-[1400px]:text-[9.5px] font-medium text-gray-400 uppercase tracking-normal min-[1400px]:tracking-wide mt-0.5 leading-tight whitespace-normal">{test.role}</span>
+                        {test.caseStudyUrl && (
+                          <Link 
+                            href={test.caseStudyUrl}
+                            className="text-[9.5px] font-bold text-[#FF4D00] hover:underline flex items-center gap-1 mt-1"
+                          >
+                            View Case Study →
+                          </Link>
+                        )}
                       </div>
                       {test.logo && (
                         <div className="relative w-14 h-7 shrink-0 opacity-80 mix-blend-multiply">

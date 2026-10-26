@@ -7,6 +7,14 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 export default function FeaturedLaunches() {
   const launches = [
     {
+      title: "CONTEMPRORY",
+      badge: "Skincare & Perfume",
+      badgeColor: "bg-[#FFF0E6] text-[#FF4D00]",
+      description: "A new-age lifestyle brand with clinically backed skincare and luxury perfumes, debuted with 50+ creators.",
+      image: "/contemprory-website-showcase.png",
+      href: "/case-study/contemprory",
+    },
+    {
       title: "Blush En Bloom",
       badge: "Perfume",
       badgeColor: "bg-[#FFF2E8] text-[#FF4D00]",
