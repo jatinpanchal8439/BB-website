@@ -8,22 +8,25 @@ export default function CaseStudyContemprory() {
     <section className="relative w-full font-sans bg-[#FCFBF8] pt-0">
       
       {/* Full Width Background Area */}
-      <div className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFF8F2] via-[#FCFBF8] to-[#FFF5EC]">
+      <div className="relative w-full overflow-hidden bg-[#fffaf5]">
         
-        {/* Subtle Luxury Ambient Gradients (No perfume bottles) */}
-        <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-gradient-to-bl from-orange-100/50 via-orange-50/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
-        <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-gradient-to-tr from-[#FFEEDB]/60 via-[#FFF4E8]/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
-        
-        {/* Subtle decorative curve line */}
-        <div className="absolute top-8 right-12 w-[350px] h-[280px] pointer-events-none opacity-40 -z-0 hidden md:block">
-          <svg className="w-full h-full" viewBox="0 0 350 280" fill="none">
-            <path d="M350 30 C240 30 160 110 140 280" stroke="#f55926" strokeWidth="1.5" strokeOpacity="0.35" />
-            <circle cx="145" cy="180" r="4" fill="#f55926" fillOpacity="0.5" />
-          </svg>
+        {/* Background Banner Image for Desktop: Frame_102.webp */}
+        <div className="absolute inset-0 z-0 hidden md:block">
+          <Image 
+            src="/Frame_102.webp" 
+            alt="CONTEMPRORY Clinical Skincare Hero Banner" 
+            fill 
+            className="object-cover object-right" 
+            priority
+          />
+          {/* Left subtle gradient for 100% crisp text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFFBF8] via-[#FFFBF8]/95 to-transparent w-[60%] lg:w-[52%]"></div>
+          {/* Bottom subtle blend into floating stats bar */}
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FFFBF8] to-transparent"></div>
         </div>
 
         {/* Content Wrapper constrained to max-width */}
-        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-28 sm:pb-32 md:pb-40 lg:pb-44 min-h-[550px] md:min-h-[650px] lg:min-h-[700px]">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-28 sm:pb-32 md:pb-40 lg:pb-44 min-h-[550px] md:min-h-[650px] lg:min-h-[720px]">
           
           {/* Left Content */}
           <div className="w-full md:w-1/2 flex flex-col justify-center">
@@ -41,6 +44,19 @@ export default function CaseStudyContemprory() {
             <p className="text-[#4b5563] text-sm sm:text-lg md:text-xl lg:text-[22px] mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed font-medium">
               How Banega Brand partnered with Paroha Life Sciences to build CONTEMPRORY — a next-generation clinical skincare brand with premium formulations, dermatological care, and an unforgettable creator grand launch.
             </p>
+
+            {/* Mobile Visual Card - Frame_102.webp showcase */}
+            <div className="md:hidden w-[calc(100%+2rem)] -mx-4 sm:w-full sm:mx-0 overflow-hidden relative rounded-2xl shadow-md border border-orange-100/80 bg-white mb-6">
+              <div className="relative w-full aspect-[16/10]">
+                <Image
+                  src="/Frame_102.webp"
+                  alt="CONTEMPRORY Clinical Skincare - Blue PDRN"
+                  fill
+                  className="object-cover object-right"
+                  priority
+                />
+              </div>
+            </div>
 
             {/* Working CTA Button (Scrolls to Details) */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6">
@@ -76,35 +92,8 @@ export default function CaseStudyContemprory() {
             </div>
           </div>
 
-          {/* Right Visual: Clean Official Showcase Card */}
-          <div className="w-full md:w-1/2 relative flex justify-center md:justify-end z-20 mt-6 md:mt-0">
-            <div className="relative w-full max-w-[560px] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(245,89,38,0.1)] border border-[#f0e6de] bg-white group hover:shadow-xl transition-all duration-500">
-              <div className="relative aspect-[16/10] w-full bg-[#fdfaf7]">
-                <Image
-                  src="/contemprory-website-showcase.png"
-                  alt="CONTEMPRORY Official Showcase"
-                  fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-102"
-                  priority
-                />
-              </div>
-              <div className="p-3.5 sm:p-4.5 bg-white flex items-center justify-between border-t border-orange-50">
-                <div className="flex items-center gap-2.5 sm:gap-3">
-                  <div className="relative w-24 sm:w-28 h-6 sm:h-7">
-                    <Image
-                      src="/logos/Contempory logo clean.png"
-                      alt="CONTEMPRORY"
-                      fill
-                      className="object-contain object-left"
-                    />
-                  </div>
-                  <span className="text-[10px] sm:text-[11px] font-bold text-[#f55926] bg-orange-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-orange-100 uppercase tracking-wide">
-                    New-Age Lifestyle
-                  </span>
-                </div>
-                <span className="text-[11px] sm:text-xs text-gray-500 font-medium">Paroha Life Sciences</span>
-              </div>
-            </div>
+          {/* Right Content Placeholder for layout balance: lets the models & products shine */}
+          <div className="w-full md:w-1/2 relative hidden md:flex justify-center md:justify-end z-20">
           </div>
 
         </div>
