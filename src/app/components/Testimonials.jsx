@@ -6,15 +6,19 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { Play, Pause, X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
   const scrollContainerRef = useRef(null);
-  const [playingIndex, setPlayingIndex] = useState(null);
+  const videoRefs = useRef({});
+  const [isInView, setIsInView] = useState(false);
+  const [activeAudioIndex, setActiveAudioIndex] = useState(null);
+  const [isPlayingState, setIsPlayingState] = useState({});
+  const [activeModalVideo, setActiveModalVideo] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   useGSAP(() => {
     gsap.from(".gsap-testimonial-header", {
@@ -41,7 +45,7 @@ export default function Testimonials() {
       y: 25,
       opacity: 0,
       duration: 0.5,
-      stagger: 0.1,
+      stagger: 0.08,
       ease: "power2.out",
       immediateRender: false,
       clearProps: "all",
@@ -50,104 +54,181 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      image: "/videos/blush-en-bloom-thumb.jpg",
-      objectPosition: "object-center",
-      badgeText: "Perfume Launch",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF4D00]",
-      accentCol: "#FF4D00",
-      quote: "A grand event, a little luxury, a new chapter. Launching BLUSH EN BLOOM with Banega Brand was truly magical — from product development to an unforgettable launch event.",
-      name: "Blush En Bloom",
-      role: "Grand Launch, BLUSH EN BLOOM",
-      logo: "/logos/Blush en Bloom Logo.png",
+      id: "blush-en-bloom",
+      title: "Blush En Bloom",
+      subtitle: "Grand Launch",
+      founder: "Grand Launch, BLUSH EN BLOOM",
       videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
+      poster: "/videos/blush-en-bloom-thumb.jpg",
+      thumb: "/videos/blush-en-bloom-thumb.jpg",
+      logo: "/logos/Blush en Bloom Logo.png",
       caseStudyUrl: "/case-study/blush-en-bloom"
     },
     {
-      image: "/videos/paroha-thumb.jpg",
-      objectPosition: "object-center",
-      badgeText: "Clinical Skincare",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF4D00]",
-      accentCol: "#FF4D00",
-      quote: "We planned the vision, but Banega Brand executed it to perfection. From product development to the grand launch, their dedicated team delivered a true 10/10 experience.",
-      name: "Mohan Paroha",
-      role: "Founder, CONTEMPRORY",
-      logo: "/logos/Contempory logo clean.png",
+      id: "contemprory",
+      title: "Mohan Paroha",
+      subtitle: "Founder, CONTEMPRORY",
+      founder: "Founder, CONTEMPRORY",
       videoUrl: "/videos/paroha-testimonial.mp4",
+      poster: "/videos/paroha-thumb.jpg",
+      thumb: "/videos/paroha-thumb.jpg",
+      logo: "/logos/Contempory logo clean.png",
       caseStudyUrl: "/case-study/contemprory"
     },
     {
-      image: "/rougx-founders.png",
-      badgeText: "Perfume & Fragrance",
-      badgeBg: "bg-[#EEF5FF]",
-      badgeTextCol: "text-[#3B82F6]",
-      accentCol: "#3B82F6",
-      quote: "The BanegaBrand team understood our vision and helped us launch ROUGX with the right formulation, packaging and go-to-market strategy.",
-      name: "Swapnil R Srivastava",
-      role: "Founder, ROUGX",
-      logo: "/logos/ROUGX LOGO 1.png",
+      id: "rougx",
+      title: "Swapnil Srivastava",
+      subtitle: "Founder, ROUGX",
+      founder: "Founder, ROUGX",
       videoUrl: "/videos/speach-for-bb.mp4",
+      poster: "/videos/rougx-thumb.jpg",
+      thumb: "/videos/rougx-thumb.jpg",
+      logo: "/logos/ROUGX LOGO 1.png",
       caseStudyUrl: "/case-study/rougx"
     },
     {
-      image: "/klust-thumb.jpg",
-      badgeText: "Beauty & Lifestyle",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF4D00]",
-      accentCol: "#FF4D00",
-      quote: "Working with BanegaBrand transformed our vision into reality. Their end-to-end support for KLUST made the entire launch process seamless and incredibly professional.",
-      name: "Kangna Sharma",
-      role: "Founder, KLUST",
+      id: "klust",
+      title: "Kangna Sharma",
+      subtitle: "Founder, KLUST",
+      founder: "Founder, KLUST",
+      videoUrl: "/klust-testimonial.mp4",
+      poster: "/klust-thumb.jpg",
+      thumb: "/klust-thumb.jpg",
       logo: null,
-      videoUrl: "/klust-testimonial.mp4"
+      caseStudyUrl: null
     },
     {
-      image: "/videos/contemprory-launch-thumb.jpg",
-      objectPosition: "object-center",
-      badgeText: "Brand Launch",
-      badgeBg: "bg-[#EEF2FF]",
-      badgeTextCol: "text-[#4F46E5]",
-      accentCol: "#4F46E5",
-      quote: "The grand launch of CONTEMPRORY organized by Banega Brand was an electrifying success. The creators, the energy, and the seamless execution were truly unforgettable.",
-      name: "CONTEMPRORY Launch Event",
-      role: "Grand Launch, CONTEMPRORY",
-      logo: "/logos/Contempory logo clean.png",
+      id: "contemprory-launch",
+      title: "CONTEMPRORY",
+      subtitle: "Grand Launch Event",
+      founder: "Grand Launch Experience",
       videoUrl: "/videos/contemprory-launch-testimonial.mp4",
+      poster: "/videos/contemprory-launch-thumb.jpg",
+      thumb: "/videos/contemprory-launch-thumb.jpg",
+      logo: "/logos/Contempory logo clean.png",
       caseStudyUrl: "/case-study/contemprory"
-    },
-    {
-      image: "/biography-founders.png",
-      badgeText: "Perfume & Fragrance",
-      badgeBg: "bg-[#FFF0E6]",
-      badgeTextCol: "text-[#FF6A2A]",
-      accentCol: "#FF6A2A",
-      quote: "BanegaBrand helped us turn our idea into BIOGRAPHY — from product development to market launch. The process was smooth and truly professional.",
-      name: "Meherban Singh",
-      role: "Founder, BIOGRAPHY",
-      logo: "/logos/Biography logo.png",
-      videoUrl: null,
-      caseStudyUrl: "/case-study/biographey"
-    },
-    {
-      image: "/grevety-founders.png",
-      badgeText: "Beauty & Skincare",
-      badgeBg: "bg-[#EAFBF0]",
-      badgeTextCol: "text-[#10B981]",
-      accentCol: "#10B981",
-      quote: "BanegaBrand made the entire journey of launching GREVETY easy and well-structured. Their guidance, product development and support were exceptional.",
-      name: "Divya Rani",
-      role: "Founder, GREVETY",
-      logo: "/logos/MAIN GREVETY LOGO.png",
-      videoUrl: null
     }
   ];
+
+  // Observer to detect when testimonials section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      observer.observe(currentSection);
+    }
+
+    return () => {
+      if (currentSection) observer.unobserve(currentSection);
+      observer.disconnect();
+    };
+  }, []);
+
+  // When scrolled into view: preview silently until user clicks
+  useEffect(() => {
+    if (!isInView) {
+      // Pause all when out of view
+      testimonials.forEach((_, idx) => {
+        const vid = videoRefs.current[idx];
+        if (vid) vid.pause();
+      });
+      setActiveAudioIndex(null);
+      setIsPlayingState({});
+    } else {
+      // If in view and no video has been chosen for sound playback, preview silently
+      if (activeAudioIndex === null && !activeModalVideo) {
+        testimonials.forEach((_, idx) => {
+          const vid = videoRefs.current[idx];
+          if (vid) {
+            vid.muted = true;
+            vid.loop = true;
+            const playPromise = vid.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                setIsPlayingState((prev) => ({ ...prev, [idx]: true }));
+              }).catch(() => {
+                // Autoplay policy fallback
+              });
+            }
+          }
+        });
+      }
+    }
+  }, [isInView, activeAudioIndex, activeModalVideo]);
+
+  // Handle ESC key for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setActiveModalVideo(null);
+    };
+    if (activeModalVideo) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [activeModalVideo]);
+
+  // Click handler: ONLY ONE video plays at a time, and audio ONLY turns on when clicked
+  const handleVideoCardClick = (index) => {
+    const clickedVid = videoRefs.current[index];
+    if (!clickedVid) return;
+
+    if (activeAudioIndex === index) {
+      // Toggle play/pause for the currently active unmuted video
+      if (clickedVid.paused) {
+        clickedVid.play().then(() => {
+          setIsPlayingState((prev) => ({ ...prev, [index]: true }));
+        }).catch(() => {});
+      } else {
+        clickedVid.pause();
+        setIsPlayingState((prev) => ({ ...prev, [index]: false }));
+      }
+    } else {
+      // Stop all other videos completely: "ek time pe ek video play hogi"
+      testimonials.forEach((_, idx) => {
+        const otherVid = videoRefs.current[idx];
+        if (otherVid && idx !== index) {
+          otherVid.pause();
+          otherVid.muted = true;
+          otherVid.currentTime = otherVid.currentTime; // keep position
+        }
+      });
+
+      // Play the clicked video WITH AUDIO: "awaj tabhi aye jab ek pr click kru"
+      clickedVid.muted = false;
+      clickedVid.volume = 1;
+      const playPromise = clickedVid.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setActiveAudioIndex(index);
+          setIsPlayingState({ [index]: true });
+        }).catch(() => {
+          // If browser restricts audio play, retry with muted
+          clickedVid.muted = true;
+          clickedVid.play().then(() => {
+            setActiveAudioIndex(index);
+            setIsPlayingState({ [index]: true });
+          }).catch(() => {});
+        });
+      }
+    }
+  };
+
 
   const scrollDirection = (dir) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const cardWidth = container.firstElementChild?.offsetWidth || 380;
-      const gap = 20;
+      const cardWidth = container.firstElementChild?.offsetWidth || 260;
+      const gap = 16;
       const maxScroll = container.scrollWidth - container.clientWidth;
       
       if (dir === 'right') {
@@ -166,61 +247,23 @@ export default function Testimonials() {
     }
   };
 
-  const scrollToIndex = (idx) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
-      const gap = 20;
-      scrollContainerRef.current.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
-      setActiveIndex(idx);
-    }
-  };
-
   const handleScroll = () => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.firstElementChild?.offsetWidth || 380;
-      const gap = 20;
-      const newIndex = Math.round(scrollContainerRef.current.scrollLeft / (cardWidth + gap));
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 260;
+      const gap = 16;
+      const newIndex = Math.round(container.scrollLeft / (cardWidth + gap));
       setActiveIndex(Math.min(testimonials.length - 1, Math.max(0, newIndex)));
     }
   };
 
-  // Auto-slideshow functionality
-  useEffect(() => {
-    if (isPaused || playingIndex !== null) return;
-
-    const interval = setInterval(() => {
-      if (!scrollContainerRef.current) return;
-      const container = scrollContainerRef.current;
-      const cardWidth = container.firstElementChild?.offsetWidth || 380;
-      const gap = 20;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      if (container.scrollLeft >= maxScroll - 20) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-        setActiveIndex(0);
-      } else {
-        container.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
-      }
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, [isPaused, playingIndex]);
-
   return (
-    <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-12 sm:pt-16 lg:pt-22 pb-14 sm:pb-18 lg:pb-22 overflow-hidden border-t border-gray-100 font-sans">
+    <section ref={sectionRef} className="relative bg-[#FCFBF8] pt-14 sm:pt-20 pb-16 sm:pb-20 overflow-hidden border-t border-gray-100 font-sans">
       
-      {/* Top right decorative curve with orange dot */}
-      <div className="absolute top-0 right-0 w-[450px] h-[380px] pointer-events-none overflow-hidden -z-0">
-        <svg className="w-full h-full" viewBox="0 0 450 380" fill="none">
-          <path d="M450 40 C320 40 230 130 205 380" stroke="#FF5425" strokeWidth="1.5" strokeOpacity="0.4" />
-          <circle cx="210" cy="250" r="4.5" fill="#FF5425" />
-        </svg>
-      </div>
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-[#FFEFE5] opacity-50 blur-[130px] rounded-full pointer-events-none -z-0" />
 
-      {/* Bottom left subtle warm blob */}
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] pointer-events-none bg-[#FFF2E8] rounded-tr-full opacity-60 -z-0"></div>
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-8 sm:mb-12">
@@ -234,7 +277,7 @@ export default function Testimonials() {
           </div>
           
           {/* Headline */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-[#0B1B36] leading-[1.1] tracking-tight mb-3 gsap-testimonial-header font-[family-name:var(--font-plus-jakarta)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B1B36] leading-[1.1] tracking-tight mb-2.5 gsap-testimonial-header font-[family-name:var(--font-plus-jakarta)]">
             What <span className="text-[#FF4D00] relative inline-block">
               Founders
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#FF4D00]" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
@@ -244,270 +287,205 @@ export default function Testimonials() {
           </h2>
           
           {/* Subtitle */}
-          <p className="text-[#64748B] text-xs sm:text-sm md:text-base font-medium gsap-testimonial-header">
-            Real people. Real brands. Real results.
+          <p className="text-[#64748B] text-xs sm:text-sm md:text-base font-medium max-w-xl gsap-testimonial-header">
+            Tap any reel to play with sound. Real stories captured live.
           </p>
         </div>
 
-        {/* MOBILE VIEW: Vertically Stacked Cards (matching mobile screenshot) */}
-        <div className="flex flex-col gap-4 lg:hidden w-full max-w-lg mx-auto">
-          {testimonials.map((test, index) => (
-            <div 
-              key={`mobile-${index}`} 
-              className="gsap-testimonial-card bg-white rounded-2xl p-3 min-[380px]:p-3.5 sm:p-4 flex flex-row gap-3 min-[380px]:gap-3.5 shadow-[0_3px_18px_-4px_rgba(0,0,0,0.06)] border border-[#F0ECE6] w-full items-stretch"
-            >
-              {/* Left Column: Square Thumbnail Image / Video */}
-              <div 
-                className={`w-[115px] min-[380px]:w-[125px] sm:w-[145px] shrink-0 relative rounded-xl overflow-hidden bg-[#F7F5F2] self-stretch min-h-[145px] sm:min-h-[165px] ${test.videoUrl ? 'cursor-pointer group' : ''}`}
-                onClick={() => {
-                  if (test.videoUrl && playingIndex !== `mobile-${index}`) {
-                    setPlayingIndex(`mobile-${index}`);
-                  }
-                }}
-              >
-                {playingIndex === `mobile-${index}` && test.videoUrl ? (
-                  <video 
-                    src={test.videoUrl} 
-                    poster={test.image}
-                    className="w-full h-full object-cover"
-                    controls
-                    autoPlay
-                    playsInline
-                  />
-                ) : (
-                  <>
-                    <Image 
-                      src={test.image} 
-                      alt={test.name} 
-                      fill 
-                      sizes="(max-width: 640px) 140px, 160px"
-                      className={`object-cover ${test.objectPosition || 'object-top'} transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
-                    />
-                    {test.videoUrl && (
-                      <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
-                        <div className="w-8 h-8 rounded-full bg-white/95 flex items-center justify-center shadow-md">
-                          <svg className="w-3.5 h-3.5 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-
-              {/* Right Column: Text Content */}
-              <div className="flex flex-col flex-1 justify-between min-w-0 py-0.5">
-                <div>
-                  {/* Badge */}
-                  <span className={`inline-block px-2 py-0.5 rounded-full text-[8.5px] min-[380px]:text-[9px] sm:text-[9.5px] font-semibold mb-1 ${test.badgeBg} ${test.badgeTextCol}`}>
-                    {test.badgeText}
-                  </span>
-                  
-                  {/* Quote SVG */}
-                  <svg 
-                    className="w-4 h-4 min-[380px]:w-5 min-[380px]:h-5 mb-0.5 opacity-75" 
-                    style={{ color: test.accentCol }}
-                    fill="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                  
-                  {/* Quote text */}
-                  <p className="text-[#333333] text-[10.5px] min-[380px]:text-[11px] sm:text-[12px] leading-[1.5] font-normal line-clamp-4 mb-2">
-                    {test.quote}
-                  </p>
-                </div>
-                
-                {/* Footer divider + founder name & brand logo */}
-                <div className="pt-1.5">
-                  <div 
-                    className="w-5 sm:w-6 h-[1.5px] mb-1.5" 
-                    style={{ backgroundColor: test.accentCol }}
-                  ></div>
-                  <div className="flex justify-between items-end gap-1.5">
-                    <div className="flex flex-col min-w-0 flex-1">
-                      <h4 className="text-[12px] min-[380px]:text-[12.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
-                      <span className="text-[7.5px] min-[380px]:text-[8.5px] font-medium text-gray-400 uppercase tracking-tight min-[380px]:tracking-normal mt-0.5 leading-tight whitespace-normal">{test.role}</span>
-                      {test.caseStudyUrl && (
-                        <Link 
-                          href={test.caseStudyUrl}
-                          className="text-[8px] min-[380px]:text-[8.5px] font-bold text-[#FF4D00] hover:underline flex items-center gap-0.5 mt-0.5"
-                        >
-                          View Case Study →
-                        </Link>
-                      )}
-                    </div>
-                    {test.logo && (
-                      <div className="relative w-11 min-[380px]:w-13 h-5 min-[380px]:h-6 shrink-0 opacity-80 mix-blend-multiply">
-                        <Image src={test.logo} alt="Brand Logo" fill sizes="52px" className="object-contain object-right-bottom" />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* DESKTOP VIEW: Horizontal Carousel with 3 cards visible + Navigation */}
-        <div 
-          className="hidden lg:block w-full"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        {/* 5-Card Video Reels Grid / Carousel */}
+        <div className="w-full">
           <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-3 px-1 hide-scrollbar scroll-smooth"
+            className="flex lg:grid lg:grid-cols-5 gap-3.5 sm:gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 px-1 hide-scrollbar scroll-smooth"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {testimonials.map((test, index) => (
-              <div 
-                key={`desktop-${index}`} 
-                className="gsap-testimonial-card w-[calc((100%-40px)/3)] min-w-[calc((100%-40px)/3)] max-w-[calc((100%-40px)/3)] snap-start bg-white rounded-3xl p-4.5 xl:p-5 flex flex-row gap-4 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.06)] border border-[#F0ECE6] hover:shadow-lg transition-all duration-300 items-stretch shrink-0"
-              >
-                {/* Left Column: Image / Video */}
-                <div 
-                  className={`w-[145px] xl:w-[160px] shrink-0 relative rounded-2xl overflow-hidden bg-[#F7F5F2] self-stretch min-h-[185px] ${test.videoUrl ? 'cursor-pointer group' : ''}`}
-                  onClick={() => {
-                    if (test.videoUrl && playingIndex !== `desktop-${index}`) {
-                      setPlayingIndex(`desktop-${index}`);
-                    }
-                  }}
-                >
-                  {playingIndex === `desktop-${index}` && test.videoUrl ? (
-                    <video 
-                      src={test.videoUrl} 
-                      poster={test.image}
-                      className="w-full h-full object-cover"
-                      controls
-                      autoPlay
-                      playsInline
-                    />
-                  ) : (
-                    <>
-                      <Image 
-                        src={test.image} 
-                        alt={test.name} 
-                        fill 
-                        sizes="180px"
-                        className={`object-cover ${test.objectPosition || 'object-top'} transition-transform duration-500 ${test.videoUrl ? 'group-hover:scale-105' : ''}`}
-                      />
-                      {test.videoUrl && (
-                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/30">
-                          <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                            <svg className="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
+            {testimonials.map((test, index) => {
+              const isThisActiveAudio = activeAudioIndex === index;
+              const isThisPlaying = !!isPlayingState[index];
 
-                {/* Right Column: Text Content */}
-                <div className="flex flex-col flex-1 justify-between min-w-0 py-0.5">
-                  <div>
-                    {/* Badge */}
-                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold mb-1.5 ${test.badgeBg} ${test.badgeTextCol}`}>
-                      {test.badgeText}
-                    </span>
-                    
-                    {/* Quote SVG */}
-                    <svg 
-                      className="w-5 h-5 mb-1 opacity-75" 
-                      style={{ color: test.accentCol }}
-                      fill="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                    
-                    {/* Quote text */}
-                    <p className="text-[#333333] text-[12.5px] leading-[1.6] font-normal line-clamp-4 mb-2">
-                      {test.quote}
-                    </p>
-                  </div>
-                  
-                  {/* Footer divider + founder name & brand logo */}
-                  <div className="pt-2">
+              return (
+                <div 
+                  key={test.id || index}
+                  onClick={() => handleVideoCardClick(index)}
+                  className={`gsap-testimonial-card relative w-[72vw] min-[420px]:w-[240px] sm:w-[260px] lg:w-full aspect-[9/16] shrink-0 snap-center rounded-[22px] overflow-hidden bg-black select-none border transition-all duration-300 cursor-pointer group shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.22)] hover:-translate-y-1 ${
+                    isThisActiveAudio 
+                      ? "ring-2 ring-[#FF4D00] border-transparent shadow-[0_12px_32px_rgba(255,77,0,0.25)]" 
+                      : "border-neutral-800/80 hover:border-neutral-700"
+                  }`}
+                >
+                  {/* Video Player Element */}
+                  <video
+                    ref={(el) => {
+                      if (el) videoRefs.current[index] = el;
+                      else delete videoRefs.current[index];
+                    }}
+                    src={test.videoUrl}
+                    poster={test.poster}
+                    muted={!isThisActiveAudio}
+                    playsInline
+                    loop
+                    preload="metadata"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  {/* Gradient Vignette Overlays for Maximum Contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
+
+
+                  {/* Center Play / Pause Icon Button (matches user screenshot) */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                     <div 
-                      className="w-6 h-[1.5px] mb-2" 
-                      style={{ backgroundColor: test.accentCol }}
-                    ></div>
-                    <div className="flex justify-between items-end gap-2">
-                      <div className="flex flex-col min-w-0 flex-1">
-                        <h4 className="text-[13.5px] font-bold text-[#1E1E1E] leading-tight truncate">{test.name}</h4>
-                        <span className="text-[9px] min-[1400px]:text-[9.5px] font-medium text-gray-400 uppercase tracking-normal min-[1400px]:tracking-wide mt-0.5 leading-tight whitespace-normal">{test.role}</span>
-                        {test.caseStudyUrl && (
-                          <Link 
-                            href={test.caseStudyUrl}
-                            className="text-[9.5px] font-bold text-[#FF4D00] hover:underline flex items-center gap-1 mt-1"
-                          >
-                            View Case Study →
-                          </Link>
-                        )}
-                      </div>
-                      {test.logo && (
-                        <div className="relative w-14 h-7 shrink-0 opacity-80 mix-blend-multiply">
-                          <Image src={test.logo} alt="Brand Logo" fill sizes="60px" className="object-contain object-right-bottom" />
-                        </div>
+                      className={`w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-black/45 backdrop-blur-md border border-white/35 flex items-center justify-center text-white shadow-2xl transition-all duration-300 ${
+                        isThisActiveAudio && isThisPlaying
+                          ? "opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100" 
+                          : "opacity-90 group-hover:opacity-100 group-hover:scale-110"
+                      }`}
+                    >
+                      {isThisActiveAudio && isThisPlaying ? (
+                        <Pause size={18} className="fill-white text-white" />
+                      ) : (
+                        <Play size={18} className="ml-0.5 fill-white text-white" />
                       )}
                     </div>
                   </div>
+
+                  {/* Bottom Floating Pill Bar (Full name shown, no plus icon) */}
+                  <div className="absolute bottom-3 inset-x-2.5 sm:inset-x-3 z-20">
+                    <div className="bg-[#121214]/90 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 sm:gap-3 border border-white/15 shadow-2xl transition-colors group-hover:bg-[#121214]/95">
+                      {/* Left: Small Square Thumbnail Image */}
+                      <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden shrink-0 bg-neutral-900 border border-white/15">
+                        <Image 
+                          src={test.thumb} 
+                          alt={test.title} 
+                          fill 
+                          sizes="40px" 
+                          className="object-cover" 
+                        />
+                      </div>
+
+                      {/* Middle: Full Title & Subtitle (No truncate, full name shown) */}
+                      <div className="flex-1 min-w-0 text-left">
+                        <h4 className="text-white font-bold text-xs sm:text-[13px] leading-tight">
+                          {test.title}
+                        </h4>
+                        <p className="text-[#FF4D00] text-[10px] sm:text-[11px] font-semibold leading-tight mt-0.5">
+                          {test.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* Bottom Navigation: Center Dots + Right Arrow Buttons */}
-          <div className="flex items-center justify-between mt-10 px-2">
-            <div className="w-24"></div>
-
+          {/* Mobile/Tablet Controls: Dots & Navigation Arrows */}
+          <div className="flex lg:hidden items-center justify-between mt-6 px-2">
             {/* Center Dots */}
-            <div className="flex items-center justify-center gap-2 mx-auto">
+            <div className="flex items-center justify-center gap-1.5 mx-auto">
               {testimonials.map((_, idx) => (
-                <button
+                <div
                   key={idx}
-                  onClick={() => scrollToIndex(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  className={`transition-all duration-300 rounded-full ${
                     activeIndex === idx 
                       ? 'w-6 h-1.5 bg-[#FF4D00]' 
-                      : 'w-2 h-1.5 bg-[#FFD6C0] hover:bg-[#FFB48A]'
+                      : 'w-1.5 h-1.5 bg-[#FFD6C0]'
                   }`}
                 />
               ))}
             </div>
 
-            {/* Right Arrow Buttons */}
-            <div className="flex items-center gap-2.5">
+            {/* Left / Right arrow buttons */}
+            <div className="flex items-center gap-2">
               <button 
                 onClick={() => scrollDirection('left')}
                 aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-gray-400 hover:text-black transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-gray-400 hover:text-black transition-all shadow-sm active:scale-95 cursor-pointer"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft size={16} />
               </button>
               <button 
                 onClick={() => scrollDirection('right')}
                 aria-label="Next testimonial"
-                className="w-10 h-10 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#E64500] transition-all shadow-md active:scale-95 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#E64500] transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>
         </div>
 
       </div>
+
+      {/* Fullscreen Reel Modal (opens when clicking + button) */}
+      {activeModalVideo && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 transition-all"
+          onClick={() => setActiveModalVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-sm sm:max-w-md aspect-[9/16] max-h-[90vh] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/15 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Top Bar */}
+            <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between p-4 bg-gradient-to-b from-black/85 via-black/45 to-transparent">
+              <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                <div className="relative w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-white/20">
+                  <Image 
+                    src={activeModalVideo.thumb} 
+                    alt={activeModalVideo.title} 
+                    fill 
+                    sizes="32px" 
+                    className="object-cover" 
+                  />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-white font-bold text-sm sm:text-base leading-tight truncate">
+                    {activeModalVideo.title}
+                  </span>
+                  <span className="text-[#FF4D00] text-[11px] font-semibold truncate">
+                    {activeModalVideo.subtitle}
+                  </span>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => setActiveModalVideo(null)}
+                aria-label="Close video"
+                className="w-9 h-9 shrink-0 rounded-full bg-white/20 hover:bg-white/35 text-white flex items-center justify-center backdrop-blur-md transition-all active:scale-95 cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Video Player */}
+            <video
+              src={activeModalVideo.videoUrl}
+              poster={activeModalVideo.poster}
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-cover"
+            />
+
+            {/* Case Study Link if available */}
+            {activeModalVideo.caseStudyUrl && (
+              <div className="absolute bottom-4 inset-x-4 z-20">
+                <Link
+                  href={activeModalVideo.caseStudyUrl}
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-[#FF4D00] hover:bg-[#E64500] text-white font-bold text-xs sm:text-sm shadow-xl transition-all active:scale-95 cursor-pointer"
+                >
+                  <span>Explore Full Case Study</span>
+                  <ExternalLink size={14} />
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
