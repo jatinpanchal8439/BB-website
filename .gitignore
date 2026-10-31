@@ -45,8 +45,10 @@ next-env.d.ts
 # Local Data
 data/
 
-# Root Screenshots
+# Root Screenshots & Media
 /*.png
 /*.jpg
 /*.webp
+/*.mp4
+*.code-workspace
 

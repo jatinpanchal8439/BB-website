@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Pause, X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { Play, Pause, X, ChevronLeft, ChevronRight, ExternalLink, Maximize2, Volume2 } from "lucide-react";
 
 export default function AboutTestimonials() {
   const sectionRef = useRef(null);
@@ -17,21 +17,12 @@ export default function AboutTestimonials() {
 
   const testimonials = [
     {
-      id: "blush-en-bloom",
-      title: "Blush En Bloom",
-      subtitle: "Grand Launch",
-      founder: "Grand Launch, BLUSH EN BLOOM",
-      videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
-      poster: "/videos/blush-en-bloom-thumb.jpg",
-      thumb: "/videos/blush-en-bloom-thumb.jpg",
-      logo: "/logos/Blush en Bloom Logo.png",
-      caseStudyUrl: "/case-study/blush-en-bloom"
-    },
-    {
       id: "contemprory",
       title: "Mohan Paroha",
+      brandName: "CONTEMPRORY",
       subtitle: "Founder, CONTEMPRORY",
       founder: "Founder, CONTEMPRORY",
+      websiteUrl: "https://contemprory.com",
       videoUrl: "/videos/paroha-testimonial.mp4",
       poster: "/videos/paroha-thumb.jpg",
       thumb: "/videos/paroha-thumb.jpg",
@@ -41,8 +32,10 @@ export default function AboutTestimonials() {
     {
       id: "rougx",
       title: "Swapnil Srivastava",
+      brandName: "ROUGX",
       subtitle: "Founder, ROUGX",
       founder: "Founder, ROUGX",
+      websiteUrl: "https://rougx.com",
       videoUrl: "/videos/speach-for-bb.mp4",
       poster: "/videos/rougx-thumb.jpg",
       thumb: "/videos/rougx-thumb.jpg",
@@ -50,26 +43,43 @@ export default function AboutTestimonials() {
       caseStudyUrl: "/case-study/rougx"
     },
     {
-      id: "klust",
-      title: "Kangna Sharma",
-      subtitle: "Founder, KLUST",
-      founder: "Founder, KLUST",
-      videoUrl: "/klust-testimonial.mp4",
-      poster: "/klust-thumb.jpg",
-      thumb: "/klust-thumb.jpg",
-      logo: null,
-      caseStudyUrl: null
+      id: "blush-en-bloom",
+      title: "Blush En Bloom",
+      brandName: "Blush En Bloom",
+      subtitle: "Founder Testimonial",
+      founder: "Founders, BLUSH EN BLOOM",
+      websiteUrl: "https://blushenbloom.com",
+      videoUrl: "/videos/blush-en-bloom-testimonial.mp4",
+      poster: "/videos/blush-en-bloom-thumb.jpg",
+      thumb: "/videos/blush-en-bloom-thumb.jpg",
+      logo: "/logos/Blush en Bloom Logo.png",
+      caseStudyUrl: "/case-study/blush-en-bloom"
     },
     {
-      id: "contemprory-launch",
-      title: "CONTEMPRORY",
-      subtitle: "Grand Launch Event",
-      founder: "Grand Launch Experience",
-      videoUrl: "/videos/contemprory-launch-testimonial.mp4",
-      poster: "/videos/contemprory-launch-thumb.jpg",
-      thumb: "/videos/contemprory-launch-thumb.jpg",
-      logo: "/logos/Contempory logo clean.png",
-      caseStudyUrl: "/case-study/contemprory"
+      id: "klust",
+      title: "Kangna Sharma",
+      brandName: "KLUST",
+      subtitle: "Founder, KLUST",
+      founder: "Founder, KLUST",
+      websiteUrl: "https://klust.in",
+      videoUrl: "/videos/klust-testimonial.mp4",
+      poster: "/videos/klust-thumb.jpg",
+      thumb: "/videos/klust-thumb.jpg",
+      logo: null,
+      caseStudyUrl: "/case-study/klust"
+    },
+    {
+      id: "blush-en-bloom-experience",
+      title: "Blush En Bloom",
+      brandName: "Blush En Bloom",
+      subtitle: "Founder Experience",
+      founder: "Founder Review",
+      websiteUrl: "https://blushenbloom.com",
+      videoUrl: "/videos/blush-en-bloom-review.mp4",
+      poster: "/videos/blush-en-bloom-review-thumb.jpg",
+      thumb: "/videos/blush-en-bloom-review-thumb.jpg",
+      logo: "/logos/Blush en Bloom Logo.png",
+      caseStudyUrl: "/case-study/blush-en-bloom"
     }
   ];
 
@@ -190,7 +200,7 @@ export default function AboutTestimonials() {
   const scrollDirection = (dir) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const cardWidth = container.firstElementChild?.offsetWidth || 260;
+      const cardWidth = container.firstElementChild?.offsetWidth || 280;
       const gap = 16;
       const maxScroll = container.scrollWidth - container.clientWidth;
       
@@ -210,10 +220,20 @@ export default function AboutTestimonials() {
     }
   };
 
+  const scrollToIndex = (idx) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const cardWidth = container.firstElementChild?.offsetWidth || 280;
+      const gap = 16;
+      container.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+      setActiveIndex(idx);
+    }
+  };
+
   const handleScroll = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const cardWidth = container.firstElementChild?.offsetWidth || 260;
+      const cardWidth = container.firstElementChild?.offsetWidth || 280;
       const gap = 16;
       const newIndex = Math.round(container.scrollLeft / (cardWidth + gap));
       setActiveIndex(Math.min(testimonials.length - 1, Math.max(0, newIndex)));
@@ -255,12 +275,12 @@ export default function AboutTestimonials() {
           </p>
         </div>
 
-        {/* 5-Card Video Reels Grid / Carousel */}
-        <div className="w-full">
+        {/* 8-Card Video Reels Carousel */}
+        <div className="w-full relative">
           <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex lg:grid lg:grid-cols-5 gap-3.5 sm:gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory pb-4 px-1 hide-scrollbar scroll-smooth"
+            className="flex gap-3.5 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-1 hide-scrollbar scroll-smooth"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {testimonials.map((test, index) => {
@@ -271,7 +291,7 @@ export default function AboutTestimonials() {
                 <div 
                   key={test.id || index}
                   onClick={() => handleVideoCardClick(index)}
-                  className={`relative w-[72vw] min-[420px]:w-[240px] sm:w-[260px] lg:w-full aspect-[9/16] shrink-0 snap-center rounded-[22px] overflow-hidden bg-black select-none border transition-all duration-300 cursor-pointer group shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.22)] hover:-translate-y-1 ${
+                  className={`relative w-[72vw] min-[420px]:w-[240px] sm:w-[260px] md:w-[270px] lg:w-[280px] aspect-[9/16] shrink-0 snap-center rounded-[22px] overflow-hidden bg-black select-none border transition-all duration-300 cursor-pointer group shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.22)] hover:-translate-y-1 ${
                     isThisActiveAudio 
                       ? "ring-2 ring-[#FF4D00] border-transparent shadow-[0_12px_32px_rgba(255,77,0,0.25)]" 
                       : "border-neutral-800/80 hover:border-neutral-700"
@@ -295,6 +315,28 @@ export default function AboutTestimonials() {
                   {/* Gradient Vignette Overlays for Maximum Contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
+                  {/* Top-Right Sound Active Indicator */}
+                  {isThisActiveAudio && isThisPlaying && (
+                    <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-semibold tracking-wide shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-[#FF4D00] animate-pulse" />
+                      <Volume2 size={12} className="text-[#FF4D00]" />
+                      <span>SOUND ON</span>
+                    </div>
+                  )}
+
+                  {/* Top-Left Fullscreen Expand Button */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveModalVideo(test);
+                    }}
+                    title="Fullscreen preview"
+                    aria-label="Fullscreen preview"
+                    className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white/80 hover:text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-105 cursor-pointer"
+                  >
+                    <Maximize2 size={13} />
+                  </button>
 
                   {/* Center Play / Pause Icon Button (matches user screenshot) */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -313,11 +355,20 @@ export default function AboutTestimonials() {
                     </div>
                   </div>
 
-                  {/* Bottom Floating Pill Bar (Full name shown, no plus icon) */}
+                  {/* Bottom Floating Pill Bar: Click name/pill to redirect to brand website (contemprory.com, rougx.com, blushenbloom.com) */}
                   <div className="absolute bottom-3 inset-x-2.5 sm:inset-x-3 z-20">
-                    <div className="bg-[#121214]/90 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 flex items-center gap-2.5 sm:gap-3 border border-white/15 shadow-2xl transition-colors group-hover:bg-[#121214]/95">
+                    <a
+                      href={test.websiteUrl || test.caseStudyUrl || "/case-study"}
+                      target={test.websiteUrl ? "_blank" : undefined}
+                      rel={test.websiteUrl ? "noopener noreferrer" : undefined}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      title={`Visit ${test.brandName || test.title} (${test.websiteUrl ? test.websiteUrl.replace('https://', '') : ''})`}
+                      className="group/pill flex items-center gap-2.5 sm:gap-3 p-2 sm:p-2.5 rounded-2xl bg-[#121214]/90 hover:bg-[#1C2028] backdrop-blur-md border border-white/15 hover:border-[#FF4D00]/60 shadow-2xl transition-all duration-300 cursor-pointer"
+                    >
                       {/* Left: Small Square Thumbnail Image */}
-                      <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden shrink-0 bg-neutral-900 border border-white/15">
+                      <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden shrink-0 bg-neutral-900 border border-white/15 group-hover/pill:scale-105 transition-transform">
                         <Image 
                           src={test.thumb} 
                           alt={test.title} 
@@ -327,16 +378,19 @@ export default function AboutTestimonials() {
                         />
                       </div>
 
-                      {/* Middle: Full Title & Subtitle (No truncate, full name shown) */}
+                      {/* Middle: Full Title & Subtitle with external link redirect indicator */}
                       <div className="flex-1 min-w-0 text-left">
-                        <h4 className="text-white font-bold text-xs sm:text-[13px] leading-tight">
-                          {test.title}
-                        </h4>
-                        <p className="text-[#FF4D00] text-[10px] sm:text-[11px] font-semibold leading-tight mt-0.5">
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="text-white group-hover/pill:text-[#FF4D00] font-bold text-xs sm:text-[13px] leading-tight truncate transition-colors">
+                            {test.title}
+                          </h4>
+                          <ExternalLink size={12} className="text-[#FF4D00] shrink-0 opacity-80 group-hover/pill:opacity-100 group-hover/pill:translate-x-0.5 group-hover/pill:-translate-y-0.5 transition-transform" />
+                        </div>
+                        <p className="text-[#94A3B8] group-hover/pill:text-gray-300 text-[10px] sm:text-[11px] font-semibold leading-tight mt-0.5 truncate transition-colors">
                           {test.subtitle}
                         </p>
                       </div>
-                    </div>
+                    </a>
                   </div>
 
                 </div>
@@ -344,17 +398,20 @@ export default function AboutTestimonials() {
             })}
           </div>
 
-          {/* Mobile/Tablet Controls: Dots & Navigation Arrows */}
-          <div className="flex lg:hidden items-center justify-between mt-6 px-2">
+          {/* Controls: Clickable Dots & Navigation Arrows (visible on all screens) */}
+          <div className="flex items-center justify-between mt-8 px-2 max-w-[1440px] mx-auto">
             {/* Center Dots */}
             <div className="flex items-center justify-center gap-1.5 mx-auto">
               {testimonials.map((_, idx) => (
-                <div
+                <button
                   key={idx}
-                  className={`transition-all duration-300 rounded-full ${
+                  type="button"
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Go to reel ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer border-0 p-0 ${
                     activeIndex === idx 
-                      ? 'w-6 h-1.5 bg-[#FF4D00]' 
-                      : 'w-1.5 h-1.5 bg-[#FFD6C0]'
+                      ? 'w-7 h-2 bg-[#FF4D00]' 
+                      : 'w-2 h-2 bg-[#FFD6C0] hover:bg-[#FFB088]'
                   }`}
                 />
               ))}
@@ -363,18 +420,20 @@ export default function AboutTestimonials() {
             {/* Left / Right arrow buttons */}
             <div className="flex items-center gap-2">
               <button 
+                type="button"
                 onClick={() => scrollDirection('left')}
                 aria-label="Previous testimonial"
-                className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-gray-400 hover:text-black transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-gray-400 hover:text-black transition-all shadow-sm active:scale-95 cursor-pointer"
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft size={18} />
               </button>
               <button 
+                type="button"
                 onClick={() => scrollDirection('right')}
                 aria-label="Next testimonial"
-                className="w-8 h-8 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#E64500] transition-all shadow-md active:scale-95 cursor-pointer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FF4D00] flex items-center justify-center text-white hover:bg-[#E64500] transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                <ChevronRight size={16} />
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
@@ -433,16 +492,18 @@ export default function AboutTestimonials() {
               className="w-full h-full object-cover"
             />
 
-            {/* Case Study Link if available */}
-            {activeModalVideo.caseStudyUrl && (
+            {/* Case Study / Official Website Link */}
+            {(activeModalVideo.websiteUrl || activeModalVideo.caseStudyUrl) && (
               <div className="absolute bottom-4 inset-x-4 z-20">
-                <Link
-                  href={activeModalVideo.caseStudyUrl}
+                <a
+                  href={activeModalVideo.websiteUrl || activeModalVideo.caseStudyUrl}
+                  target={activeModalVideo.websiteUrl ? "_blank" : undefined}
+                  rel={activeModalVideo.websiteUrl ? "noopener noreferrer" : undefined}
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-[#FF4D00] hover:bg-[#E64500] text-white font-bold text-xs sm:text-sm shadow-xl transition-all active:scale-95 cursor-pointer"
                 >
-                  <span>Explore Full Case Study</span>
+                  <span>{activeModalVideo.websiteUrl ? `Visit ${activeModalVideo.brandName || activeModalVideo.title} Website` : "Explore Full Case Study"}</span>
                   <ExternalLink size={14} />
-                </Link>
+                </a>
               </div>
             )}
           </div>

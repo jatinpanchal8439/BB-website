@@ -6,6 +6,7 @@ import Stats from "./components/Stats";
 import FeaturedLaunches from "./components/FeaturedLaunches";
 import Industries from "./components/Industries";
 import Testimonials from "./components/Testimonials";
+import GrandLaunch from "./components/GrandLaunch";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <FeaturedLaunches />
       <Industries />
       <Testimonials />
+      <GrandLaunch />
       <ClientLogos />
       <FAQ />
       <Footer />
