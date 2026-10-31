@@ -111,8 +111,11 @@ export default function AboutTestimonials() {
         const vid = videoRefs.current[idx];
         if (vid) vid.pause();
       });
-      setActiveAudioIndex(null);
-      setIsPlayingState({});
+      const timer = setTimeout(() => {
+        setActiveAudioIndex(null);
+        setIsPlayingState({});
+      }, 0);
+      return () => clearTimeout(timer);
     } else {
       // If in view and no video has been chosen for sound playback, preview silently
       if (activeAudioIndex === null && !activeModalVideo) {

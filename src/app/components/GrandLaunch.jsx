@@ -124,8 +124,11 @@ export default function GrandLaunch() {
         const vid = videoRefs.current[idx];
         if (vid) vid.pause();
       });
-      setActiveAudioIndex(null);
-      setIsPlayingState({});
+      const timer = setTimeout(() => {
+        setActiveAudioIndex(null);
+        setIsPlayingState({});
+      }, 0);
+      return () => clearTimeout(timer);
     } else {
       if (activeAudioIndex === null && !activeModalVideo) {
         launches.forEach((_, idx) => {
